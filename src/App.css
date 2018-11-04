@@ -1,0 +1,446 @@
+.icon{
+    cursor: pointer;
+    width: 50px;
+    height: 40px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 25px;
+    display: none;
+    text-align: center;
+}
+.description:hover .icon{
+    display: block;
+}
+.asuumption_row:hover .icon{
+    display: block;
+    /* cursor: pointer */
+
+}
+.btn_edit:hover{
+    background: rgba(185, 223, 149, 0.753);
+}
+.btn_delete:hover{
+    background: rgba(236, 151, 151, 0.753);
+}
+.iconDiv{
+    flex: 1;
+    display: flex;
+}
+.details{
+    flex: 6;
+    overflow: auto;
+    text-align: left;
+}
+
+.singleUserStory:hover .icon{
+    display: block;
+}
+
+.divShade{
+    -webkit-box-shadow: 0px 7px 11px 0px rgba(50, 50, 50, 0.45);
+      -moz-box-shadow:    0px 7px 11px 0px rgba(50, 50, 50, 0.45);
+      box-shadow:         0px 7px 11px 0px rgba(50, 50, 50, 0.45);
+}
+.assumptionContainer{
+    background: white;
+    border-top: 2px solid gray;
+    border-radius: 10px;
+    width: 80%;
+    margin: auto;
+    padding: 10%;
+    font-size: 15px;
+    text-align: left;
+    
+}
+.assumption{
+    background: #000;
+    color: white;
+    /* height: 50px; */
+    margin: 20px;
+    padding: 30px;
+    width: 90%;
+}
+
+.maincContainer{
+    margin: 0px;
+    padding: 15px;
+    background:url(https://wallpaper-house.com/data/out/7/wallpaper2you_167350.jpg);
+    /* background:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJ_nhC47nYpHSpkbs4SG2CNE-ft2TMgXdzGTnvzvVGxNWJ-L4t2g); */
+    /* background:url(https://images.pexels.com/photos/463684/pexels-photo-463684.jpeg?auto=compress&cs=tinysrgb&h=350); */
+    background-size: cover;
+}
+
+.pdfPreview{
+    background: white;
+    border-top: 2px solid gray;
+    width: 800px;
+    margin: auto;
+    padding: 100px;
+    font-size: 15px;
+    text-align: left;
+}
+
+.pdfPreviewTitel{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+.pdfOverview{
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.imgDiv{
+    width: 100%;
+    margin: auto;
+    /* padding: 20px; */
+}
+img{
+    width: 150px;
+     height:auto;
+    margin: 20px;
+}
+
+
+.header{
+    height: 50px;
+    padding: 5px;
+    font-weight: bold;
+    color: rgb(199, 209, 219);
+    /* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
+    /* font-size: 25px; */
+    /* font-weight: bold; */
+}
+
+.articleFirst{
+    text-transform: uppercase;
+    background: -moz-linear-gradient(47deg, rgb(42, 95, 190) 30%, rgb(90, 140, 250) 69%);
+    background: -webkit-linear-gradient(47deg, rgb(42, 95, 190) 30%, rgb(90, 140, 250) 69%);
+    background: -o-linear-gradient(47deg, rgb(42, 95, 190) 30%, rgb(90, 140, 250) 69%);
+    background: -ms-linear-gradient(47deg, rgb(42, 95, 190) 30%, rgb(90, 140, 250) 69%);
+    background: linear-gradient(137deg, rgb(42, 95, 190) 30%, rgb(90, 140, 250) 69%);
+}
+
+.navBar {
+    padding: 2%;
+    text-align: center;
+}
+
+.navBar a {
+    text-decoration: none;
+    color: #89ceee;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.navBar a:hover {
+    text-decoration: none;
+    background-color: rgba(221, 221, 221, 0.24);
+    color: rgb(197, 184, 184);
+}
+
+.articleSecond{
+    text-align: center;
+    height: 700px;
+    border-bottom: 5px rgb(224, 221, 221) solid;
+    overflow: auto;
+}
+.mainScreen{
+    margin: auto;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.footer{
+    height: 80px;
+}
+
+
+
+
+
+
+/* ////////////////////////////////////// */
+/* buttons */
+button{
+    position: relative;
+    border-radius:5px;
+    color: white;
+    height: 35px;
+    width: 30%;
+    margin: 20px;
+    max-width: 250px;
+    opacity: .9;
+}
+button:hover{
+    cursor: pointer;
+    opacity: 1;
+}
+.saveBtn{
+    background:rgb(115, 168, 247);
+    margin: 20px;
+}
+.disableBtn{
+    pointer-events: none;
+    background:rgb(212, 217, 224);
+    margin: 20px;
+}
+
+.editBtn{
+    background:rgb(122, 226, 122);
+    margin: 20px;
+}
+
+.deleteBtn{
+    background:rgb(255, 107, 107);
+    margin: 20px;
+}
+.cancelBtn{
+    background:rgb(250, 123, 123);
+    margin: 20px;
+}
+
+/* ////////////////////////////////////// */
+/* form */
+
+.formContainer{
+    position: relative;
+    padding: 10px;
+    min-height: 400px;
+    width: 60%;
+    margin: auto;
+    /* border-left: 2px solid white;
+    border-right: 2px solid gray;
+    border-top: 2px solid gray;
+    border-bottom: 2px solid white; */
+    background: rgba(143, 205, 241, 0.418);
+    /* opacity: 0.3; */
+    font-size: 15px;
+    font-family: 'Source Sans Pro', sans-serif;;
+}
+
+
+
+
+.divBorder{
+    
+}
+
+.projectDescreptionInput{
+    border-left: 2px solid white;
+    border-right: 2px solid gray;
+    border-top: 2px solid gray;
+    border-bottom: 2px solid white;
+    border-radius: 10px;
+    width: 80%;
+    height: 200px;
+    margin: 20px;
+    padding: 15px;
+    font-size: 15px;
+}
+
+
+.actorsInput{
+    font-family: 'Source Sans Pro', sans-serif;
+    border-radius:5px ;
+    border-left: 2px solid white;
+    border-right: 2px solid gray ;
+    border-top: 2px solid gray;
+    border-bottom: 2px solid  white;
+    padding: 2px;
+    padding-left: 10px;
+    height: 35px;
+    width: 80%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.actorDescription{
+    font-family: 'Source Sans Pro', sans-serif;
+    color: black;
+        border-left: 2px solid white;
+        border-right: 2px solid gray ;
+        border-top: 2px solid gray;
+        border-bottom: 2px solid  white;
+    border-radius:5px ;
+        padding: 10px;
+        max-width: 80%;
+        min-width: 80%;
+        max-height: 80px;
+        min-height: 80px;
+        overflow: auto;
+        background: white;
+  }
+  
+  textarea:focus{
+      -webkit-box-shadow: 0px 7px 11px 0px rgba(50, 50, 50, 0.45);
+      -moz-box-shadow:    0px 7px 11px 0px rgba(50, 50, 50, 0.45);
+      box-shadow:         0px 7px 11px 0px rgba(50, 50, 50, 0.45);
+    }
+    
+    input:focus{
+        -webkit-box-shadow: 0px 7px 11px 0px rgba(50, 50, 50, 0.45);
+        -moz-box-shadow:    0px 7px 11px 0px rgba(50, 50, 50, 0.45);
+        box-shadow:         0px 7px 11px 0px rgba(50, 50, 50, 0.45);
+    }
+    
+    .showActors{
+        background: rgba(187, 223, 243, 0.93);
+        border-left: 2px solid white;
+        border-right: 2px solid gray ;
+        border-top: 2px solid gray;
+        border-bottom: 2px solid  white;
+        margin: auto;
+        width: 85%;
+        margin-bottom: 5%;
+        height: 200px;
+        border-radius:10px;
+        overflow: auto;
+        
+    }
+    
+    #actorView{
+        margin: auto;
+        width: 90%;
+        padding: 5px;
+        text-align: left;
+        border-bottom: 2px solid white;
+        display: flex;
+    }
+    #actorView:hover {
+        background: #83888a48;
+        border-radius: 5px;
+    }
+    #actorView:hover .icon{
+        display: block;
+    }
+
+     .subject{
+        margin: auto;
+        border: 1px solid gray;
+        background: white;
+        border-radius:5px ;
+        padding: 2px;
+        padding-left: 10px;
+        height: 35px;
+        width: 70%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+     }
+    
+.addUserStory{
+    margin: 5px;
+    margin: auto;
+    width: 80%;
+    /* margin-top: 5%; */
+    /* border: 2px solid #a3c9fa; */
+    /* border-radius: 10px; */
+    /* background:#a3c9fa ; */
+}
+.addUserStory .addUserStoryActor{
+    
+    margin: auto;
+    border: 1px solid gray;
+    background: white;
+    border-radius:5px ;
+    padding: 2px;
+    padding-left: 10px;
+    height: 35px;
+    width: 70%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.addUserStory .SingleUserStory{
+    /* border: 2px solid black;  */
+    border-left: 2px solid white;
+    border-right: 2px solid gray;
+    border-top: 2px solid gray;
+    border-bottom: 2px solid white;
+    
+    margin: auto;
+    border-radius:15px ;
+    padding: 10px;
+     max-width: 80%;
+     min-width: 80%;
+     max-height: 80px;
+     min-height: 80px;
+     overflow: auto;
+     /* background: rgb(217, 233, 189); */
+     
+    }
+    
+    .addUserStory .viewUserStory{
+        /* margin: auto;
+        background: rgb(225, 240, 200);
+        border-radius:10px ;
+        padding: 2px;
+        padding-left: 10px;
+        height: 35px;
+        width: 80%;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    border: 2px solid rgb(115, 168, 247); */
+    background: rgba(187, 223, 243, 0.93);
+    border-left: 2px solid white;
+    border-right: 2px solid gray ;
+    border-top: 2px solid gray;
+    border-bottom: 2px solid  white;
+    margin: auto;
+    width: 85%;
+    margin-bottom: 5%;
+    height: auto;
+    overflow: auto;
+    border-radius:10px;
+    max-height: 200px;
+}
+
+.singleUserStory{
+    margin: auto;
+    width: 90%;
+    padding: 5px;
+    border-bottom: 2px solid white;
+    display: flex;
+    font-size: 15px;
+}
+.singleUserStory:hover {
+    background: rgba(184, 180, 180, 0.363);
+    
+}
+.asuumption_row{
+    padding:10px 0px 0px 25px;
+    display: flex
+
+}
+.asuumption_row:hover{
+    background: rgba(137, 187, 243, 0.205);
+
+}
+.formAssumptionsContainer{
+    /* border: 2px solid gray; */
+    width: 100%;
+    padding: 2%;
+    font-size: 15px;
+    text-align: center;
+}
+
+.deleteDialog{
+    padding: 25px;
+    top: 25%;
+    left: 25%;
+    right: 25%;
+    position: absolute;
+    background: rgb(255, 255, 255);
+    border-radius: 5px;
+    width: 50%;
+    -webkit-box-shadow: 6px 6px 30px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    6px 6px 30px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:         6px 6px 30px 0px rgba(50, 50, 50, 0.75);
+    /* font-family: Roboto, Arial, Helvetica, sans-serif */
+    ;
+    
+}
+
+
+
+
+ 
+

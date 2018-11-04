@@ -1,0 +1,65 @@
+{
+    "overView":[
+            "Founded 5 years ago in Bnei Brak, RavTech is a one-of-a-kind software house, providing a wide range of software services and specializing in Mobile, Web sites, IoT and Automation QA. With over 70 developers, all of which are excelled Talmudic college alumni, RavTech adds a unique value to its clients. This endeavor was launched by the Ultra-Orthodox community itself and is co-managed by some of Israel’s top high-tech personas. ",
+            "Our clients' portfolio includes multi-national companies such as Check Point, EMC, HP, City Bank and so on, as well as many early and late-stage startups.", 
+            "We offer our customers a long-lasting partnership along with professional peace of mind throughout the entire software development life-cycle.",
+            "Our services include, among others, the following:"
+    ],
+
+    "servicesList": [
+        "Mobile end-to-end: native Android, native iOS, client & server architecture.",
+        "Content Web sites and complex Web applications - client & server.",
+        "IoT: Sensors connectivity and probing, embedded environment integration and communication.",
+        "Dashboard & Monitoring: Javascript, Angular JS, HTML5, Python, PHP.",
+        "Automation QA: planning automation testing frameworks - client-server, load, performance and more.",
+        "ALM & DevOps: installation & upgrades, resource monitoring, Chef, Jenkins."
+    ],
+  
+    
+  
+    "imgUrlLinks": [
+        "https://tlgur.com/d/d4xD2274",
+        "https://tlgur.com/d/P4kZjjxg",
+        "https://tlgur.com/d/Bg0pVV9g",
+        "https://tlgur.com/d/XGZbxxdG",
+        "https://tlgur.com/d/DGXKXXe8",
+        "https://tlgur.com/d/X8eqyyN8",
+        "https://tlgur.com/d/Bgv7BBz4",
+        "https://tlgur.com/d/q8BZkk98"
+    ],
+    
+    "assumptions": [
+        {
+            "name": "See list of scope functional assumptions as part of appendix A - list of tasks",
+            "key": "checkBox1",
+            "label": "Check Box 1"
+        },
+        {
+            "name": "RavTech will manage the project and allocations of developers according to each phase of development",
+            "key": "checkBox2",
+            "label": "Check Box 2"
+        },
+        {
+            "name": "The development shall be based upon the flow above (in the user stories section). Any change may influence the price below and will be charge accordingly.",
+            "key": "checkBox3",
+            "label": "Check Box 3"
+        },
+        {
+            "name": "Devices targeted for this release: Windows 10 + Chrome latest",
+            "key": "checkBox4",
+            "label": "Check Box 4"
+        },
+        {
+            "name": "Customer shall provide full UI and UX using invision, zeplin or any other web tool aimed for this purpose. While the entire UI is not required in order to start the development, it is essential that The UX will be 80% finalized when the dev starts The UI of the first 5 screens will be ready when the dev starts",
+            "key": "checkBox5",
+            "label": "Check Box 5"
+        },
+        {
+            "name": "Any change in the UX after the dev start and in any UI screen after it was delivered to RavTech may lead to additional dev costs and delay in the project delivery.",
+            "key": "checkBox6",
+            "label": "Check Box 6"
+        }
+    ]
+
+   
+}
