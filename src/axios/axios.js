@@ -4,11 +4,29 @@ import {urlLinks} from '../linkes.js'
 
 //=== getting all projects ===> returns all the names and id's of all projects  ===
 
+export var getData = (url, type) => {
+    console.log(url, type);
+    
+    axios.get(url)
+    .then(function(res) {
+        console.log(res);
+        store.dispatch({type: type, payload: res.data});
+    });
+}
 export var getProjects = (url) => {
+    
     axios.get(url)
     .then(function(res) {
         console.log(res);
         store.dispatch({type: 'UPDATE_STATE_PROJECTS', payload: res.data});
+    });
+}
+
+export var getVersions = (url) => {
+    axios.get(url)
+    .then(function(res) {
+        console.log(res);
+        store.dispatch({type: 'UPDATE_STATE_VERSIONS', payload: res.data});
     });
 }
 

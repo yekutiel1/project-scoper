@@ -1,0 +1,284 @@
+{
+    "milestone": [
+        {
+            "milstoneName": "Milestone 1",
+            "containers": [
+                {
+                    "name": "UC1 - text task",
+                    "days": "4",
+                    "tasks": [
+                        {
+                            "task": "Online scan of chat text and error in case of one or more words that appear in configurable prohibited words text file",
+                            "days": "2"
+                        },
+                        {
+                            "task": "Online scan of chat text and error in case of one or more words that appear in configurable prohibited words text file",
+                            "days": "2"
+                        }
+                    ]
+                },
+                {
+                    "name": "UC3 - audio task",
+                    "days": "7",
+                    "tasks": [
+                        {
+                            "task": "Online scan of chat text and error in case of one or more words that appear in configurable prohibited words text file",
+                            "days": "3"
+                        },
+                        {
+                            "task": "Online scan of chat text and error in case of one or more words that appear in configurable prohibited words text file",
+                            "days": "4"
+                        }
+                    ]
+                },
+                {
+                    "name": "UC4 - video task",
+                    "days": "8",
+                    "tasks": [
+                        {
+                            "task": "New task type - ability to upload a picture + related text - standalone task",
+                            "days": "2"
+                        },
+                        {
+                            "task": "New task type - ability to upload a picture + related text - standalone task",
+                            "days": "6"
+                        }
+                    ]
+                }
+                ,
+                {
+                    "name": "UC8 - optionals tasks",
+                    "days": "3",
+                    "tasks": [
+                        {
+                            "task": "New task type - ability to upload a picture + related text - standalone task",
+                            "days": "1"
+                        },
+                        {
+                            "task": "New task type - ability to upload a picture + related text - standalone task",
+                            "days": "2"
+                        }
+                    ]
+                }
+                ,
+                {
+                    "name": "UC9 - questionnaire task",
+                    "days": "9",
+                    "tasks": [
+                        {
+                            "task": "New task type - ability to upload a picture + related text - standalone task",
+                            "days": "4"
+                        },
+                        {
+                            "task": "New task type - ability to upload a picture + related text - standalone task",
+                            "days": "5"
+                        }
+                    ]
+                }
+                ,
+                {
+                    "name": "UC10 - student avatar",
+                    "days": "8",
+                    "tasks": [
+                        {
+                            "task": "New task type - ability to upload a picture + related text - standalone task",
+                            "days": "6"
+                        },
+                        {
+                            "task": "New task type - ability to upload a picture + related text - standalone task",
+                            "days": "2"
+                        }
+                    ]
+                }
+                ,
+                {
+                    "name": "UC11  - Questionnaire task",
+                    "days": "5",
+                    "tasks": [
+                        {
+                            "task": "New task type - ability to upload a picture + related audio - standalone task",
+                            "days": "2"
+                        },
+                        {
+                            "task": "New task type - ability to upload a picture + related audio - standalone task",
+                            "days": "3"
+                        }
+                    ]
+                }
+                ,
+                {
+                    "name": "UC12 - Course creation and teacher avatar",
+                    "days": "10",
+                    "tasks": [
+                        {
+                            "task": "New task type - ability to upload a picture + related audio - standalone task",
+                            "days": "2"
+                        },
+                        {
+                            "task": "New task type - ability to upload a picture + related audio - standalone task",
+                            "days": "8"
+                        }
+                    ]
+                }
+                ,
+                {
+                    "name": "UC16 - Cluster leader portal",
+                    "days": "11",
+                    "tasks": [
+                        {
+                            "task": "New task type - ability to upload a picture + related audio - standalone task",
+                            "days": "6"
+                        },
+                        {
+                            "task": "New task type - ability to upload a picture + related audio - standalone task",
+                            "days": "5"
+                        }
+                    ]
+                }
+            ]
+        }
+        ,
+        {
+            "milstoneName": "Milestone 2",
+            "containers": [
+                {
+                    "name": "UC5 - Quiz task",
+                    "days": "15",
+                    "tasks": [
+                        {
+                            "task": "Upload video file and ability to play it in embedded mode",
+                            "days": "7"
+                        },
+                        {
+                            "task": "Upload video file and ability to play it in embedded mode",
+                            "days": "8"
+                        }
+                    ]
+                },
+                {
+                    "name": "UC7 - Shared picture task",
+                    "days": "9",
+                    "tasks": [
+                        {
+                            "task": "Upload video file and ability to play it in embedded mode",
+                            "days": "4"
+                        },
+                        {
+                            "task": "Upload video file and ability to play it in embedded mode",
+                            "days": "5"
+                        }
+                    ]
+                },
+                {
+                    "name": "UC14 - Teacher to student notification",
+                    "days": "3",
+                    "tasks": [
+                        {
+                            "task": "Upload video file and ability to play it in embedded mode",
+                            "days": "2"
+                        },
+                        {
+                            "task": "Upload video file and ability to play it in embedded mode",
+                            "days": "1"
+                        }
+                    ]
+                }
+                ,
+                {
+                    "name": "UC15 - Teacher to teacher message",
+                    "days": "7",
+                    "tasks": [
+                        {
+                            "task": "Upload video file and ability to play it in embedded mode",
+                            "days": "4"
+                        },
+                        {
+                            "task": "Upload video file and ability to play it in embedded mode",
+                            "days": "3"
+                        }
+                    ]
+                }
+               
+            ]
+        }
+        ,
+        {
+            "milstoneName": "Milestone 3",
+            "containers": [
+                {
+                    "name": "VC6 - VC task",
+                    "days": "8",
+                    "tasks": [
+                        {
+                            "task": "Shared Quiz where each student can add x questions + image.",
+                            "days": "3"
+                        },
+                        {
+                            "task": "Shared Quiz where each student can add x questions + image.",
+                            "days": "5"
+                        }
+                    ]
+                },
+                {
+                    "name": "UC11 - View questionnaire statistics",
+                    "days": "12",
+                    "tasks": [
+                        {
+                            "task": "Shared Quiz where each student can add x questions + image.",
+                            "days": "4"
+                        },
+                        {
+                            "task": "Shared Quiz where each student can add x questions + image.",
+                            "days": "8"
+                        }
+                    ]
+                },
+                {
+                    "name": "UC13 - Course album",
+                    "days": "3",
+                    "tasks": [
+                        {
+                            "task": "Shared Quiz where each student can add x questions + image.",
+                            "days": "1"
+                        },
+                        {
+                            "task": "Shared Quiz where each student can add x questions + image.",
+                            "days": "2"
+                        }
+                    ]
+                }
+                ,
+                {
+                    "name": "UC15 - Teacher personal page editor",
+                    "days": "10",
+                    "tasks": [
+                        {
+                            "task": "Shared Quiz where each student can add x questions + image.",
+                            "days": "4"
+                        },
+                        {
+                            "task": "Shared Quiz where each student can add x questions + image.",
+                            "days": "6"
+                        }
+                    ]
+                }
+                ,
+                {
+                    "name": "General - Prohibited words scan in chat",
+                    "days": "6",
+                    "tasks": [
+                        {
+                            "task": "The quiz can be executed and the score is presented at the end",
+                            "days": "4"
+                        },
+                        {
+                            "task": "The quiz can be executed and the score is presented at the end",
+                            "days": "2"
+                        }
+                    ]
+                }
+               
+            ]
+        }
+    ]
+}

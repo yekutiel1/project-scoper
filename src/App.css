@@ -460,11 +460,72 @@ button:hover{
     -moz-box-shadow:    6px 6px 30px 0px rgba(50, 50, 50, 0.75);
     box-shadow:         6px 6px 30px 0px rgba(50, 50, 50, 0.75);
     /* font-family: Roboto, Arial, Helvetica, sans-serif */
-    ;
+    
     
 }
 
+/* ///////////////////  Pricing   ///////////////////// */
 
+.pricing{
+    width: 80%;
+    background: white;
+    margin: auto;
+    padding: 10px;
+}
+
+.mileStone{
+    display: flex;
+    border: 2px black solid;
+    text-align: center;
+
+}
+
+ .process{
+    flex: 3;
+}
+ .timeline{
+    flex: 4;
+}
+ .days{
+    flex: 2;
+}
+ .price{
+    flex: 3;
+}
+
+.processName{
+    flex: 3;
+}
+.TotalDays{
+    border-top: 2px black solid;
+    text-align: right;
+    padding: 10px;
+
+}
+
+.processContainers{
+    border-left: 2px black solid;
+    border-right: 2px black solid;
+    flex: 6;
+    display: block;
+}
+.priceInput{
+    flex: 3;
+
+}
+.singleProcessContainer{
+    display: flex;
+}
+
+.singleProcessContainer .timeline{
+    flex: 4;
+    text-align: left;
+}
+
+
+.viewVersion{
+    text-align: left
+}
 
 
  
