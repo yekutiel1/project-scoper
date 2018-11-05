@@ -106,20 +106,46 @@ img{
     padding: 5px;
     font-weight: bold;
     color: rgb(199, 209, 219);
-    /* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
     /* font-size: 25px; */
     /* font-weight: bold; */
 }
-
-.articleFirst{
-    text-transform: uppercase;
-    background: -moz-linear-gradient(47deg, rgb(42, 95, 190) 30%, rgb(90, 140, 250) 69%);
-    background: -webkit-linear-gradient(47deg, rgb(42, 95, 190) 30%, rgb(90, 140, 250) 69%);
-    background: -o-linear-gradient(47deg, rgb(42, 95, 190) 30%, rgb(90, 140, 250) 69%);
-    background: -ms-linear-gradient(47deg, rgb(42, 95, 190) 30%, rgb(90, 140, 250) 69%);
-    background: linear-gradient(137deg, rgb(42, 95, 190) 30%, rgb(90, 140, 250) 69%);
+.articleLeft{
+    /* max-width: 100px; */
+    
 }
 
+.sideBar{
+    /* background: #8deb7048; */
+}
+.sidBarItem{
+    width: 100%;
+    /* text-transform: uppercase; */
+    
+}
+
+.sidBarItem div{
+    /* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
+    width: 100%;
+    display: inline;
+    color:black;
+    text-align: left;
+    cursor: pointer;
+    padding-top: 2%;
+    font-size: 17px;
+}
+
+.sidBarItem .link{
+    display: block;
+    text-decoration: none;
+    font-size: 15px;
+    padding: 2% 0% 0% 15%;
+    /* padding-top: 2%; */
+}
+.sidBarItem .link:hover{
+   background: #cfd6da5e;
+}
+
+/* 
 .navBar {
     padding: 2%;
     text-align: center;
@@ -129,17 +155,16 @@ img{
     text-decoration: none;
     color: #89ceee;
     padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
 }
 
 .navBar a:hover {
     text-decoration: none;
     background-color: rgba(221, 221, 221, 0.24);
     color: rgb(197, 184, 184);
-}
+} */
 
-.articleSecond{
+.articleRight{
+    border-left: solid black 1px;
     text-align: center;
     height: 700px;
     border-bottom: 5px rgb(224, 221, 221) solid;
