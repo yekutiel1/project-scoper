@@ -106,8 +106,6 @@ var reduser = function (state, action) {
 
         case "UPDATE_STATE_OLD_VERSION_DATA":
             newState.oldVersionData = action.payload;
-            console.log(newState);
-            
             return newState;
             break;
 
