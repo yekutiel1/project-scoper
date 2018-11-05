@@ -5,6 +5,7 @@ import store from '../store/store.js';
 import axios from 'axios';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import PDFpreview  from './pdfPreview';
+import Versions  from './versions.js';
 import PrintButton from '../createPDF/PrintButton.js'  
 
 import RichEditor from '../richEditor/richEditor.js'
@@ -19,7 +20,6 @@ class ManagmentTools extends Component {
         }
     }
     render() {
-        console.log(this.props);
         
         return (
             <div>
@@ -79,7 +79,8 @@ class ScopingContinuation extends Component {
         super(props);
         this.state = {
             newVersionMode: false,
-            displayPdf: false
+            displayPdf: false,
+            displayVersions: false
         }
     }
     cancelNewVersionMode = () => {
@@ -89,16 +90,26 @@ class ScopingContinuation extends Component {
 
         return (
             <div>
+                
                 {this.state.newVersionMode ? null : <button><Link to='/scoping' >Continue Scoping</Link></button>}
                 {this.state.newVersionMode ? null : <button onClick={() => this.setState({ newVersionMode: true })}>New version</button>}
                 {this.state.newVersionMode ? <CreateNewVersion cancelNewVersionMode={this.cancelNewVersionMode} /> : null}
                 <button onClick={() => this.setState({ displayPdf: !this.state.displayPdf })}>view all data</button>
+                <button onClick={() => this.setState({ displayVersions: !this.state.displayVersions })}>view all versions</button>
+                {this.state.displayVersions?  <Versions/>: null}
                 {this.state.displayPdf ? 
                 <div>
+                 
+
+
                     <PrintButton  id={"pdfPreview"} label={"Create PDF file"} />
                     <PDFpreview />
+
+                    
                 </div>
                  : null}
+
+
             </div>
         );
     }
