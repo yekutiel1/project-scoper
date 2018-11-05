@@ -3,8 +3,9 @@ import './App.css';
 import { BrowserRouter, Route, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { pageLinkes } from './linkes'
-import {Row} from 'reactstrap'
+import { Row, Col } from 'reactstrap'
 import store from './store/store';
+import { Nav, NavItem, NavLink, Dropdown, DropdownItem, DropdownToggle, DropdownMenu, } from 'reactstrap';
 
 import ManagmentTools from './pages/managmentTools.js';
 import ProjectDescription from './pages/projectDescription.js';
@@ -15,32 +16,100 @@ import Diagram from './pages/diagram.js';
 import Pricing from './pages/pricing.js';
 
 class NavBar extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      dropdownOpen: false,
+      sideBarDisplay: [
+        { title: 'managment', Display: false, char: '⏵' },
+        { title: 'scoping', Display: false, char: '⏵' },
+        { title: 'pricing', Display: false, char: '⏵' },
+        { title: 'general', Display: false, char: '⏵' }
+      ]
+    };
+  }
+
+ 
+
+  changeStatus = (key) => {
+
+    var newState = this.state.sideBarDisplay.slice();
+    newState.map((elm => {
+      if (key === elm.title) {
+        if (elm.Display) {
+          elm.Display = false;
+          elm.char = '⏵'
+        }
+        else {
+          elm.Display = !elm.Display
+          elm.char = '⏷';
+        }
+      } else {
+        elm.Display = false;
+        elm.char = '⏵';
+      }
+    }))
+    this.setState({ sideBarDisplay: newState })
+  }
+
+
   render() {
     return (
-      <div className="navBar">
-        <Link to={pageLinkes.mangementTools} >Managment Tools</Link>
-        <Link to={pageLinkes.projectDescreption} >Project Discraption</Link>
-        <Link to={pageLinkes.actors}>Actors</Link>
-        <Link to={pageLinkes.subjects}>Requirement Specifications‏</Link>
-        <Link to={pageLinkes.userStory}>User Story</Link>
-        <Link to={pageLinkes.assumptions}>Assumptions</Link>
-        <Link to={pageLinkes.diagram}>Attach diagram</Link>
-        <Link to={pageLinkes.pricing}>pricing</Link>
+      <div className='sideBar'>
+        <div className='sidBarItem'>
+          <div onClick={() => { this.changeStatus('managment') }}>{this.state.sideBarDisplay[0].char} Managment Tools</div>
+          {this.state.sideBarDisplay[0].Display ? <div className='links' >
+            <Link className='link' to={pageLinkes.mangementTools} >Managment Tools</Link>
+          </div> : null}
+
+
+        </div>
+        <div className='sidBarItem'>
+          <div onClick={() => { this.changeStatus('scoping') }}>{this.state.sideBarDisplay[1].char} scoping</div>
+          {this.state.sideBarDisplay[1].Display ? <div className='links' >
+            <Link className='link' to={pageLinkes.projectDescreption} >Project Discraption</Link>
+            <Link className='link' to={pageLinkes.actors}>Actors</Link>
+            <Link className='link' to={pageLinkes.subjects}>Requirement Specifications‏</Link>
+            <Link className='link' to={pageLinkes.userStory}>User Story</Link>
+          </div> : null}
+
+
+        </div>
+        <div className='sidBarItem'>
+          <div onClick={() => { this.changeStatus('pricing') }}>{this.state.sideBarDisplay[2].char} pricing</div>
+          {this.state.sideBarDisplay[2].Display ? <div className='links' >
+            <Link className='link' to={pageLinkes.pricing}>pricing</Link>
+          </div> : null}
+
+
+        </div>
+        <div className='sidBarItem'>
+          <div onClick={() => { this.changeStatus('general') }}>{this.state.sideBarDisplay[3].char} General Information</div>
+          {this.state.sideBarDisplay[3].Display ? <div className='links' >
+            <Link className='link' to={pageLinkes.assumptions}>Assumptions</Link>
+            <Link className='link' to={pageLinkes.diagram}>Attach diagram</Link>
+          </div> : null}
+
+
+        </div>
+
+
       </div>
     );
   }
 }
 
 
-
 class MainScreen extends Component {
   render() {
     return (
       <div className='mainScreen'>
+
         <Route exact path={pageLinkes.mangementTools} component={ManagmentTools} />
         <Route path={pageLinkes.projectDescreption} component={ProjectDescription} />
-        <Route path={pageLinkes.actors} component={ () => <Form name={'Actor'} dispatchType={'ACTOR'} enableDelete={true}/>}/>
-        <Route path={pageLinkes.subjects} component={() => <Form name={'Subject'} dispatchType={'SUBJECT'} enableDelete={false}/>}/>
+        <Route path={pageLinkes.actors} component={() => <Form name={'Actor'} dispatchType={'ACTOR'} enableDelete={true} />} />
+        <Route path={pageLinkes.subjects} component={() => <Form name={'Subject'} dispatchType={'SUBJECT'} enableDelete={false} />} />
         <Route path={pageLinkes.userStory} component={UserStories} />
         <Route path={pageLinkes.assumptions} component={Assumptions} />
         <Route path={pageLinkes.diagram} component={Diagram} />
@@ -53,17 +122,19 @@ class MainScreen extends Component {
 
 class App extends Component {
 
-  componentWillMount(){
+  componentWillMount() {
     store.dispatch({ type: 'GET_PROJECTS' });
   }
-  
+
   render() {
     return (
       <BrowserRouter >
         <div className='maincContainer'>
           <Row className='header'>SCOPER</Row>
-          <Row className='articleFirst'><Route path='/scoping' component={NavBar} /></Row>
-          <Row className='articleSecond'> <MainScreen /></Row>
+          <Row >
+            <Col sm="3" md='2' className='articleLeft'><NavBar/></Col>
+            <Col sm="9" md='10' className='articleRight'><MainScreen /></Col>
+          </Row>
           <Row className='footer'><footer>✎ created by COD Team ©</footer></Row>
         </div>
       </BrowserRouter>
@@ -73,3 +144,4 @@ class App extends Component {
 
 
 export default connect(store => store)(App);
+
