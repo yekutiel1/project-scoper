@@ -59,6 +59,8 @@ export const urlLinks = {
     projectDescription: mainURL + '/general/projectDescription',
 
     getProjects: mainURL + '/project/allProjects',
+    getVersions: mainURL + '/project/allVersions',
+    getAldVersionData: mainURL + '/project/version',
     getAllData: mainURL + '/project/allData',
     getUserStories: mainURL + '/userStory/allStories',
 }

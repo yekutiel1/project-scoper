@@ -1,12 +1,14 @@
 import { createStore } from 'redux'
 import { urlLinks } from '../linkes.js'
-import { saveData, editData, deleteData, getUserStories, getAllData, getProjects, rejectionExplenation, createNewPrject, createNewVersion } from '../axios/axios'
+import { getData, saveData, editData, deleteData, getUserStories, getAllData, getProjects, getVersions, rejectionExplenation, createNewPrject, createNewVersion } from '../axios/axios'
 
 
 var state = {
     projectsArray: [],
+    versionsArray: [],
     currentProject: '',
-    currentVersion: '',
+    oldVersionNumber: '',
+    oldVersionData: null,
     currentActor: '',
     projectDescription: '',
     generalAssumptions: [],
@@ -21,7 +23,7 @@ var reduser = function (state, action) {
     let url = '';
     var newState = { ...state };
     switch (action.type) {
-     
+
         case "GET_PROJECTS":
             getProjects(urlLinks.getProjects);
             return newState;
@@ -50,7 +52,7 @@ var reduser = function (state, action) {
             newState.currentVersion = action.payload._id;
             newState.subjects = action.payload.subjects;
             console.log(newState);
-            
+
             return newState;
             break;
 
@@ -81,6 +83,33 @@ var reduser = function (state, action) {
             break;
 
 
+        case "GET_VERSIONS":
+            getVersions(`${urlLinks.getVersions}/${newState.currentProject}`);
+            return newState;
+            break;
+
+        case "UPDATE_STATE_VERSIONS":
+            newState.versionsArray = action.payload;
+            return newState;
+            break;
+
+        case "UPDATE_OLD_VERSION_NUMBER":
+            newState.oldVersionNumber = action.payload;
+            return newState;
+            break;
+
+        case "GET_OLD_VERSION_DATA":
+            url = `${urlLinks.getAldVersionData}/${newState.currentProject}/${newState.oldVersionNumber}`;
+            getData(url, 'UPDATE_STATE_OLD_VERSION_DATA');
+            return newState;
+            break;
+
+        case "UPDATE_STATE_OLD_VERSION_DATA":
+            newState.oldVersionData = action.payload;
+            console.log(newState);
+            
+            return newState;
+            break;
 
 
 
@@ -167,8 +196,8 @@ var reduser = function (state, action) {
             break;
 
         case "DELETE_ASSUMPTION":
-             url = `${urlLinks.deleteAssumption}/${newState.currentProject}/${action.payload}`
-             deleteData(url, 'GET_ALL_DATA');
+            url = `${urlLinks.deleteAssumption}/${newState.currentProject}/${action.payload}`
+            deleteData(url, 'GET_ALL_DATA');
             return newState;
             break;
 
@@ -184,7 +213,7 @@ var reduser = function (state, action) {
             break;
 
 
-        
+
         default:
             return newState;
             break;
