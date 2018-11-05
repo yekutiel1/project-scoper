@@ -471,7 +471,9 @@ button:hover{
     flex: 2;
 }
 
-
+.viewVersion{
+    text-align: left
+}
 
 
  
