@@ -439,37 +439,64 @@ button:hover{
     
 }
 
+/* ///////////////////  Pricing   ///////////////////// */
+
 .pricing{
+    width: 80%;
     background: white;
+    margin: auto;
+    padding: 10px;
 }
 
 .mileStone{
     display: flex;
     border: 2px black solid;
-    width: 80%;
-    min-height: 200px;
+    text-align: center;
+
+}
+
+ .process{
+    flex: 3;
+}
+ .timeline{
+    flex: 4;
+}
+ .days{
+    flex: 2;
+}
+ .price{
+    flex: 3;
 }
 
 .processName{
-    border-right: 2px black solid;
-    flex: 2;
-    
+    flex: 3;
+}
+.TotalDays{
+    border-top: 2px black solid;
+    text-align: right;
+    padding: 10px;
+
 }
 
 .processContainers{
-    flex: 4;
+    border-left: 2px black solid;
+    border-right: 2px black solid;
+    flex: 6;
+    display: block;
+}
+.priceInput{
+    flex: 3;
 
 }
 .singleProcessContainer{
     display: flex;
 }
 
-.singleProcessContainer .name{
+.singleProcessContainer .timeline{
     flex: 4;
+    text-align: left;
 }
-.singleProcessContainer .days{
-    flex: 2;
-}
+
 
 .viewVersion{
     text-align: left
