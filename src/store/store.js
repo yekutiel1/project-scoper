@@ -1,7 +1,7 @@
 import { createStore } from 'redux'
 import { urlLinks } from '../linkes.js'
 import { getData, saveData, editData, deleteData, getUserStories, getAllData, getProjects, getVersions, rejectionExplenation, createNewPrject, createNewVersion } from '../axios/axios'
-
+import pricingData from '../rest_API_example_of_task_container.json';
 
 var state = {
     projectsArray: [],
@@ -15,6 +15,10 @@ var state = {
     currentAssumptions: [],
     actorsArray: [],
     subjects: [],
+
+    pricing: [],
+    grandTotalPrice: null,
+    discount: '',
 
     diagram: ''
 }
@@ -51,6 +55,10 @@ var reduser = function (state, action) {
             newState.currentAssumptions = action.payload.currentAssumptions;
             newState.currentVersion = action.payload._id;
             newState.subjects = action.payload.subjects;
+
+            newState.pricing = action.payload.pricing;
+            newState.grandTotalPrice = action.payload.grandTotalPrice;
+            newState.discount = action.payload.discount;
             console.log(newState);
 
             return newState;
@@ -110,6 +118,29 @@ var reduser = function (state, action) {
             break;
 
 
+        case "GET_DATA_FROM_PRICING":
+
+            url = 'http://fromPricing';
+            getData(url, 'SAVE_PRICING_DATA')
+            return newState;
+            break;
+
+        case "SAVE_PRICING_DATA":
+            url = `${urlLinks.savePricing}/${newState.currentProject}`;
+            saveData(url, action.payload, 'GET_ALL_DATA')
+            return newState;
+            break;
+
+        case 'ADD_PRICE_TO_PROCESS':
+            newState.pricing[action.payload.index].processTotalPrice = action.payload.price;
+            return newState;
+            break;
+
+        case 'SAVE_DISCOUNT':
+            url = `${urlLinks.saveDiscount}/${newState.currentProject}`;
+            saveData(url, {discount: action.payload}, 'GET_ALL_DATA')
+            return newState;
+            break;
 
         case "SAVE_ACTOR":
             var actorTemplate = {
