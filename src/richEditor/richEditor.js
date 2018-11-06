@@ -11,13 +11,14 @@ import { connect } from 'react-redux'
 class RichEditor extends Component {
   constructor(props) {
     super(props);
-    const rawJsText = this.props.projectDescription;
 
-    if (this.props.projectDescription === ''){
+    const rawJsText = this.props.data;
+
+    if (rawJsText === ''){
         this.state = {editorState:EditorState.createEmpty()};
       }else{
         const content  = convertFromRaw(JSON.parse(rawJsText));
-        this.state = {editorState:EditorState.createWithContent(content)};
+        this.state = {editorState:EditorState.createWithContent(content) };
     }
 
 
@@ -27,6 +28,7 @@ class RichEditor extends Component {
     this.onTab = (e) => this._onTab(e);
     this.toggleBlockType = (type) => this._toggleBlockType(type);
     this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
+    
   }
   
   _handleKeyCommand(command) {
@@ -63,7 +65,6 @@ class RichEditor extends Component {
   }
 
   render() {
-      // const {editorState} = this.state;
       const {editorState} = this.state;
       
       // If the user changes block type before entering any text, we can
@@ -92,7 +93,7 @@ class RichEditor extends Component {
         <div className={className} onClick={this.focus}>
         
           <Editor
-          
+          readOnly={this.props.readOnly}
           blockStyleFn={getBlockStyle}
           customStyleMap={styleMap}
           editorState={editorState}
@@ -106,7 +107,7 @@ class RichEditor extends Component {
           />
         </div>
           {this.props.editMode ? 
-        <button className="saveBtn" onClick={() => store.dispatch({ type: 'PROJECT_DESCREPTION', payload: JSON.stringify(raw) })}>Save</button>
+        <button className="saveBtn" onClick={() => store.dispatch({ type: this.props.save, payload: JSON.stringify(raw) })}>Save</button>
         : null }
       </div>
     );

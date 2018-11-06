@@ -111,7 +111,6 @@ img{
 }
 .articleLeft{
     /* max-width: 100px; */
-    
 }
 
 .sideBar{
@@ -125,13 +124,16 @@ img{
 
 .sidBarItem div{
     /* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
+/* height: 30px; */
     width: 100%;
-    display: inline;
+    overflow: hidden;
+    display: block;
     color:black;
     text-align: left;
+    font-size: 17px;
     cursor: pointer;
     padding-top: 2%;
-    font-size: 17px;
+    
 }
 
 .sidBarItem .link{
@@ -167,7 +169,6 @@ img{
     border-left: solid black 1px;
     text-align: center;
     height: 700px;
-    border-bottom: 5px rgb(224, 221, 221) solid;
     overflow: auto;
 }
 .mainScreen{
@@ -177,6 +178,7 @@ img{
 }
 
 .footer{
+    border-top: 5px rgb(224, 221, 221) solid;
     height: 80px;
 }
 

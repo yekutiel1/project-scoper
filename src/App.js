@@ -26,15 +26,15 @@ class NavBar extends Component {
         { title: 'scoping', Display: false, char: '⏵' },
         { title: 'pricing', Display: false, char: '⏵' },
         { title: 'general', Display: false, char: '⏵' }
-      ]
+      ], select:[  { title: 'select', Display: false, char: '⏵' }]
     };
   }
 
- 
 
-  changeStatus = (key) => {
 
-    var newState = this.state.sideBarDisplay.slice();
+  changeStatus = (key, arr) => {
+
+    var newState = arr.slice();
     newState.map((elm => {
       if (key === elm.title) {
         if (elm.Display) {
@@ -50,50 +50,51 @@ class NavBar extends Component {
         elm.char = '⏵';
       }
     }))
-    this.setState({ sideBarDisplay: newState })
+    this.setState({ [arr]: newState })
   }
 
+  arr = [
+    {name: 'Managment Tools', arr: [{name: 'Managment Tools', link: pageLinkes.mangementTools}]},
+    {name: 'Scoping', arr: [{name: 'Project Discraption', link: pageLinkes.projectDescreption},{name: 'Actors', link: pageLinkes.actors},{name: 'Requirement Specifications‏', link: pageLinkes.subjects}]},
+    {name: 'Scoping', arr: [{name: 'Project Discraption', link: pageLinkes.projectDescreption}]},
+  ]
 
   render() {
     return (
       <div className='sideBar'>
         <div className='sidBarItem'>
-          <div onClick={() => { this.changeStatus('managment') }}>{this.state.sideBarDisplay[0].char} Managment Tools</div>
+          <div onClick={() => { this.changeStatus('managment', this.state.sideBarDisplay) }}>{this.state.sideBarDisplay[0].char} Managment Tools</div>
           {this.state.sideBarDisplay[0].Display ? <div className='links' >
+          <div onClick={() => { this.changeStatus('select', this.state.select) }}>{this.state.select[0].char} Select project</div>
             <Link className='link' to={pageLinkes.mangementTools} >Managment Tools</Link>
+          {/* {this.state.select[0].Display ? <div className='links' > */}
           </div> : null}
-
-
         </div>
+
         <div className='sidBarItem'>
-          <div onClick={() => { this.changeStatus('scoping') }}>{this.state.sideBarDisplay[1].char} scoping</div>
+          <div onClick={() => { this.changeStatus('scoping', this.state.sideBarDisplay) }}>{this.state.sideBarDisplay[1].char} Scoping</div>
           {this.state.sideBarDisplay[1].Display ? <div className='links' >
             <Link className='link' to={pageLinkes.projectDescreption} >Project Discraption</Link>
             <Link className='link' to={pageLinkes.actors}>Actors</Link>
             <Link className='link' to={pageLinkes.subjects}>Requirement Specifications‏</Link>
             <Link className='link' to={pageLinkes.userStory}>User Story</Link>
           </div> : null}
-
-
         </div>
+
         <div className='sidBarItem'>
-          <div onClick={() => { this.changeStatus('pricing') }}>{this.state.sideBarDisplay[2].char} pricing</div>
+          <div onClick={() => { this.changeStatus('pricing', this.state.sideBarDisplay) }}>{this.state.sideBarDisplay[2].char} Pricing</div>
           {this.state.sideBarDisplay[2].Display ? <div className='links' >
             <Link className='link' to={pageLinkes.pricing}>pricing</Link>
           </div> : null}
-
-
         </div>
+
         <div className='sidBarItem'>
-          <div onClick={() => { this.changeStatus('general') }}>{this.state.sideBarDisplay[3].char} General Information</div>
+          <div onClick={() => { this.changeStatus('general', this.state.sideBarDisplay) }}>{this.state.sideBarDisplay[3].char} General Information</div>
           {this.state.sideBarDisplay[3].Display ? <div className='links' >
             <Link className='link' to={pageLinkes.assumptions}>Assumptions</Link>
             <Link className='link' to={pageLinkes.diagram}>Attach diagram</Link>
           </div> : null}
-
-
         </div>
-
 
       </div>
     );
@@ -132,7 +133,7 @@ class App extends Component {
         <div className='maincContainer'>
           <Row className='header'>SCOPER</Row>
           <Row >
-            <Col sm="3" md='2' className='articleLeft'><NavBar/></Col>
+            <Col sm="3" md='2' className='articleLeft'><NavBar /></Col>
             <Col sm="9" md='10' className='articleRight'><MainScreen /></Col>
           </Row>
           <Row className='footer'><footer>✎ created by COD Team ©</footer></Row>

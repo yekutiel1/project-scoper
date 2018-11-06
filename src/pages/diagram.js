@@ -18,7 +18,7 @@ class Diagram extends Component {
       <div>
         <input type="text" placeholder='Diagram link' onChange={(e) => this.setState({ link: e.target.value })} />
         <button onClick={() => store.dispatch({ type: 'SAVE_DIAGRAM', payload: this.state.link })}>Save</button>
-        <RichEditor editMode={true}/>
+        <RichEditor editMode={true} data={''} save={''}/>
       </div>
     );
   }

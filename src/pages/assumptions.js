@@ -20,7 +20,6 @@ class Assumptions extends Component {
     }
   }
 
-
   componentWillMount() {
 
     var Arr = this.props.generalAssumptions;
