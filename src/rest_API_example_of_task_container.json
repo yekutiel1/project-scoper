@@ -1,10 +1,10 @@
 {
-    "milestone": [
+    "pricing": [
         {
-            "milstoneName": "Milestone 1",
+            "milestoneName": "Milestone 1",
             "containers": [
                 {
-                    "name": "UC1 - text task",
+                    "containerName": "UC1 - text task",
                     "days": "4",
                     "tasks": [
                         {
@@ -18,7 +18,7 @@
                     ]
                 },
                 {
-                    "name": "UC3 - audio task",
+                    "containerName": "UC3 - audio task",
                     "days": "7",
                     "tasks": [
                         {
@@ -32,7 +32,7 @@
                     ]
                 },
                 {
-                    "name": "UC4 - video task",
+                    "containerName": "UC4 - video task",
                     "days": "8",
                     "tasks": [
                         {
@@ -47,7 +47,7 @@
                 }
                 ,
                 {
-                    "name": "UC8 - optionals tasks",
+                    "containerName": "UC8 - optionals tasks",
                     "days": "3",
                     "tasks": [
                         {
@@ -62,7 +62,7 @@
                 }
                 ,
                 {
-                    "name": "UC9 - questionnaire task",
+                    "containerName": "UC9 - questionnaire task",
                     "days": "9",
                     "tasks": [
                         {
@@ -77,7 +77,7 @@
                 }
                 ,
                 {
-                    "name": "UC10 - student avatar",
+                    "containerName": "UC10 - student avatar",
                     "days": "8",
                     "tasks": [
                         {
@@ -92,7 +92,7 @@
                 }
                 ,
                 {
-                    "name": "UC11  - Questionnaire task",
+                    "containerName": "UC11  - Questionnaire task",
                     "days": "5",
                     "tasks": [
                         {
@@ -107,7 +107,7 @@
                 }
                 ,
                 {
-                    "name": "UC12 - Course creation and teacher avatar",
+                    "containerName": "UC12 - Course creation and teacher avatar",
                     "days": "10",
                     "tasks": [
                         {
@@ -122,7 +122,7 @@
                 }
                 ,
                 {
-                    "name": "UC16 - Cluster leader portal",
+                    "containerName": "UC16 - Cluster leader portal",
                     "days": "11",
                     "tasks": [
                         {
@@ -139,10 +139,10 @@
         }
         ,
         {
-            "milstoneName": "Milestone 2",
+            "milestoneName": "Milestone 2",
             "containers": [
                 {
-                    "name": "UC5 - Quiz task",
+                    "containerName": "UC5 - Quiz task",
                     "days": "15",
                     "tasks": [
                         {
@@ -156,7 +156,7 @@
                     ]
                 },
                 {
-                    "name": "UC7 - Shared picture task",
+                    "containerName": "UC7 - Shared picture task",
                     "days": "9",
                     "tasks": [
                         {
@@ -170,7 +170,7 @@
                     ]
                 },
                 {
-                    "name": "UC14 - Teacher to student notification",
+                    "containerName": "UC14 - Teacher to student notification",
                     "days": "3",
                     "tasks": [
                         {
@@ -185,7 +185,7 @@
                 }
                 ,
                 {
-                    "name": "UC15 - Teacher to teacher message",
+                    "containerName": "UC15 - Teacher to teacher message",
                     "days": "7",
                     "tasks": [
                         {
@@ -203,10 +203,10 @@
         }
         ,
         {
-            "milstoneName": "Milestone 3",
+            "milestoneName": "Milestone 3",
             "containers": [
                 {
-                    "name": "VC6 - VC task",
+                    "containerName": "VC6 - VC task",
                     "days": "8",
                     "tasks": [
                         {
@@ -220,7 +220,7 @@
                     ]
                 },
                 {
-                    "name": "UC11 - View questionnaire statistics",
+                    "containerName": "UC11 - View questionnaire statistics",
                     "days": "12",
                     "tasks": [
                         {
@@ -234,7 +234,7 @@
                     ]
                 },
                 {
-                    "name": "UC13 - Course album",
+                    "containerName": "UC13 - Course album",
                     "days": "3",
                     "tasks": [
                         {
@@ -249,7 +249,7 @@
                 }
                 ,
                 {
-                    "name": "UC15 - Teacher personal page editor",
+                    "containerName": "UC15 - Teacher personal page editor",
                     "days": "10",
                     "tasks": [
                         {
@@ -264,7 +264,7 @@
                 }
                 ,
                 {
-                    "name": "General - Prohibited words scan in chat",
+                    "containerName": "General - Prohibited words scan in chat",
                     "days": "6",
                     "tasks": [
                         {

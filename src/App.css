@@ -493,6 +493,15 @@ button:hover{
     flex: 3;
 }
 
+.grandTotal{
+    text-align: right;
+}
+
+.grandTotal input{
+    width: 50px;
+    /* text-align: right; */
+}
+
 .processName{
     flex: 3;
 }
