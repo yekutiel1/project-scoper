@@ -16,11 +16,7 @@ export const pageLinkes = {
  const mainURL = "http://10.2.1.106:3000/api";
 
 
-export const dispatchKeys = {
-    actor: {
-        saveActor: "SAVE_ACTOR",
-    }
-}
+
 
 export const imgLinks = [
     "https://lh3.googleusercontent.com/SFMflSbOeLfUivop2EeoYHT15DQhIZAg76rbv6wPwNk5kTlDdjPZ4jKotW8_b011AnaVE__LvWEeCvHRQHXrgxGCjzkHNkPME7OfBO4",
@@ -43,6 +39,8 @@ export const urlLinks = {
     saveUserStory: mainURL + '/userStory',
     saveGeneralAssumptions: mainURL + '/general/generalAssumptions',
     saveAssumption: mainURL + '/general/assumption',
+    savePricing: mainURL + '/pricing',
+    saveDiscount: mainURL + '/pricing/discount',
 
     
     editActor: mainURL + '/actor',
