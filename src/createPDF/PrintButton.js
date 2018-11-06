@@ -1,3 +1,38 @@
+// import React, { Component } from 'react';
+// import { Document, Page } from 'react-pdf';
+ 
+// class PrintButton extends Component {
+//   state = {
+//     numPages: null,
+//     pageNumber: 1,
+//   }
+ 
+//   onDocumentLoad = ({ numPages }) => {
+//     this.setState({ numPages });
+//   }
+ 
+//   render() {
+//     const { pageNumber, numPages } = this.state;
+ 
+//     return (
+//       <div>
+//         <Document
+//           file="somefile.pdf"
+//           onLoadSuccess={this.onDocumentLoad}
+//         >
+//           <Page pageNumber={pageNumber} />
+//         </Document>
+//         <p>Page {pageNumber} of {numPages}</p>
+//       </div>
+//     );
+//   }
+// }
+
+
+
+
+
+
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import React, { Component } from 'react';
@@ -44,7 +79,6 @@ class PrintButton extends Component{
             // elongated a4 (system print dialog will handle page breaks)
              {/* pdf = new jsPDF('p', 'mm', [inputHeightMm+16, a4WidthMm]); */}
              pdf = new jsPDF('p', 'mm', 'a4');
-             console.log('if');
              
           {/* }  */}
           {/* else {
@@ -67,7 +101,9 @@ class PrintButton extends Component{
               numHigh += 297
             }
 
-              pdf.save(`${this.props.id}.pdf`);
+            console.log(Math.round(19.99));
+            
+              {/* pdf.save(`${this.props.id}.pdf`); */}
         });
       ;
       

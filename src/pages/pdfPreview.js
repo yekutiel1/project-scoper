@@ -38,7 +38,10 @@ class PDFpreview extends Component {
 
                  <b className="pdfOverview">Project</b>
 
-                <RichEditor editMode={false} />
+                <RichEditor 
+                editMode={false} 
+                data = {this.props.projectDescription}
+                readOnly={true}  />
 
                 <div className="pdfOverview">
                     <b>The Actors/Users:</b>
