@@ -61,10 +61,10 @@
     width: 90%;
 }
 
-.maincContainer{
+.mainContainer{
     margin: 0px;
     padding: 15px;
-    background:url(https://wallpaper-house.com/data/out/7/wallpaper2you_167350.jpg);
+    /*background:url(https://wallpaper-house.com/data/out/7/wallpaper2you_167350.jpg);*/
     /* background:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJ_nhC47nYpHSpkbs4SG2CNE-ft2TMgXdzGTnvzvVGxNWJ-L4t2g); */
     /* background:url(https://images.pexels.com/photos/463684/pexels-photo-463684.jpeg?auto=compress&cs=tinysrgb&h=350); */
     background-size: cover;
@@ -106,15 +106,13 @@ img{
     padding: 5px;
     font-weight: bold;
     color: rgb(199, 209, 219);
+    background-color: #1f91d3;
     /* font-size: 25px; */
     /* font-weight: bold; */
 }
-.articleLeft{
-    /* max-width: 100px; */
-}
 
 .sideBar{
-    /* background: #8deb7048; */
+     /*background: #8deb7048;*/
 }
 .sidBarItem{
     width: 100%;
@@ -166,8 +164,8 @@ img{
 } */
 
 .articleRight{
-    border-left: solid black 1px;
-    text-align: center;
+    /*border-left: solid black 1px;*/
+    /*text-align: center;*/
     height: 700px;
     overflow: auto;
 }
@@ -178,8 +176,12 @@ img{
 }
 
 .footer{
-    border-top: 5px rgb(224, 221, 221) solid;
-    height: 80px;
+    box-shadow: 0 -3px 10px 0 rgba(0,0,0,.0785);
+    height: 60px;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    background-color: white;
 }
 
 
@@ -209,8 +211,8 @@ button:hover{
 }
 .disableBtn{
     pointer-events: none;
-    background:rgb(212, 217, 224);
-    margin: 20px;
+    /*background:rgb(212, 217, 224);*/
+    /*margin: 20px;*/
 }
 
 .editBtn{
@@ -536,6 +538,11 @@ button:hover{
 
 .viewVersion{
     text-align: left
+}
+
+
+button>a {
+    color: white;
 }
 
 

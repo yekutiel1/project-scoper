@@ -9,6 +9,7 @@ import Versions  from './versions.js';
 import PrintButton from '../createPDF/PrintButton.js'  
 
 import RichEditor from '../richEditor/richEditor.js'
+import {Col, FormGroup, Input, Label, Row} from "reactstrap";
 
 
 
@@ -24,14 +25,27 @@ class ManagmentTools extends Component {
         return (
             <div>
                 <h1>Start scoping</h1>
-                <select defaultValue={this.props.currentProject} onChange={(e) => {
-                    store.dispatch({ type: 'UPDATE_CURRENT_PROJECT_ID', payload: e.target.value });
-                    store.dispatch({ type: 'GET_ALL_DATA' });
-                }}>
-                    <option value='' style={{ color: 'red' }} >Select project</option>
-                    {this.props.projectsArray.map((elm, i) => {
-                        return <option key={elm._id} value={elm._id}>{elm.projectName}</option>})}
-                </select>
+
+                <FormGroup>
+                    <Label for="exampleSelect" sm={2}>Select</Label>
+                        <Input type="select" name="select" id="exampleSelect"
+                               defaultValue={this.props.currentProject} onChange={(e) => {
+                            store.dispatch({ type: 'UPDATE_CURRENT_PROJECT_ID', payload: e.target.value });
+                            store.dispatch({ type: 'GET_ALL_DATA' });
+                        }}>
+                        <option value='' style={{ color: 'red' }} >Select project</option>
+                            {this.props.projectsArray.map((elm, i) => {
+                                return <option key={elm._id} value={elm._id}>{elm.projectName}</option>})}
+                        </Input>
+                </FormGroup>
+                {/*<select defaultValue={this.props.currentProject} onChange={(e) => {*/}
+                    {/*store.dispatch({ type: 'UPDATE_CURRENT_PROJECT_ID', payload: e.target.value });*/}
+                    {/*store.dispatch({ type: 'GET_ALL_DATA' });*/}
+                {/*}}>*/}
+                    {/*<option value='' style={{ color: 'red' }} >Select project</option>*/}
+                    {/*{this.props.projectsArray.map((elm, i) => {*/}
+                        {/*return <option key={elm._id} value={elm._id}>{elm.projectName}</option>})}*/}
+                {/*</select>*/}
                 {this.props.currentProject === '' ? <CreateNewProject /> : null}
                 {this.props.currentProject === '' ? null : <ScopingContinuation store={this.props} />}
 
@@ -51,7 +65,7 @@ class CreateNewProject extends Component {
 
     saveBtn = () =>{
         var inputEmpty = this.state.projectName === '' || this.state.editorName === '';
-       return <button className={inputEmpty ? 'disableBtn': 'saveBtn'} onClick={() => {
+       return <button className={inputEmpty ? 'btn btn-secondary disableBtn': 'btn btn-primary'} onClick={() => {
            store.dispatch({type: 'CREATE_NEW_PROJECT', payload: this.state})
             {/* this.createNewProject(this.state) */}
             this.setState({ projectName: "",editorName: "",})
@@ -61,13 +75,32 @@ class CreateNewProject extends Component {
         return (
             <div className='newProject'>
 
-                <input type="text" placeholder='ProjectName' value={this.state.projectName} onChange={(e) => {
-                    this.setState({ projectName: e.target.value })
-                }} />
-                <input type="text" placeholder='Editor name' value={this.state.editorName} onChange={(e) => {
-                    this.setState({ editorName: e.target.value })
-                }} />
-                <br/>
+                {/*<input type="text" placeholder='ProjectName' value={this.state.projectName} onChange={(e) => {*/}
+                    {/*this.setState({ projectName: e.target.value })*/}
+                {/*}} />*/}
+                {/*<input type="text" placeholder='Editor name' value={this.state.editorName} onChange={(e) => {*/}
+                    {/*this.setState({ editorName: e.target.value })*/}
+                {/*}} />*/}
+                <Row form>
+                    <Col md={6}>
+                        <FormGroup>
+                            <Label for="ProjectName">Project Name</Label>
+                            <Input type="text" name="ProjectName" id="ProjectName"
+                                   value={this.state.projectName} onChange={(e) => {
+                                this.setState({ projectName: e.target.value })
+                            }} />
+                        </FormGroup>
+                    </Col>
+                    <Col md={6}>
+                        <FormGroup>
+                            <Label for="Editor name">Editor name</Label>
+                            <Input type="text" name="EditorName" id="EditorName"
+                                   value={this.state.editorName} onChange={(e) => {
+                                this.setState({ editorName: e.target.value })
+                            }} />
+                        </FormGroup>
+                    </Col>
+                </Row>
                 {this.saveBtn()}
             </div>
         );

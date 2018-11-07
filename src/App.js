@@ -130,13 +130,21 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter >
-        <div className='maincContainer'>
-          <Row className='header'>SCOPER</Row>
-          <Row >
-            <Col sm="3" md='2' className='articleLeft'><NavBar /></Col>
-            <Col sm="9" md='10' className='articleRight'><MainScreen /></Col>
-          </Row>
-          <Row className='footer'><footer>✎ created by COD Team ©</footer></Row>
+        <div className=''>
+            <div className='header'>
+                <header className={'container py-2'}>SCOPER</header>
+            </div>
+                <div className={'container'}>
+                    <Row >
+
+                    <Col sm="3" md='2'><NavBar /></Col>
+                    <Col sm="9" md='10' className='articleRight border-dark border-left text-xl-center'><MainScreen /></Col>
+                    </Row>
+
+                </div>
+            <div className='footer'>
+                <footer className={'container py-3'}>✎ created by COD Team ©</footer>
+            </div>
         </div>
       </BrowserRouter>
     );
