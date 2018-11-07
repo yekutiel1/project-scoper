@@ -12,8 +12,8 @@ export const pageLinkes = {
 }
 
 // const mainURL = "http://10.2.1.119:3000/api";
-// const mainURL = "http://10.2.1.104:3000/api";
- const mainURL = "http://10.2.1.106:3000/api";
+const mainURL = "http://10.2.1.103:3000/api";
+//  const mainURL = "http://10.2.1.106:3000/api";
 
 
 
@@ -41,6 +41,7 @@ export const urlLinks = {
     saveAssumption: mainURL + '/general/assumption',
     savePricing: mainURL + '/pricing',
     saveDiscount: mainURL + '/pricing/discount',
+    saveAdditionalPricing: mainURL + '/pricing/additionalPricing',
 
     
     editActor: mainURL + '/actor',

@@ -64,7 +64,7 @@
 .maincContainer{
     margin: 0px;
     padding: 15px;
-    background:url(https://wallpaper-house.com/data/out/7/wallpaper2you_167350.jpg);
+    /* background:url(https://wallpaper-house.com/data/out/7/wallpaper2you_167350.jpg); */
     /* background:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJ_nhC47nYpHSpkbs4SG2CNE-ft2TMgXdzGTnvzvVGxNWJ-L4t2g); */
     /* background:url(https://images.pexels.com/photos/463684/pexels-photo-463684.jpeg?auto=compress&cs=tinysrgb&h=350); */
     background-size: cover;
@@ -516,10 +516,15 @@ button:hover{
 
 .processContainers{
     border-left: 2px black solid;
-    border-right: 2px black solid;
+    /* border-right: 2px black solid; */
     flex: 6;
     display: block;
 }
+
+.processComment{
+    flex: 3;
+}
+
 .priceInput{
     flex: 3;
 

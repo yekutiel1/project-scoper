@@ -10,6 +10,7 @@ import data from '../overView.json';
 
 class PDFpreview extends Component {
     render() {
+       
         return (
             <div id='pdfPreview' className="pdfPreview">
                 <div className="mainBlbBla">
@@ -90,6 +91,8 @@ class PDFpreview extends Component {
                 </div>
             </div>
         );
+       
+        
     }
 }
 
