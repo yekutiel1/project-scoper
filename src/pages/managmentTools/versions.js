@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import '../App.css';
+import '../../App.css';
 import { connect } from 'react-redux'
-import store from '../store/store';
-import RichEditor from '../richEditor/richEditor.js'
-import '../richEditor/richEditor.css';
-import data from '../overView.json';
+import store from '../../store/store';
+import RichEditor from '../../richEditor/richEditor.js'
+import '../../richEditor/richEditor.css';
+import data from '../../overView.json';
 
 
 class Preview extends Component {

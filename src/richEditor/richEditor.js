@@ -90,7 +90,7 @@ class RichEditor extends Component {
         editorState={editorState}
         onToggle={this.toggleInlineStyle}
         /> : null }
-        <div className={className} onClick={this.focus}>
+        <div className={className} onClick={this.focus} onBlur={()=>store.dispatch({ type: this.props.save, payload: JSON.stringify(raw) })}>
         
         <Editor
           readOnly={this.props.readOnly}
@@ -105,9 +105,9 @@ class RichEditor extends Component {
           placeholder="Describe the project..."
         />
         </div>
-          {this.props.editMode ? 
+          {/* {this.props.editMode ? 
         <button className="saveBtn" onClick={() => store.dispatch({ type: this.props.save, payload: JSON.stringify(raw) })}>Save</button>
-        : null }
+        : null } */}
       </div>
     );
   }
