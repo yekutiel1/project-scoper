@@ -139,9 +139,9 @@ var reduser = function (state, action) {
             break;
 
         case 'ADD_COMMENT_TO_PROCESS':
-        console.log(action.payload);
-        
             newState.pricing[action.payload.ProcessIndex].processComment = action.payload.processComment;
+            url = `${urlLinks.saveComment}/${newState.currentProject}/${action.payload.ProcessIndex}`;
+            saveData(url, action.payload.processComment, '')
             return newState;
             break;
 

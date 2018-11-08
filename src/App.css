@@ -147,23 +147,6 @@ img{
    background: #cfd6da5e;
 }
 
-/* 
-.navBar {
-    padding: 2%;
-    text-align: center;
-}
-
-.navBar a {
-    text-decoration: none;
-    color: #89ceee;
-    padding: 14px 16px;
-}
-
-.navBar a:hover {
-    text-decoration: none;
-    background-color: rgba(221, 221, 221, 0.24);
-    color: rgb(197, 184, 184);
-} */
 
 .articleRight{
     border-left: solid black 1px;
@@ -190,6 +173,16 @@ img{
 /* ////////////////////////////////////// */
 /* buttons */
 button{
+    position: relative;
+    border-radius:5px;
+    color: white;
+    height: 35px;
+    width: 30%;
+    margin: 20px;
+    max-width: 250px;
+    opacity: .9;
+}
+.button{
     position: relative;
     border-radius:5px;
     color: white;

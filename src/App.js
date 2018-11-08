@@ -60,11 +60,7 @@ class NavBar extends Component {
     this.setState({ [arr]: newState })
   }
 
-  arr = [
-    {name: 'Managment Tools', arr: [{name: 'Managment Tools', link: pageLinkes.mangementTools}]},
-    {name: 'Scoping', arr: [{name: 'Project Discraption', link: pageLinkes.projectDescreption},{name: 'Actors', link: pageLinkes.actors},{name: 'Requirement Specifications‏', link: pageLinkes.subjects}]},
-    {name: 'Scoping', arr: [{name: 'Project Discraption', link: pageLinkes.projectDescreption}]},
-  ]
+ 
 
   render() {
     return (
@@ -72,13 +68,10 @@ class NavBar extends Component {
         <div className='sidBarItem'>
           <div onClick={() => { this.changeStatus('managment', this.state.sideBarDisplay) }}>{this.state.sideBarDisplay[0].char} Managment Tools</div>
           {this.state.sideBarDisplay[0].Display ? <div className='links' >
-          {/* <div onClick={() => { this.changeStatus('select', this.state.select) }}>{this.state.select[0].char} Select project</div> */}
             <Link className='link' to={pageLinkes.selectProject} >Select project</Link>
             <Link className='link' to={pageLinkes.newVersion} >New version</Link>
             <Link className='link' to={pageLinkes.allVersions}>All versions</Link>
             <Link className='link' to={pageLinkes.pdfPreview}>PDF preview</Link>
-
-          {/* {this.state.select[0].Display ? <div className='links' > */}
           </div> : null}
         </div>
 
