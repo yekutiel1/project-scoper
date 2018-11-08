@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import '../App.css';
+import '../../App.css';
 import { connect } from 'react-redux'
-import RichEditor from '../richEditor/richEditor.js'
-import '../richEditor/richEditor.css';
-import data from '../overView.json';
+import RichEditor from '../../richEditor/richEditor.js'
+import '../../richEditor/richEditor.css';
+import data from '../../overView.json';
 
 
 
 
 class PDFpreview extends Component {
     render() {
+       
         return (
             <div id='pdfPreview' className="pdfPreview">
                 <div className="mainBlbBla">
@@ -90,6 +91,8 @@ class PDFpreview extends Component {
                 </div>
             </div>
         );
+       
+        
     }
 }
 

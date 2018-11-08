@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import '../App.css';
+import '../../App.css';
 import { connect } from 'react-redux'
-import store from '../store/store.js';
+import store from '../../store/store.js';
 import axios from 'axios';
 import { CustomInput, Form, FormGroup, Label } from 'reactstrap';
-import data from './AssumptionsData.json'
+import data from '.././../overView.json'
 
 
 
@@ -24,7 +24,7 @@ class Assumptions extends Component {
 
     var Arr = this.props.generalAssumptions;
     if (Arr.length < 1) {
-      data.data.map((elm, i) => { this.state.generalAssumptionsArr.push(false) })
+      data.assumptions.map((elm, i) => { this.state.generalAssumptionsArr.push(false) })
     }
     else {
       var temp = [];
@@ -46,15 +46,15 @@ class Assumptions extends Component {
   }
 
 
-  selectAll = () => {
+  // selectAll = () => {
 
-    this.setState({ selectAll: !this.state.selectAll })
-    var arr = []
-    this.state.generalAssumptionsArr.map(elm => {
-      arr.push(!this.state.selectAll)
-    })
-    this.setState({ generalAssumptionsArr: arr })
-  }
+  //   this.setState({ selectAll: !this.state.selectAll })
+  //   var arr = []
+  //   this.state.generalAssumptionsArr.map(elm => {
+  //     arr.push(!this.state.selectAll)
+  //   })
+  //   this.setState({ generalAssumptionsArr: arr })
+  // }
 
   sendToDB = (type, data) => {
 
@@ -77,8 +77,8 @@ class Assumptions extends Component {
     return (
       <div className="assumptionContainer">
         <Label for="exampleCheckbox">Select Assumptions</Label>
-        <CustomInput id='selectAll' type='checkbox' label={'Select All'} checked={this.state.selectAll} onChange={this.selectAll} />
-        <div>{data.data.map((item, index) => {
+        {/* <CustomInput id='selectAll' type='checkbox' label={'Select All'} checked={this.state.selectAll} onChange={this.selectAll} />   */}
+        <div>{data.assumptions.map((item, index) => {
           return <FormGroup key={index}>
             <Form>
               <CustomInput

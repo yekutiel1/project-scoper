@@ -19,6 +19,7 @@ var state = {
     pricing: [],
     grandTotalPrice: null,
     discount: '',
+    additionalPricing: '',
 
     diagram: ''
 }
@@ -59,8 +60,9 @@ var reduser = function (state, action) {
             newState.pricing = action.payload.pricing;
             newState.grandTotalPrice = action.payload.grandTotalPrice;
             newState.discount = action.payload.discount;
-            console.log(newState);
-
+            newState.additionalPricing = action.payload.additionalPricing;
+            console.log(action.payload);
+            
             return newState;
             break;
 
@@ -131,14 +133,27 @@ var reduser = function (state, action) {
             return newState;
             break;
 
-        case 'ADD_PRICE_TO_PROCESS':
-            newState.pricing[action.payload.index].processTotalPrice = action.payload.price;
+        case 'ADD_PRICE_TO_CONTAINER':
+            newState.pricing[action.payload.ProcessIndex].containers[action.payload.containerIndex].price = action.payload.price;
+            return newState;
+            break;
+
+        case 'ADD_COMMENT_TO_PROCESS':
+        console.log(action.payload);
+        
+            newState.pricing[action.payload.ProcessIndex].processComment = action.payload.processComment;
             return newState;
             break;
 
         case 'SAVE_DISCOUNT':
             url = `${urlLinks.saveDiscount}/${newState.currentProject}`;
-            saveData(url, {discount: action.payload}, 'GET_ALL_DATA')
+            saveData(url, action.payload, '')
+            return newState;
+            break;
+
+        case 'SAVE_ADDITIONAL_PRICING':
+            url = `${urlLinks.saveAdditionalPricing}/${newState.currentProject}`;
+            saveData(url, {additionalPricing: action.payload}, '')
             return newState;
             break;
 
