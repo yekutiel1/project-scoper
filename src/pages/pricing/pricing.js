@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import '../App.css';
+import '../../App.css';
 import { connect } from 'react-redux'
-import store from '../store/store';
-import RichEditor from '../richEditor/richEditor.js'
-import '../richEditor/richEditor.css';
+import store from '../../store/store';
+import RichEditor from '../../richEditor/richEditor.js'
+import '../../richEditor/richEditor.css';
 
-import data from '../rest_API_example_of_task_container.json';
+import data from '../../rest_API_example_of_task_container.json';
 
 class Pricing extends Component {
   constructor(props) {
@@ -63,7 +63,7 @@ class Pricing extends Component {
         </div>
         <h6 className='grandTotal'>{`Grand Total: ${this.grandTotal(subTotal)}`}</h6>
         <RichEditor editMode={true} data={this.props.additionalPricing} save={'SAVE_ADDITIONAL_PRICING'}/>
-        <button onClick={() => store.dispatch({ type: 'SAVE_ADDITIONAL_PRICING', payload: { pricing: this.props.pricing } })}>Save</button>
+        <button onClick={() => store.dispatch({ type: 'SAVE_PRICING_DATA', payload: { pricing: this.props.pricing } })}>Save</button>
       </div>
     );
   }
@@ -116,7 +116,7 @@ class Process extends Component {
          onBlur={e => {
            console.log('ddd');
            
-            {/* store.dispatch({ type: 'ADD_PRICE_TO_CONTAINER', payload: { price: parseInt(e.target.value), ProcessIndex: this.props.ProcessIndex, containerIndex: this.props.containerIndex }}); */}
+            store.dispatch({ type: 'ADD_COMMENT_TO_PROCESS', payload: { processComment: this.state.processComment, ProcessIndex: this.props.ProcessIndex }});
           }}
          />
       </div>

@@ -1,6 +1,10 @@
 export const pageLinkes = {
     // mangementTools:'/scoping/managment-tools',
-    mangementTools:'/',
+    selectProject:'/',
+    allVersions: '/scoping/allVersions',
+    pdfPreview: '/scoping/pdfPreview',
+    newVersion: '/scoping/newVersion',
+
     projectDescreption: '/scoping/project-descreption',
     actors: '/scoping/actors',
     subjects: '/scoping/subjects',

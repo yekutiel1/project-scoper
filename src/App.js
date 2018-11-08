@@ -7,13 +7,20 @@ import { Row, Col } from 'reactstrap'
 import store from './store/store';
 import { Nav, NavItem, NavLink, Dropdown, DropdownItem, DropdownToggle, DropdownMenu, } from 'reactstrap';
 
-import ManagmentTools from './pages/managmentTools.js';
-import ProjectDescription from './pages/projectDescription.js';
-import Form from "./pages/Form.js";
-import UserStories from './pages/AddUserStory.js';
-import Assumptions from './pages/assumptions.js'
-import Diagram from './pages/diagram.js';
-import Pricing from './pages/pricing.js';
+import SelectProject from './pages/managmentTools/selectProject.js';
+import Versions from './pages/managmentTools/versions.js';
+import PDFpreview from './pages/managmentTools/pdfPreview.js';
+import CreateNewVersion from './pages/managmentTools/createNewVersion.js';
+
+import ProjectDescription from './pages/scoping/projectDescription.js';
+import Form from "./pages/scoping/Form.js";
+import UserStories from './pages/scoping/AddUserStory.js';
+
+import Assumptions from './pages/generalInformation/assumptions.js'
+import Diagram from './pages/generalInformation/diagram.js'
+
+import Pricing from './pages/pricing/pricing.js';
+
 
 class NavBar extends Component {
   constructor(props) {
@@ -65,8 +72,12 @@ class NavBar extends Component {
         <div className='sidBarItem'>
           <div onClick={() => { this.changeStatus('managment', this.state.sideBarDisplay) }}>{this.state.sideBarDisplay[0].char} Managment Tools</div>
           {this.state.sideBarDisplay[0].Display ? <div className='links' >
-          <div onClick={() => { this.changeStatus('select', this.state.select) }}>{this.state.select[0].char} Select project</div>
-            <Link className='link' to={pageLinkes.mangementTools} >Managment Tools</Link>
+          {/* <div onClick={() => { this.changeStatus('select', this.state.select) }}>{this.state.select[0].char} Select project</div> */}
+            <Link className='link' to={pageLinkes.selectProject} >Select project</Link>
+            <Link className='link' to={pageLinkes.newVersion} >New version</Link>
+            <Link className='link' to={pageLinkes.allVersions}>All versions</Link>
+            <Link className='link' to={pageLinkes.pdfPreview}>PDF preview</Link>
+
           {/* {this.state.select[0].Display ? <div className='links' > */}
           </div> : null}
         </div>
@@ -107,7 +118,11 @@ class MainScreen extends Component {
     return (
       <div className='mainScreen'>
 
-        <Route exact path={pageLinkes.mangementTools} component={ManagmentTools} />
+        <Route exact path={pageLinkes.selectProject} component={SelectProject} />
+        <Route exact path={pageLinkes.newVersion} component={CreateNewVersion} />
+        <Route path={pageLinkes.allVersions} component={Versions} />
+        <Route path={pageLinkes.pdfPreview} component={PDFpreview} />
+
         <Route path={pageLinkes.projectDescreption} component={ProjectDescription} />
         <Route path={pageLinkes.actors} component={() => <Form name={'Actor'} dispatchType={'ACTOR'} enableDelete={true} />} />
         <Route path={pageLinkes.subjects} component={() => <Form name={'Subject'} dispatchType={'SUBJECT'} enableDelete={false} />} />
@@ -115,6 +130,7 @@ class MainScreen extends Component {
         <Route path={pageLinkes.assumptions} component={Assumptions} />
         <Route path={pageLinkes.diagram} component={Diagram} />
         <Route path={pageLinkes.pricing} component={Pricing} />
+        
       </div>
     );
   }

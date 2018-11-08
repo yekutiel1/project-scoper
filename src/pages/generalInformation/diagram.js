@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import '../App.css';
+import '../../App.css';
 import { connect } from 'react-redux'
-import store from '../store/store';
-import RichEditor from '../richEditor/richEditor.js'
-import '../richEditor/richEditor.css';
+import store from '../../store/store';
+import RichEditor from '../../richEditor/richEditor.js'
+import '../../richEditor/richEditor.css';
 
 class Diagram extends Component {
   constructor(props) {
