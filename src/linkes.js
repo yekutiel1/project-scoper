@@ -46,6 +46,7 @@ export const urlLinks = {
     savePricing: mainURL + '/pricing',
     saveDiscount: mainURL + '/pricing/discount',
     saveAdditionalPricing: mainURL + '/pricing/additionalPricing',
+    saveComment: mainURL + '/pricing/comment',
 
     
     editActor: mainURL + '/actor',

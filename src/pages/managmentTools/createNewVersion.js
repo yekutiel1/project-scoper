@@ -4,9 +4,7 @@ import { connect } from 'react-redux'
 import RichEditor from '../../richEditor/richEditor.js'
 import '../../richEditor/richEditor.css';
 import store from '../../store/store';
-import {Link} from 'react-router-dom'
-
-
+import { Link } from 'react-router-dom'
 
 
 
@@ -21,30 +19,38 @@ class CreateNewVersion extends Component {
         }
     }
 
+    handleInput = (e) =>{
+        this.setState({[e.target.name]: e.target.value})
+    }
+
     render() {
         return (
             <div className='newVersion'>
                 {
-                    this.state.rejectionStatus ? <div>
-                        <textarea cols="30" rows="10" placeholder='Rejection explenation' onChange={e => { this.setState({ rejectionExplenation: e.target.value }) }}></textarea>
+                    this.state.rejectionStatus ?
+                     <div>
+                        <textarea placeholder='Rejection explenation' name='rejectionExplenation' onChange={this.handleInput}></textarea>
                         <br />
-                        <button onClick={this.props.cancelNewVersionMode}>Cancel</button>
-                        <button className={this.state.rejectionExplenation  === '' ? 'disableBtn': 'saveBtn'} onClick={() => {
+                        <Link to='/scoping' ><button className='cancelBtn'>Cancel</button></Link>
+                        <button className={this.state.rejectionExplenation === '' ? 'disableBtn' : 'saveBtn'} onClick={() => {
                             this.setState({ rejectionStatus: false, editorNameStatus: true })
                             store.dispatch({ type: 'REJECTION_EXPLENATION', payload: this.state.rejectionExplenation })
                         }}>Save rejection explenation</button>
                     </div>
-                        : null}
+                        : null
+                }
+
                 {
-                    this.state.editorNameStatus ? <div>
-                        <input type="text" placeholder='Editor name' onChange={e => { this.setState({ editorName: e.target.value }) }} />
-                        <button className={this.state.editorName === '' ? 'disableBtn': 'saveBtn'} onClick={() => {
-                            {/* this.props.cancelNewVersionMode() */}
-                            this.setState({editorNameStatus: false })
+                    this.state.editorNameStatus ? 
+                    <div>
+                        <input type="text" placeholder='Editor name' name='editorName' onChange={this.handleInput} />
+                        <button className={this.state.editorName === '' ? 'disableBtn' : 'saveBtn'} onClick={() => {
+                            this.setState({ editorNameStatus: false })
                             store.dispatch({ type: 'CREATE_NEW_VERSION', payload: this.state.editorName })
-                            }}><Link to='/scoping' >Create New Version</Link></button>
+                        }}><Link to='/scoping' >Create New Version</Link></button>
                     </div>
-                        : null}
+                        : null
+                }
             </div>
         );
     }

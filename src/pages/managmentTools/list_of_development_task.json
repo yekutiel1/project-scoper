@@ -1,0 +1,467 @@
+{
+    "project": "String",
+    "pricing": [
+        {
+            "taskContainers": [
+                {
+                    "taskContainer": "UC1 - text task",
+                    "category": "Web",
+                    "days": "4",
+                    "tasks": [
+                        {
+                            "taskName": "Online scan of chat text and error in case of one or more words that appear in configurable prohibited words text file",
+                            "days": "2",
+                            "documentComponentId": "String",
+                            "complexity": "String",
+                            "details": "String",
+                            "assumptions": "String",
+                            "milestoneName": "Milestone 1"
+                        },
+                        {
+                            "taskName": "Online scan of chat text and error in case of one or more words that appear in configurable prohibited words text file",
+                            "days": "2",
+                            "documentComponentId": "String",
+                            "complexity": "String",
+                            "details": "String",
+                            "assumptions": "String",
+                            "milestoneName": "Milestone 1"
+                        }
+                    ]
+                },
+                {
+                    "taskContainer": "UC3 - audio task",
+                    "category": "Web",
+                    "days": "7",
+                    "tasks": [
+                        {
+                            "taskName": "Online scan of chat text and error in case of one or more words that appear in configurable prohibited words text file",
+                            "days": "3",
+                            "documentComponentId": "String",
+                            "complexity": "String",
+                            "details": "String",
+                            "assumptions": "String tralala",
+                            "milestoneName": "Milestone 1"
+                        },
+                        {
+                            "taskName": "Online scan of chat text and error in case of one or more words that appear in configurable prohibited words text file",
+                            "days": "4",
+                            "documentComponentId": "String",
+                            "complexity": "String",
+                            "details": "String",
+                            "assumptions": "String",
+                            "milestoneName": "Milestone 2"
+                        }
+                    ]
+                },
+                {
+                    "taskContainer": "UC4 - video task",
+                    "category": "mobile",
+                    "days": "8",
+                    "tasks": [
+                        {
+                            "taskName": "New task type - ability to upload a picture + related text - standalone task",
+                            "days": "2",
+                            "documentComponentId": "String",
+                            "complexity": "String",
+                            "details": "String",
+                            "assumptions": "String",
+                            "milestoneName": "Milestone 5"
+                        },
+                        {
+                            "taskName": "New task type - ability to upload a picture + related text - standalone task",
+                            "days": "6",
+                            "documentComponentId": "String",
+                            "complexity": "String",
+                            "details": "String",
+                            "assumptions": "String",
+                            "milestoneName": "Milestone 1"
+                        }
+                    ]
+                },
+                {
+                    "taskContainer": "UC8 - optionals tasks",
+                    "category": "Web",
+                    "days": "3",
+                    "tasks": [
+                        {
+                            "taskName": "New task type - ability to upload a picture + related text - standalone task",
+                            "days": "1",
+                            "documentComponentId": "String",
+                            "complexity": "String",
+                            "details": "String",
+                            "assumptions": "String",
+                            "milestoneName": "Milestone 1"
+                        },
+                        {
+                            "taskName": "New task type - ability to upload a picture + related text - standalone task",
+                            "days": "2",
+                            "documentComponentId": "String",
+                            "complexity": "String",
+                            "details": "String",
+                            "assumptions": "String",
+                            "milestoneName": "Milestone 1"
+                        }
+                    ]
+                },
+                {
+                    "taskContainer": "UC9 - questionnaire task",
+                    "category": "Web",
+                    "days": "9",
+                    "tasks": [
+                        {
+                            "taskName": "New task type - ability to upload a picture + related text - standalone task",
+                            "days": "4",
+                            "documentComponentId": "String",
+                            "complexity": "String",
+                            "details": "String",
+                            "assumptions": "String",
+                            "milestoneName": "Milestone 1"
+                        },
+                        {
+                            "taskName": "New task type - ability to upload a picture + related text - standalone task",
+                            "days": "5",
+                            "documentComponentId": "String",
+                            "complexity": "String",
+                            "details": "String",
+                            "assumptions": "String",
+                            "milestoneName": "Milestone 1"
+                        }
+                    ]
+                },
+                {
+                    "taskContainer": "UC10 - student avatar",
+                    "category": "Web",
+                    "days": "8",
+                    "tasks": [
+                        {
+                            "taskName": "New task type - ability to upload a picture + related text - standalone task",
+                            "days": "6",
+                            "documentComponentId": "String",
+                            "complexity": "String",
+                            "details": "String",
+                            "assumptions": "String",
+                            "milestoneName": "Milestone 1"
+                        },
+                        {
+                            "taskName": "New task type - ability to upload a picture + related text - standalone task",
+                            "days": "2",
+                            "documentComponentId": "String",
+                            "complexity": "String",
+                            "details": "String",
+                            "assumptions": "String",
+                            "milestoneName": "Milestone 1"
+                        }
+                    ]
+                },
+                {
+                    "taskContainer": "UC11  - Questionnaire task",
+                    "category": "Web",
+                    "days": "5",
+                    "tasks": [
+                        {
+                            "taskName": "New task type - ability to upload a picture + related audio - standalone task",
+                            "days": "2",
+                            "documentComponentId": "String",
+                            "complexity": "String",
+                            "details": "String",
+                            "assumptions": "String",
+                            "milestoneName": "Milestone 1"
+                        },
+                        {
+                            "taskName": "New task type - ability to upload a picture + related audio - standalone task",
+                            "days": "3",
+                            "documentComponentId": "String",
+                            "complexity": "String",
+                            "details": "String",
+                            "assumptions": "String",
+                            "milestoneName": "Milestone 1"
+                        }
+                    ]
+                },
+                {
+                    "taskContainer": "UC12 - Course creation and teacher avatar",
+                    "category": "Web",
+                    "days": "10",
+                    "tasks": [
+                        {
+                            "taskName": "New task type - ability to upload a picture + related audio - standalone task",
+                            "days": "2",
+                            "documentComponentId": "String",
+                            "complexity": "String",
+                            "details": "String",
+                            "assumptions": "String",
+                            "milestoneName": "Milestone 1"
+                        },
+                        {
+                            "taskName": "New task type - ability to upload a picture + related audio - standalone task",
+                            "days": "8",
+                            "documentComponentId": "String",
+                            "complexity": "String",
+                            "details": "String",
+                            "assumptions": "String",
+                            "milestoneName": "Milestone 1"
+                        }
+                    ]
+                },
+                {
+                    "taskContainer": "UC16 - Cluster leader portal",
+                    "category": "Web",
+                    "days": "11",
+                    "tasks": [
+                        {
+                            "taskName": "New task type - ability to upload a picture + related audio - standalone task",
+                            "days": "6",
+                            "documentComponentId": "String",
+                            "complexity": "String",
+                            "details": "String",
+                            "assumptions": "String",
+                            "milestoneName": "Milestone 1"
+                        },
+                        {
+                            "taskName": "New task type - ability to upload a picture + related audio - standalone task",
+                            "days": "5",
+                            "documentComponentId": "String",
+                            "complexity": "String",
+                            "details": "String",
+                            "assumptions": "String",
+                            "milestoneName": "Milestone 1"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "taskContainers": [
+                {
+                    "taskContainer": "UC5 - Quiz task",
+                    "category": "Web",
+                    "days": "15",
+                    "tasks": [
+                        {
+                            "taskName": "Upload video file and ability to play it in embedded mode",
+                            "days": "7",
+                            "documentComponentId": "String",
+                            "complexity": "String",
+                            "details": "String",
+                            "assumptions": "String",
+                            "milestoneName": "Milestone 1"
+                        },
+                        {
+                            "taskName": "Upload video file and ability to play it in embedded mode",
+                            "days": "8",
+                            "documentComponentId": "String",
+                            "complexity": "String",
+                            "details": "String",
+                            "assumptions": "String",
+                            "milestoneName": "Milestone 1"
+                        }
+                    ]
+                },
+                {
+                    "taskContainer": "UC7 - Shared picture task",
+                    "category": "Web",
+                    "days": "9",
+                    "tasks": [
+                        {
+                            "taskName": "Upload video file and ability to play it in embedded mode",
+                            "days": "4",
+                            "documentComponentId": "String",
+                            "complexity": "String",
+                            "details": "String",
+                            "assumptions": "String",
+                            "milestoneName": "Milestone 1"
+                        },
+                        {
+                            "taskName": "Upload video file and ability to play it in embedded mode",
+                            "days": "5",
+                            "documentComponentId": "String",
+                            "complexity": "String",
+                            "details": "String",
+                            "assumptions": "String",
+                            "milestoneName": "Milestone 1"
+                        }
+                    ]
+                },
+                {
+                    "taskContainer": "UC14 - Teacher to student notification",
+                    "category": "Web",
+                    "days": "3",
+                    "tasks": [
+                        {
+                            "taskName": "Upload video file and ability to play it in embedded mode",
+                            "days": "2",
+                            "documentComponentId": "String",
+                            "complexity": "String",
+                            "details": "String",
+                            "assumptions": "String",
+                            "milestoneName": "Milestone 1"
+                        },
+                        {
+                            "taskName": "Upload video file and ability to play it in embedded mode",
+                            "days": "1",
+                            "documentComponentId": "String",
+                            "complexity": "String",
+                            "details": "String",
+                            "assumptions": "String",
+                            "milestoneName": "Milestone 1"
+                        }
+                    ]
+                },
+                {
+                    "taskContainer": "UC15 - Teacher to teacher message",
+                    "category": "Web",
+                    "days": "7",
+                    "tasks": [
+                        {
+                            "taskName": "Upload video file and ability to play it in embedded mode",
+                            "days": "4",
+                            "documentComponentId": "String",
+                            "complexity": "String",
+                            "details": "String",
+                            "assumptions": "String",
+                            "milestoneName": "Milestone 1"
+                        },
+                        {
+                            "taskName": "Upload video file and ability to play it in embedded mode",
+                            "days": "3",
+                            "documentComponentId": "String",
+                            "complexity": "String",
+                            "details": "String",
+                            "assumptions": "String",
+                            "milestoneName": "Milestone 1"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "taskContainers": [
+                {
+                    "taskContainer": "VC6 - VC task",
+                    "category": "Web",
+                    "days": "8",
+                    "tasks": [
+                        {
+                            "taskName": "Shared Quiz where each student can add x questions + image.",
+                            "days": "3",
+                            "documentComponentId": "String",
+                            "complexity": "String",
+                            "details": "String",
+                            "assumptions": "String",
+                            "milestoneName": "Milestone 1"
+                        },
+                        {
+                            "taskName": "Shared Quiz where each student can add x questions + image.",
+                            "days": "5",
+                            "documentComponentId": "String",
+                            "complexity": "String",
+                            "details": "String",
+                            "assumptions": "String",
+                            "milestoneName": "Milestone 1"
+                        }
+                    ]
+                },
+                {
+                    "taskContainer": "UC11 - View questionnaire statistics",
+                    "category": "Web",
+                    "days": "12",
+                    "tasks": [
+                        {
+                            "taskName": "Shared Quiz where each student can add x questions + image.",
+                            "days": "4",
+                            "documentComponentId": "String",
+                            "complexity": "String",
+                            "details": "String",
+                            "assumptions": "String",
+                            "milestoneName": "Milestone 1"
+                        },
+                        {
+                            "taskName": "Shared Quiz where each student can add x questions + image.",
+                            "days": "8",
+                            "documentComponentId": "String",
+                            "complexity": "String",
+                            "details": "String",
+                            "assumptions": "String",
+                            "milestoneName": "Milestone 1"
+                        }
+                    ]
+                },
+                {
+                    "taskContainer": "UC13 - Course album",
+                    "category": "Web",
+                    "days": "3",
+                    "tasks": [
+                        {
+                            "taskName": "Shared Quiz where each student can add x questions + image.",
+                            "days": "1",
+                            "documentComponentId": "String",
+                            "complexity": "String",
+                            "details": "String",
+                            "assumptions": "String",
+                            "milestoneName": "Milestone 1"
+                        },
+                        {
+                            "taskName": "Shared Quiz where each student can add x questions + image.",
+                            "days": "2",
+                            "documentComponentId": "String",
+                            "complexity": "String",
+                            "details": "String",
+                            "assumptions": "String",
+                            "milestoneName": "Milestone 1"
+                        }
+                    ]
+                },
+                {
+                    "taskContainer": "UC15 - Teacher personal page editor",
+                    "category": "Web",
+                    "days": "10",
+                    "tasks": [
+                        {
+                            "taskName": "Shared Quiz where each student can add x questions + image.",
+                            "days": "4",
+                            "documentComponentId": "String",
+                            "complexity": "String",
+                            "details": "String",
+                            "assumptions": "String",
+                            "milestoneName": "Milestone 1"
+                        },
+                        {
+                            "taskName": "Shared Quiz where each student can add x questions + image.",
+                            "days": "6",
+                            "documentComponentId": "String",
+                            "complexity": "String",
+                            "details": "String",
+                            "assumptions": "String",
+                            "milestoneName": "Milestone 1"
+                        }
+                    ]
+                },
+                {
+                    "taskContainer": "General - Prohibited words scan in chat",
+                    "category": "Web",
+                    "days": "6",
+                    "tasks": [
+                        {
+                            "taskName": "The quiz can be executed and the score is presented at the end",
+                            "days": "4",
+                            "documentComponentId": "String",
+                            "complexity": "String",
+                            "details": "String",
+                            "assumptions": "String",
+                            "milestoneName": "Milestone 1"
+                        },
+                        {
+                            "taskName": "The quiz can be executed and the score is presented at the end",
+                            "days": "2",
+                            "documentComponentId": "String",
+                            "complexity": "String",
+                            "details": "String",
+                            "assumptions": "String",
+                            "milestoneName": "Milestone 1"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
