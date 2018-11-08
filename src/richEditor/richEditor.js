@@ -85,14 +85,14 @@ class RichEditor extends Component {
         editorState={editorState}
         onToggle={this.toggleBlockType}
         /> : null }
-        {this.props.editMode ? 
+        {this.props.editMode ?
         <InlineStyleControls
         editorState={editorState}
         onToggle={this.toggleInlineStyle}
         /> : null }
         <div className={className} onClick={this.focus}>
         
-          <Editor
+        <Editor
           readOnly={this.props.readOnly}
           blockStyleFn={getBlockStyle}
           customStyleMap={styleMap}
@@ -103,8 +103,7 @@ class RichEditor extends Component {
           ref="editor"
           spellCheck={true}
           placeholder="Describe the project..."
-          
-          />
+        />
         </div>
           {this.props.editMode ? 
         <button className="saveBtn" onClick={() => store.dispatch({ type: this.props.save, payload: JSON.stringify(raw) })}>Save</button>
@@ -141,7 +140,7 @@ class StyleButton extends React.Component {
   }
 
   render() {
-    let className = 'RichEditor-styleButton';
+    let className = 'RichEditor-styleButton btn btn-outline-dark btn-sm mx-1';
     if (this.props.active) {
       className += ' RichEditor-activeButton';
     }

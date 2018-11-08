@@ -63,7 +63,7 @@ class NavBar extends Component {
     return (
       <div className='sideBar'>
         <div className='sidBarItem'>
-          <div onClick={() => { this.changeStatus('managment', this.state.sideBarDisplay) }}>{this.state.sideBarDisplay[0].char} Managment Tools</div>
+            <div onClick={() => { this.changeStatus('managment', this.state.sideBarDisplay) }}>Managment Tools<span>{this.state.sideBarDisplay[0].char}</span></div>
           {this.state.sideBarDisplay[0].Display ? <div className='links' >
           <div onClick={() => { this.changeStatus('select', this.state.select) }}>{this.state.select[0].char} Select project</div>
             <Link className='link' to={pageLinkes.mangementTools} >Managment Tools</Link>

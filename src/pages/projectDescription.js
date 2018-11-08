@@ -17,7 +17,7 @@ class ProjectDescription extends Component {
   }
   render() {
     return (
-      <div className='formContainer description' >
+      <div className='formContainer description card' >
         {/* <textarea className="projectDescreptionInput" placeholder='Describe the project' value={this.state.projectDescription}
          onChange={e => { this.setState({ projectDescription: e.target.value })}}  disabled={this.state.editMode ? null : "disabled"}></textarea>
          {this.state.editMode ? null : <div className='icon btn_edit' onClick={()=>this.setState({editMode: true})}>✎</div>}
