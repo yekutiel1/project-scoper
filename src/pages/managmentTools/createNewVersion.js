@@ -29,7 +29,7 @@ class CreateNewVersion extends Component {
                 {
                     this.state.rejectionStatus ?
                      <div>
-                        <textarea placeholder='Rejection explenation' name='rejectionExplenation' onChange={this.handleInput}></textarea>
+                        <textarea placeholder='Rejection explenation' name='rejectionExplenation' className={"form-control"} rows="3" onChange={this.handleInput}></textarea>
                         <br />
                         <Link to='/scoping' ><button className='cancelBtn'>Cancel</button></Link>
                         <button className={this.state.rejectionExplenation === '' ? 'disableBtn' : 'saveBtn'} onClick={() => {

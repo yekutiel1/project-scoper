@@ -22,6 +22,12 @@ import Diagram from './pages/generalInformation/diagram.js'
 import Pricing from './pages/pricing/pricing.js';
 
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faChevronDown, faChevronUp);
+
 class NavBar extends Component {
   constructor(props) {
     super(props);
@@ -29,11 +35,11 @@ class NavBar extends Component {
     this.state = {
       dropdownOpen: false,
       sideBarDisplay: [
-        { title: 'managment', Display: false, char: '⏵' },
-        { title: 'scoping', Display: false, char: '⏵' },
-        { title: 'pricing', Display: false, char: '⏵' },
-        { title: 'general', Display: false, char: '⏵' }
-      ], select:[  { title: 'select', Display: false, char: '⏵' }]
+        { title: 'managment', Display: false, char: <FontAwesomeIcon icon={faChevronDown}/> },
+        { title: 'scoping', Display: false, char: <FontAwesomeIcon icon={faChevronDown}/> },
+        { title: 'pricing', Display: false, char: <FontAwesomeIcon icon={faChevronDown}/> },
+        { title: 'general', Display: false, char: <FontAwesomeIcon icon={faChevronDown}/> }
+      ], select:[  { title: 'select', Display: false, char: <FontAwesomeIcon icon={faChevronDown}/> }]
     };
   }
 
@@ -46,15 +52,15 @@ class NavBar extends Component {
       if (key === elm.title) {
         if (elm.Display) {
           elm.Display = false;
-          elm.char = '⏵'
+          elm.char = <FontAwesomeIcon icon={faChevronDown}/>
         }
         else {
           elm.Display = !elm.Display
-          elm.char = '⏷';
+          elm.char = <FontAwesomeIcon icon={faChevronUp}/>;
         }
       } else {
         elm.Display = false;
-        elm.char = '⏵';
+        elm.char = <FontAwesomeIcon icon={faChevronDown}/>;
       }
     }))
     this.setState({ [arr]: newState })
@@ -66,7 +72,8 @@ class NavBar extends Component {
     return (
       <div className='sideBar'>
         <div className='sidBarItem'>
-            <div onClick={() => { this.changeStatus('managment', this.state.sideBarDisplay) }}>Managment Tools<span>{this.state.sideBarDisplay[0].char}</span></div>
+            <div onClick={() => { this.changeStatus('managment', this.state.sideBarDisplay) }}>Managment Tools {this.state.sideBarDisplay[0].char}
+            </div>
           {this.state.sideBarDisplay[0].Display ? <div className='links' >
             <Link className='link' to={pageLinkes.selectProject} >Select project</Link>
             <Link className='link' to={pageLinkes.newVersion} >New version</Link>
@@ -76,7 +83,7 @@ class NavBar extends Component {
         </div>
 
         <div className='sidBarItem'>
-          <div onClick={() => { this.changeStatus('scoping', this.state.sideBarDisplay) }}>{this.state.sideBarDisplay[1].char} Scoping</div>
+          <div onClick={() => { this.changeStatus('scoping', this.state.sideBarDisplay) }}>Scoping {this.state.sideBarDisplay[1].char}</div>
           {this.state.sideBarDisplay[1].Display ? <div className='links' >
             <Link className='link' to={pageLinkes.projectDescreption} >Project Discraption</Link>
             <Link className='link' to={pageLinkes.actors}>Actors</Link>
@@ -86,14 +93,14 @@ class NavBar extends Component {
         </div>
 
         <div className='sidBarItem'>
-          <div onClick={() => { this.changeStatus('pricing', this.state.sideBarDisplay) }}>{this.state.sideBarDisplay[2].char} Pricing</div>
+          <div onClick={() => { this.changeStatus('pricing', this.state.sideBarDisplay) }}>Pricing {this.state.sideBarDisplay[2].char}</div>
           {this.state.sideBarDisplay[2].Display ? <div className='links' >
             <Link className='link' to={pageLinkes.pricing}>pricing</Link>
           </div> : null}
         </div>
 
         <div className='sidBarItem'>
-          <div onClick={() => { this.changeStatus('general', this.state.sideBarDisplay) }}>{this.state.sideBarDisplay[3].char} General Information</div>
+          <div onClick={() => { this.changeStatus('general', this.state.sideBarDisplay) }}>General Information {this.state.sideBarDisplay[3].char}</div>
           {this.state.sideBarDisplay[3].Display ? <div className='links' >
             <Link className='link' to={pageLinkes.assumptions}>Assumptions</Link>
             <Link className='link' to={pageLinkes.diagram}>Attach diagram</Link>
@@ -146,8 +153,8 @@ class App extends Component {
                 <div className={'container'}>
                     <Row >
 
-                    <Col sm="3" md='2'><NavBar /></Col>
-                    <Col sm="9" md='10' className='articleRight border-dark border-left text-xl-center'><MainScreen /></Col>
+                    <Col className={"col-3"}><NavBar /></Col>
+                    <Col className=' col-9 articleRight border-dark border-left text-xl-center'><MainScreen /></Col>
                     </Row>
 
                 </div>

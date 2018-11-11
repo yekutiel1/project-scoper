@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 import store from '../../store/store.js';
 import axios from 'axios';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
-import PrintButton from '../../createPDF/PrintButton.js'  
+import PrintButton from '../../createPDF/PrintButton.js'
+import {Col, FormGroup, Input, Label, Row} from "reactstrap";
 
 
 
@@ -20,17 +21,29 @@ class SelectProject extends Component {
         
         return (
             <div>
-                <select defaultValue={this.props.currentProject} onChange={(e) => {
-                    store.dispatch({ type: 'UPDATE_CURRENT_PROJECT_ID', payload: e.target.value });
-                    store.dispatch({ type: 'GET_ALL_DATA' });
-                }}>
-                    <option value='' style={{ color: 'red' }} >Select project</option>
-                    {this.props.projectsArray.map((elm, i) => {
-                        return <option key={elm._id} value={elm._id}>{elm.projectName}</option>})}
-                </select>
+                {/*<select defaultValue={this.props.currentProject} onChange={(e) => {*/}
+                    {/*store.dispatch({ type: 'UPDATE_CURRENT_PROJECT_ID', payload: e.target.value });*/}
+                    {/*store.dispatch({ type: 'GET_ALL_DATA' });*/}
+                {/*}}>*/}
+                    {/*<option value='' style={{ color: 'red' }} >Select project</option>*/}
+                    {/*{this.props.projectsArray.map((elm, i) => {*/}
+                        {/*return <option key={elm._id} value={elm._id}>{elm.projectName}</option>})}*/}
+                {/*</select>*/}
+                {/*{this.props.currentProject === '' ? <CreateNewProject /> : null}*/}
+                {/*/!* {this.props.currentProject === '' ? null : <ScopingContinuation store={this.props} />} *!/*/}
+                <FormGroup>
+                    <Label for="exampleSelect" sm={2}>Select</Label>
+                    <Input type="select" name="select" id="exampleSelect"
+                           defaultValue={this.props.currentProject} onChange={(e) => {
+                        store.dispatch({ type: 'UPDATE_CURRENT_PROJECT_ID', payload: e.target.value });
+                        store.dispatch({ type: 'GET_ALL_DATA' });
+                    }}>
+                        <option value='' style={{ color: 'red' }} >Select project</option>
+                        {this.props.projectsArray.map((elm, i) => {
+                            return <option key={elm._id} value={elm._id}>{elm.projectName}</option>})}
+                    </Input>
+                </FormGroup>
                 {this.props.currentProject === '' ? <CreateNewProject /> : null}
-                {/* {this.props.currentProject === '' ? null : <ScopingContinuation store={this.props} />} */}
-
             </div>
         );
     }
@@ -47,7 +60,7 @@ class CreateNewProject extends Component {
 
     saveBtn = () =>{
         var inputEmpty = this.state.projectName === '' || this.state.editorName === '';
-       return <button className={inputEmpty ? 'disableBtn': 'saveBtn'} onClick={() => {
+       return <button className={inputEmpty ? 'btn btn-secondary disableBtn': 'btn btn-primary'} onClick={() => {
            store.dispatch({type: 'CREATE_NEW_PROJECT', payload: this.state})
             {/* this.createNewProject(this.state) */}
             this.setState({ projectName: "",editorName: "",})
@@ -57,13 +70,34 @@ class CreateNewProject extends Component {
         return (
             <div className='newProject'>
 
-                <input type="text" placeholder='ProjectName' value={this.state.projectName} onChange={(e) => {
-                    this.setState({ projectName: e.target.value })
-                }} />
-                <input type="text" placeholder='Editor name' value={this.state.editorName} onChange={(e) => {
-                    this.setState({ editorName: e.target.value })
-                }} />
-                <br/>
+                {/*<input type="text" placeholder='ProjectName' value={this.state.projectName} onChange={(e) => {*/}
+                    {/*this.setState({ projectName: e.target.value })*/}
+                {/*}} />*/}
+                {/*<input type="text" placeholder='Editor name' value={this.state.editorName} onChange={(e) => {*/}
+                    {/*this.setState({ editorName: e.target.value })*/}
+                {/*}} />*/}
+                {/*<br/>*/}
+                {/*{this.saveBtn()}*/}
+                <Row form>
+                    <Col md={6}>
+                        <FormGroup>
+                            <Label for="ProjectName">Project Name</Label>
+                            <Input type="text" name="ProjectName" id="ProjectName"
+                                   value={this.state.projectName} onChange={(e) => {
+                                this.setState({ projectName: e.target.value })
+                            }} />
+                        </FormGroup>
+                    </Col>
+                    <Col md={6}>
+                        <FormGroup>
+                            <Label for="Editor name">Editor name</Label>
+                            <Input type="text" name="EditorName" id="EditorName"
+                                   value={this.state.editorName} onChange={(e) => {
+                                this.setState({ editorName: e.target.value })
+                            }} />
+                        </FormGroup>
+                    </Col>
+                </Row>
                 {this.saveBtn()}
             </div>
         );

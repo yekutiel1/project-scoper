@@ -144,12 +144,15 @@ img{
 .sidBarItem .link:hover{
    background: #cfd6da5e;
 }
+.sidBarItem>div>svg {
+    float: right;
+}
 
 
 .articleRight{
     /*border-left: solid black 1px;*/
     /*text-align: center;*/
-    height: 700px;
+    /*height: 700px;*/
     overflow: auto;
 }
 .mainScreen{
