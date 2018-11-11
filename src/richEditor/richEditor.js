@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 import store from '../store/store';
 import {  Editor , EditorState, ContentState, RichUtils, convertFromRaw, convertToRaw } from 'draft-js';
 import './richEditor.css';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import { Button } from 'reactstrap';
+
 
 
 
@@ -107,7 +109,8 @@ class RichEditor extends Component {
           />
         </div>
           {this.props.editMode ? 
-        <button className="saveBtn" onClick={() => store.dispatch({ type: this.props.save, payload: JSON.stringify(raw) })}>Save</button>
+        // <button className="saveBtn" onClick={() => store.dispatch({ type: this.props.save, payload: JSON.stringify(raw) })}>Save</button>
+        <Button color="secondary" className="saveBtn" onClick={() => store.dispatch({ type: this.props.save, payload: JSON.stringify(raw) })}>Save </Button>
         : null }
       </div>
     );
