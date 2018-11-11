@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import '../App.css';
+import '../../App.css';
 import { connect } from 'react-redux'
-import store from '../store/store';
+import store from '../../store/store';
 
 class UserStories extends Component {
     constructor(props) {

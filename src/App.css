@@ -64,7 +64,7 @@
 .mainContainer{
     margin: 0px;
     padding: 15px;
-    /*background:url(https://wallpaper-house.com/data/out/7/wallpaper2you_167350.jpg);*/
+    /* background:url(https://wallpaper-house.com/data/out/7/wallpaper2you_167350.jpg); */
     /* background:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJ_nhC47nYpHSpkbs4SG2CNE-ft2TMgXdzGTnvzvVGxNWJ-L4t2g); */
     /* background:url(https://images.pexels.com/photos/463684/pexels-photo-463684.jpeg?auto=compress&cs=tinysrgb&h=350); */
     background-size: cover;
@@ -144,29 +144,15 @@ img{
 .sidBarItem .link:hover{
    background: #cfd6da5e;
 }
-
-/* 
-.navBar {
-    padding: 2%;
-    text-align: center;
+.sidBarItem>div>svg {
+    float: right;
 }
 
-.navBar a {
-    text-decoration: none;
-    color: #89ceee;
-    padding: 14px 16px;
-}
-
-.navBar a:hover {
-    text-decoration: none;
-    background-color: rgba(221, 221, 221, 0.24);
-    color: rgb(197, 184, 184);
-} */
 
 .articleRight{
     /*border-left: solid black 1px;*/
     /*text-align: center;*/
-    height: 700px;
+    /*height: 700px;*/
     overflow: auto;
 }
 .mainScreen{
@@ -192,6 +178,16 @@ img{
 /* ////////////////////////////////////// */
 /* buttons */
 button{
+    position: relative;
+    border-radius:5px;
+    color: white;
+    height: 35px;
+    width: 30%;
+    margin: 20px;
+    max-width: 250px;
+    opacity: .9;
+}
+.button{
     position: relative;
     border-radius:5px;
     color: white;
@@ -233,19 +229,7 @@ button:hover{
 /* form */
 
 .formContainer{
-    position: relative;
-    padding: 10px;
     min-height: 400px;
-    width: 60%;
-    margin: auto;
-    /* border-left: 2px solid white;
-    border-right: 2px solid gray;
-    border-top: 2px solid gray;
-    border-bottom: 2px solid white; */
-    background: rgba(143, 205, 241, 0.418);
-    /* opacity: 0.3; */
-    font-size: 15px;
-    font-family: 'Source Sans Pro', sans-serif;;
 }
 
 
@@ -518,10 +502,15 @@ button:hover{
 
 .processContainers{
     border-left: 2px black solid;
-    border-right: 2px black solid;
+    /* border-right: 2px black solid; */
     flex: 6;
     display: block;
 }
+
+.processComment{
+    flex: 3;
+}
+
 .priceInput{
     flex: 3;
 
@@ -546,5 +535,5 @@ button>a {
 }
 
 
- 
+
 
