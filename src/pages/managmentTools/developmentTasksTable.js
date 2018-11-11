@@ -36,9 +36,9 @@ class DevelopmentTasks extends Component {
                 </thead>
                 {data.pricing.map((elm, index) => {
                     return (
-                        elm.taskContainers.map(task => {
+                        elm.taskContainers.map((task, i) => {
                             return (
-                                <tbody>
+                                <tbody key={i}>
                                     <tr>
                                         <th>{task.taskContainer}</th>
                                         <th>{task.category}</th>
@@ -46,9 +46,9 @@ class DevelopmentTasks extends Component {
                                         <th>{}</th>
                                         <th>{}</th>
                                     </tr>
-                                    {task.tasks.map(row => {
+                                    {task.tasks.map((row, i) => {
                                         return (
-                                            <tr>
+                                            <tr key={i}>
                                                 <td>{row.taskName}</td>
                                                 <td>{task.category}</td>
                                                 <td>{row.details}</td>
