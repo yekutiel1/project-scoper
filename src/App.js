@@ -27,47 +27,44 @@ class NavBar extends Component {
     super(props);
 
     this.state = {
-      dropdownOpen: false,
-      sideBarDisplay: [
-        { title: 'managment', Display: false, char: '⏵' },
-        { title: 'scoping', Display: false, char: '⏵' },
-        { title: 'pricing', Display: false, char: '⏵' },
-        { title: 'general', Display: false, char: '⏵' }
-      ], select:[  { title: 'select', Display: false, char: '⏵' }]
+      dropDown: [
+        { title: 'managment', isOpen: false},
+        { title: 'scoping', isOpen: false},
+        { title: 'pricing', isOpen: false},
+        { title: 'general', isOpen: false}
+      ]
     };
   }
 
-
-
-  changeStatus = (key, arr) => {
-
-    var newState = arr.slice();
-    newState.map((elm => {
-      if (key === elm.title) {
-        if (elm.Display) {
-          elm.Display = false;
-          elm.char = '⏵'
-        }
-        else {
-          elm.Display = !elm.Display
-          elm.char = '⏷';
-        }
-      } else {
-        elm.Display = false;
-        elm.char = '⏵';
-      }
-    }))
-    this.setState({ [arr]: newState })
-  }
-
  
-
+/**
+ * Change the status of drop-down unit 
+* @param {Number} index 
+*/
+  dropDownIsOpen = (index) => {
+    var newState = this.state.dropDown.slice();
+    newState[index].isOpen = !newState[index].isOpen;
+    this.setState({ dropDown: newState })
+  }
+  
+   
+/**
+ * Changing the direction of the arrow if clicked 
+* @param {Boolian} bool 
+*/
+    arrowIcon = (bool) => {
+      return bool ? "⏷" : "⏵"
+    }
+  
+  
+  
   render() {
     return (
       <div className='sideBar'>
         <div className='sidBarItem'>
-          <div onClick={() => { this.changeStatus('managment', this.state.sideBarDisplay) }}>{this.state.sideBarDisplay[0].char} Managment Tools</div>
-          {this.state.sideBarDisplay[0].Display ? <div className='links' >
+
+          <div onClick={() => { this.dropDownIsOpen(0) }}>{this.arrowIcon(this.state.dropDown[0].isOpen)} Managment Tools</div>
+          {this.state.dropDown[0].isOpen ? <div className='links' >
             <Link className='link' to={pageLinkes.selectProject} >Select project</Link>
             <Link className='link' to={pageLinkes.newVersion} >New version</Link>
             <Link className='link' to={pageLinkes.allVersions}>All versions</Link>
@@ -76,8 +73,8 @@ class NavBar extends Component {
         </div>
 
         <div className='sidBarItem'>
-          <div onClick={() => { this.changeStatus('scoping', this.state.sideBarDisplay) }}>{this.state.sideBarDisplay[1].char} Scoping</div>
-          {this.state.sideBarDisplay[1].Display ? <div className='links' >
+          <div onClick={() => { this.dropDownIsOpen(1) }}>{this.arrowIcon(this.state.dropDown[1].isOpen)} Scoping</div>
+          {this.state.dropDown[1].isOpen ? <div className='links' >
             <Link className='link' to={pageLinkes.projectDescreption} >Project Discraption</Link>
             <Link className='link' to={pageLinkes.actors}>Actors</Link>
             <Link className='link' to={pageLinkes.subjects}>Requirement Specifications‏</Link>
@@ -86,15 +83,15 @@ class NavBar extends Component {
         </div>
 
         <div className='sidBarItem'>
-          <div onClick={() => { this.changeStatus('pricing', this.state.sideBarDisplay) }}>{this.state.sideBarDisplay[2].char} Pricing</div>
-          {this.state.sideBarDisplay[2].Display ? <div className='links' >
+          <div onClick={() => { this.dropDownIsOpen(2) }}>{this.arrowIcon(this.state.dropDown[2].isOpen)} Pricing</div>
+          {this.state.dropDown[2].isOpen ? <div className='links' >
             <Link className='link' to={pageLinkes.pricing}>pricing</Link>
           </div> : null}
         </div>
 
         <div className='sidBarItem'>
-          <div onClick={() => { this.changeStatus('general', this.state.sideBarDisplay) }}>{this.state.sideBarDisplay[3].char} General Information</div>
-          {this.state.sideBarDisplay[3].Display ? <div className='links' >
+          <div onClick={() => { this.dropDownIsOpen(3) }}>{this.arrowIcon(this.state.dropDown[3].isOpen)} General Information</div>
+          {this.state.dropDown[3].isOpen ? <div className='links' >
             <Link className='link' to={pageLinkes.assumptions}>Assumptions</Link>
             <Link className='link' to={pageLinkes.diagram}>Attach diagram</Link>
           </div> : null}
@@ -123,7 +120,7 @@ class MainScreen extends Component {
         <Route path={pageLinkes.assumptions} component={Assumptions} />
         <Route path={pageLinkes.diagram} component={Diagram} />
         <Route path={pageLinkes.pricing} component={Pricing} />
-        
+
       </div>
     );
   }
