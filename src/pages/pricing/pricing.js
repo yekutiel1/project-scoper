@@ -62,7 +62,7 @@ class Pricing extends Component {
 
         </div>
         <h6 className='grandTotal'>{`Grand Total: ${this.grandTotal(subTotal)}`}</h6>
-        <RichEditor editMode={true} data={this.props.additionalPricing} save={'SAVE_ADDITIONAL_PRICING'}/>
+        <RichEditor readOnly={false} data={this.props.additionalPricing} save={'SAVE_ADDITIONAL_PRICING'}/>
         <button onClick={() => store.dispatch({ type: 'SAVE_PRICING_DATA', payload: { pricing: this.props.pricing } })}>Save</button>
       </div>
     );
@@ -76,7 +76,7 @@ class Process extends Component {
     super(props);
     this.state = {
       processPrice: 0,
-      processComment: ''
+      processComment: this.props.process.comment
     }
   }
 
@@ -112,6 +112,7 @@ class Process extends Component {
           </div>
         </div>
         <textarea className='processComment'
+        value={this.state.processComment}
          onChange={e => this.setState({processComment: e.target.value })}
          onBlur={e => {
            console.log('ddd');

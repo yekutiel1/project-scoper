@@ -34,7 +34,7 @@ class Form extends Component {
     }
 
     /**
-     * send the form to store to save it to DB:
+     * send the form to store to save in DB:
      */
     saveForm = () => {
         this.props.dispatch({
@@ -81,8 +81,8 @@ class Form extends Component {
     deleteDialog = () => {
         return <div>
             <Modal isOpen={this.state.deleteMode} toggle={this.toggle} className={this.props.className}>
-                <ModalHeader >Are you sure you want to delete?</ModalHeader>
-                <ModalBody>Deleting the Actor will delete all the user stories it's contians</ModalBody>
+                <ModalHeader >Are you sure you want to delete the actor?</ModalHeader>
+                <ModalBody>Deleting the Actor will delete all the user stories its contains</ModalBody>
                 <ModalFooter>
                     <Button color="danger" onClick={() => this.deleteActor(this.state.editActorIndex, this.state.currentActorId)}>Delete</Button>{' '}
                     <Button color="primary" onClick={this.cancelDeleteActor}>Cancel</Button>
@@ -95,7 +95,7 @@ class Form extends Component {
     render() {
         return (
             <div className='formContainer'>
-            {this.deleteDialog()}
+                {this.deleteDialog()}
                 <FormActorInput
                     name={this.props.name}
                     state={this.state}
