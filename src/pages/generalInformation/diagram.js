@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import store from '../../store/store';
 import RichEditor from '../../richEditor/richEditor.js'
 import '../../richEditor/richEditor.css';
-import { Button, Input,  Form} from 'reactstrap';
+import {Button, Input,  Form} from 'reactstrap';
 
 class Diagram extends Component {
   constructor(props) {

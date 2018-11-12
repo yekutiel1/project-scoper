@@ -1,13 +1,14 @@
-
 import React, { Component } from 'react';
 import store from '../store/store';
 import { Editor, EditorState, ContentState, RichUtils, convertFromRaw, convertToRaw } from 'draft-js';
 import './richEditor.css';
 import { connect } from 'react-redux';
 import { Button } from 'reactstrap';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faListUl, faListOl, faItalic, faBold, faUnderline} from '@fortawesome/free-solid-svg-icons'
 
-
-
+// library.add(faListOl);
 
 
 class RichEditor extends Component {
@@ -16,7 +17,7 @@ class RichEditor extends Component {
 
     this.state = {
       displayBtn: false
-    }
+    };
 
     const rawJsText = this.props.data;
 
@@ -26,15 +27,12 @@ class RichEditor extends Component {
       const content = convertFromRaw(JSON.parse(rawJsText));
       this.state = { editorState: EditorState.createWithContent(content) };
     }
-
-
     this.focus = () => this.refs.editor.focus();
     this.onChange = (editorState) => this.setState({ editorState });
     this.handleKeyCommand = (command) => this._handleKeyCommand(command);
     this.onTab = (e) => this._onTab(e);
     this.toggleBlockType = (type) => this._toggleBlockType(type);
     this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
-
   }
 
   _handleKeyCommand(command) {
@@ -82,7 +80,7 @@ class RichEditor extends Component {
         className += ' RichEditor-hidePlaceholder';
       }
     }
-    const raw = convertToRaw(this.state.editorState.getCurrentContent())
+    const raw = convertToRaw(this.state.editorState.getCurrentContent());
 
     return (
       <div className="RichEditor-root">
@@ -99,13 +97,14 @@ class RichEditor extends Component {
           /> : null}
 
         <div className={className} onClick={() => {
-          this.focus()
+          this.focus();
           this.setState({ displayBtn: true })
         }}
           onBlur={() => {
             this.setState({ displayBtn: false });
             store.dispatch({ type: this.props.save, payload: JSON.stringify(raw) });
-          }}>
+          }}
+        >
 
           <Editor
             readOnly={this.props.readOnly}
@@ -177,8 +176,8 @@ const BLOCK_TYPES = [
   { label: 'H5', style: 'header-five' },
   { label: 'H6', style: 'header-six' },
   { label: 'Blockquote', style: 'blockquote' },
-  { label: 'UL', style: 'unordered-list-item' },
-  { label: 'OL', style: 'ordered-list-item' },
+  { label: <FontAwesomeIcon icon={faListUl}/>, style: 'unordered-list-item' },
+  { label: <FontAwesomeIcon icon={faListOl}/>, style: 'ordered-list-item' },
   { label: 'Code Block', style: 'code-block' },
 ];
 
@@ -206,9 +205,9 @@ const BlockStyleControls = (props) => {
 };
 
 var INLINE_STYLES = [
-  { label: 'Bold', style: 'BOLD' },
-  { label: 'Italic', style: 'ITALIC' },
-  { label: 'U̲', style: 'UNDERLINE' },
+  { label: <FontAwesomeIcon icon={faBold}/>, style: 'BOLD' },
+  { label: <FontAwesomeIcon icon={faItalic}/>, style: 'ITALIC' },
+  { label: <FontAwesomeIcon icon={faUnderline}/>, style: 'UNDERLINE' },
   { label: 'Monospace', style: 'CODE' },
 ];
 

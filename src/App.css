@@ -533,6 +533,10 @@ button:hover{
 button>a {
     color: white;
 }
+button>a:hover{
+    color: white;
+    text-decoration: none;
+}
 
 
 
