@@ -306,10 +306,6 @@ var reduser = function (state, action) {
             return newState;
             break;
 
-       
-
-
-
         default:
             return newState;
             break;
