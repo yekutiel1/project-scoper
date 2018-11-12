@@ -8,7 +8,8 @@ import DevelopmentTasks from './developmentTasksTable.js'
 
 
 import axios from 'axios';
-// import fileDownload from 'react-file-download';
+import fileDownload from 'react-file-download';
+import DownloadPdf from '../../createPDF/downloadPdf.js'
 
 
 
@@ -18,21 +19,21 @@ class PDFpreview extends Component {
 
         return (
 <div>
-<button onClick={()=>{
+{/* <button onClick={()=>{
     var url = `http://10.2.1.102:3000/api/pdf`;
-    {/* var url = `http://10.2.1.102:3000/api/pdf/createPdf/${this.props.currentProject}`; */}
+    var url = `http://10.2.1.102:3000/api/pdf/createPdf/${this.props.currentProject}`;
     console.log(url);
     
     axios.get(url)
     .then(function(res) {
         console.log(res);
-        // fileDownload(res.data, "profilepic.pdf");
-        {/* store.dispatch({type: type, payload: res.data}); */}
+        fileDownload(res.data, "mypdf.pdf"); 
     });
-    }}>Download</button>
-            <div id='pdfPreview' className="pdfPreview">
-                <div className="mainBlbBla">
-                    <h3 className="pdfPreviewTitel"><b> Offer for Development of Disk In Pro <br /> NEAR phase 2 web app </b></h3><br />
+    }}>Download</button> */}
+    <DownloadPdf/>
+           <div id='pdfPreview' className="pdfPreview">
+                <div className="mainBlbBla" id='mainBlbBla'>
+                    <h3 className="pdfPreviewTitel" id='pdfPreviewTitel'><b> Offer for Development of Disk In Pro <br /> NEAR phase 2 web app </b></h3><br />
                     <b className="pdfOverview"> Overview</b> <br /><br />
 
                     {

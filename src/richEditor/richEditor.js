@@ -116,7 +116,8 @@ class RichEditor extends Component {
             onTab={this.onTab}
             ref="editor"
             spellCheck={true}
-            placeholder="Describe the project..."
+           placeholder={this.props.placeholder}
+
           />
         </div>
         {/* {this.props.editMode ?

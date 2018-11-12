@@ -104,43 +104,6 @@ class CreateNewProject extends Component {
     }
 }
 
-// class ScopingContinuation extends Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             newVersionMode: false,
-//             displayPdf: false,
-//             displayVersions: false
-//         }
-//     }
-//     cancelNewVersionMode = () => {
-//         this.setState({ newVersionMode: false })
-//     }
-//     render() {
-
-//         return (
-//             <div>
-                
-//                 {this.state.newVersionMode ? <CreateNewVersion cancelNewVersionMode={this.cancelNewVersionMode} /> : null}
-//                 {this.state.displayVersions?  <Versions/>: null}
-//                 {this.state.displayPdf ? 
-//                 <div>
-                 
-
-
-//                     {/* <PrintButton  id={"pdfPreview"} label={"Create PDF file"} /> */}
-                    
-//                 </div>
-//                  : null}
-
-
-//             </div>
-//         );
-//     }
-// }
-
-
-
 
 
 
