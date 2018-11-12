@@ -4,12 +4,12 @@
     padding: 15px;
 }
 
-.RichEditor-editor {
+/* .RichEditor-editor {
     border-top: 1px solid #ddd;
     cursor: text;
     font-size: 16px;
     margin-top: 10px;
-}
+} */
 
 .RichEditor-editor .public-DraftEditorPlaceholder-root,
 .RichEditor-editor .public-DraftEditor-content {
@@ -18,10 +18,10 @@
     text-align: left;
 }
 
-.RichEditor-editor .public-DraftEditor-content {
+/* .RichEditor-editor .public-DraftEditor-content {
     min-height: 100px;
 
-}
+} */
 
 
 .RichEditor-editor .RichEditor-blockquote {
