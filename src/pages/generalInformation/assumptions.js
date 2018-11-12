@@ -5,6 +5,8 @@ import store from '../../store/store.js';
 import axios from 'axios';
 import { CustomInput, Form, FormGroup, Label } from 'reactstrap';
 import data from '.././../overView.json'
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+
 
 
 
@@ -16,7 +18,9 @@ class Assumptions extends Component {
       generalAssumptionsArr: [],
       tempAssum: '',
       variableAssumptionsArr: [],
-      selectAll: false
+      selectAll: false,
+      displayDeleteDialog: false,
+      payload: null
     }
   }
 
@@ -147,21 +151,38 @@ class AddAssumptions extends Component {
     }
   }
 
-  delete = (index) => {
 
-    store.dispatch({ type: "DELETE_ASSUMPTION", payload: index })
+  deleteDialog = () => {
+    return <div>
+      <Modal isOpen={this.state.displayDeleteDialog} toggle={this.toggle} className={this.props.className}>
+        <ModalHeader >Are you sure you want to delete the Assumption?</ModalHeader>
+        <ModalBody>Deleting the Assumption can not restore.</ModalBody>
+        <ModalFooter>
+          <Button color="danger" onClick={() => { this.delete() }}>Delete</Button>{' '}
+          <Button color="primary" onClick={() => this.setState({ displayDeleteDialog: false })}>Cancel</Button>
+        </ModalFooter>
+      </Modal>
+    </div>
+  }
+
+
+  delete = () => {
+
+    store.dispatch({ type: "DELETE_ASSUMPTION", payload: this.state.payload })
+    this.setState({ displayDeleteDialog: false })
   }
 
   render() {
     return (
       <div >
+        {this.deleteDialog()}
         <div >
           {this.props.currentAssumptions.map((elm, index) => {
             return (
               <div className='asuumption_row' key={index} >
                 <div style={{ flex: 11.5 }}>{elm}</div>
                 <div className='iconDiv'>
-                  <div className='icon btn_delete' onClick={() => this.delete(index)} >🗑</div>
+                  <div className='icon btn_delete' onClick={() => { this.setState({ displayDeleteDialog: true, payload: index }) }}>🗑</div>
                   <div className='icon btn_edit' onClick={() => this.startEdit(index)} >✎</div>
                 </div>
               </div>

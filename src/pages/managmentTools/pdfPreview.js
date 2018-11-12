@@ -7,6 +7,9 @@ import data from '../../overView.json';
 import DevelopmentTasks from './developmentTasksTable.js'
 
 
+import axios from 'axios';
+// import fileDownload from 'react-file-download';
+
 
 
 
@@ -14,7 +17,21 @@ class PDFpreview extends Component {
     render() {
 
         return (
-
+            
+            //  <button onClick={()=>{
+            //     var url = `http://10.2.1.102:3000/api/pdf`;
+            //     var url = `http://10.2.1.102:3000/api/pdf/createPdf/${this.props.currentProject}`; 
+            //     console.log(url);
+                
+            //     axios.get(url)
+            //     .then(function(res) {
+            //         console.log(res);
+            //         fileDownload(res.data, "profilepic.pdf"); 
+            //         {/* store.dispatch({type: type, payload: res.data}); */}
+            //     });
+            //     }}>Download</button>
+                 
+<div>
             <div id='pdfPreview' className="pdfPreview">
                 <div className="mainBlbBla">
                     <h3 className="pdfPreviewTitel"><b> Offer for Development of Disk In Pro <br /> NEAR phase 2 web app </b></h3><br />
@@ -43,9 +60,9 @@ class PDFpreview extends Component {
                 <b className="pdfOverview">Project</b>
 
                 <RichEditor
-                    editMode={false}
                     data={this.props.projectDescription}
-                    readOnly={true} />
+                    readOnly={true}
+                     />
 
                 <div className="pdfOverview">
                     <b>The Actors/Users:</b>
@@ -92,6 +109,7 @@ class PDFpreview extends Component {
                     </ul>
                 </div>
                 <DevelopmentTasks />
+            </div>
             </div>
 
         );

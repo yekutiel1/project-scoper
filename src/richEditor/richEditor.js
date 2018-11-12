@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import store from '../store/store';
-import {  Editor , EditorState, ContentState, RichUtils, convertFromRaw, convertToRaw } from 'draft-js';
+import { Editor, EditorState, ContentState, RichUtils, convertFromRaw, convertToRaw } from 'draft-js';
 import './richEditor.css';
 import { connect } from 'react-redux';
 import { Button } from 'reactstrap';
@@ -14,27 +14,31 @@ class RichEditor extends Component {
   constructor(props) {
     super(props);
 
-    const rawJsText = this.props.data;
+    this.state = {
+      displayBtn: false
+    }
 
-    if (rawJsText === ''){
-        this.state = {editorState:EditorState.createEmpty()};
-      }else{
-        const content  = convertFromRaw(JSON.parse(rawJsText));
-        this.state = {editorState:EditorState.createWithContent(content) };
+    const rawJsText = this.props.data;
+    
+    if (rawJsText === '') {
+      this.state = { editorState: EditorState.createEmpty() };
+    } else {
+      const content = convertFromRaw(JSON.parse(rawJsText));
+      this.state = { editorState: EditorState.createWithContent(content) };
     }
 
 
     this.focus = () => this.refs.editor.focus();
-    this.onChange = (editorState) => this.setState({editorState});
+    this.onChange = (editorState) => this.setState({ editorState });
     this.handleKeyCommand = (command) => this._handleKeyCommand(command);
     this.onTab = (e) => this._onTab(e);
     this.toggleBlockType = (type) => this._toggleBlockType(type);
     this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
-    
+
   }
-  
+
   _handleKeyCommand(command) {
-    const {editorState} = this.state;
+    const { editorState } = this.state;
     const newState = RichUtils.handleKeyCommand(editorState, command);
     if (newState) {
       this.onChange(newState);
@@ -42,7 +46,7 @@ class RichEditor extends Component {
     }
     return false;
   }
-  
+
   _onTab(e) {
     const maxDepth = 4;
     this.onChange(RichUtils.onTab(e, this.state.editorState, maxDepth));
@@ -67,47 +71,57 @@ class RichEditor extends Component {
   }
 
   render() {
-      const {editorState} = this.state;
-      
-      // If the user changes block type before entering any text, we can
-      // either style the placeholder or hide it. Let's just hide it now.
-      let className = 'RichEditor-editor';
-      var contentState = editorState.getCurrentContent();
-      if (!contentState.hasText()) {
-          if (contentState.getBlockMap().first().getType() !== 'unstyled') {
-              className += ' RichEditor-hidePlaceholder';
-            }
-        }
-        const raw = convertToRaw(this.state.editorState.getCurrentContent())
-    
+    const { editorState } = this.state;
+
+    // If the user changes block type before entering any text, we can
+    // either style the placeholder or hide it. Let's just hide it now.
+    let className = 'RichEditor-editor';
+    var contentState = editorState.getCurrentContent();
+    if (!contentState.hasText()) {
+      if (contentState.getBlockMap().first().getType() !== 'unstyled') {
+        className += ' RichEditor-hidePlaceholder';
+      }
+    }
+    const raw = convertToRaw(this.state.editorState.getCurrentContent())
+
     return (
-        <div className="RichEditor-root">
-        {this.props.editMode ? 
-        <BlockStyleControls
-        editorState={editorState}
-        onToggle={this.toggleBlockType}
-        /> : null }
-        {this.props.editMode ?
-        <InlineStyleControls
-        editorState={editorState}
-        onToggle={this.toggleInlineStyle}
-        /> : null }
-        <div className={className} onClick={this.focus} onBlur={()=>store.dispatch({ type: this.props.save, payload: JSON.stringify(raw) })}>
-        
-        <Editor
-          readOnly={this.props.readOnly}
-          blockStyleFn={getBlockStyle}
-          customStyleMap={styleMap}
-          editorState={editorState}
-          handleKeyCommand={this.handleKeyCommand}
-          onChange={this.onChange}
-          onTab={this.onTab}
-          ref="editor"
-          spellCheck={true}
-          placeholder="Describe the project..."
-        />
+      <div className="RichEditor-root">
+        {!this.props.readOnly && this.state.displayBtn ?
+          <BlockStyleControls
+            editorState={editorState}
+            onToggle={this.toggleBlockType}
+          /> : null}
+
+        {!this.props.readOnly && this.state.displayBtn ?
+          <InlineStyleControls
+            editorState={editorState}
+            onToggle={this.toggleInlineStyle}
+          /> : null}
+
+        <div className={className} onClick={() => {
+          this.focus()
+          this.setState({ displayBtn: true })
+        }}
+          onBlur={() => {
+            this.setState({ displayBtn: false });
+            store.dispatch({ type: this.props.save, payload: JSON.stringify(raw) });
+          }}>
+
+          <Editor
+            readOnly={this.props.readOnly}
+            blockStyleFn={getBlockStyle}
+            customStyleMap={styleMap}
+            editorState={editorState}
+            handleKeyCommand={this.handleKeyCommand}
+            onChange={this.onChange}
+            onTab={this.onTab}
+            ref="editor"
+            spellCheck={true}
+            placeholder="Describe the project..."
+
+          />
         </div>
-          {/* {this.props.editMode ? 
+        {/* {this.props.editMode ? 
         <button className="saveBtn" onClick={() => store.dispatch({ type: this.props.save, payload: JSON.stringify(raw) })}>Save</button>
         : null } */}
       </div>
@@ -156,20 +170,20 @@ class StyleButton extends React.Component {
 }
 
 const BLOCK_TYPES = [
-  {label: 'H1', style: 'header-one'},
-  {label: 'H2', style: 'header-two'},
-  {label: 'H3', style: 'header-three'},
-  {label: 'H4', style: 'header-four'},
-  {label: 'H5', style: 'header-five'},
-  {label: 'H6', style: 'header-six'},
-  {label: 'Blockquote', style: 'blockquote'},
-  {label: 'UL', style: 'unordered-list-item'},
-  {label: 'OL', style: 'ordered-list-item'},
-  {label: 'Code Block', style: 'code-block'},
+  { label: 'H1', style: 'header-one' },
+  { label: 'H2', style: 'header-two' },
+  { label: 'H3', style: 'header-three' },
+  { label: 'H4', style: 'header-four' },
+  { label: 'H5', style: 'header-five' },
+  { label: 'H6', style: 'header-six' },
+  { label: 'Blockquote', style: 'blockquote' },
+  { label: 'UL', style: 'unordered-list-item' },
+  { label: 'OL', style: 'ordered-list-item' },
+  { label: 'Code Block', style: 'code-block' },
 ];
 
 const BlockStyleControls = (props) => {
-  const {editorState} = props;
+  const { editorState } = props;
   const selection = editorState.getSelection();
   const blockType = editorState
     .getCurrentContent()
@@ -192,10 +206,10 @@ const BlockStyleControls = (props) => {
 };
 
 var INLINE_STYLES = [
-  {label: 'Bold', style: 'BOLD'},
-  {label: 'Italic', style: 'ITALIC'},
-  {label: 'U̲', style: 'UNDERLINE'},
-  {label: 'Monospace', style: 'CODE'},
+  { label: 'Bold', style: 'BOLD' },
+  { label: 'Italic', style: 'ITALIC' },
+  { label: 'U̲', style: 'UNDERLINE' },
+  { label: 'Monospace', style: 'CODE' },
 ];
 
 const InlineStyleControls = (props) => {

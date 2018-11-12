@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import '../../App.css';
 import { connect } from 'react-redux'
 import store from '../../store/store';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+
+
 
 class UserStories extends Component {
     constructor(props) {
@@ -14,23 +17,23 @@ class UserStories extends Component {
     }
 
     displayInput = (index) => {
-        this.setState({[index]: !this.state[index]});
+        this.setState({ [index]: !this.state[index] });
     }
 
     showActors = () => {
-     return this.props.actorsArray.map((actor, index) => {
-       
-                  return  <div className='addUserStory' key={index}>
-                     
-                        <div className='addUserStoryActor' onClick={() => this.displayInput(index)}>{actor.name}</div>
-                        {/* {this.state[index] ?<ShowAllUserStory actor={actor} indexOfActor={this.props.indexOfActor} startEditUserStory={this.startEditUserStory} />: null} */}
-                        {this.state[index] ? <UserStoryForm store={this.props} actor={actor} indexOfActor={index} /> : null}
-                </div>
-                })
-            }
+        return this.props.actorsArray.map((actor, index) => {
+
+            return <div className='addUserStory' key={index}>
+
+                <div className='addUserStoryActor' onClick={() => this.displayInput(index)}>{actor.name}</div>
+                {/* {this.state[index] ?<ShowAllUserStory actor={actor} indexOfActor={this.props.indexOfActor} startEditUserStory={this.startEditUserStory} />: null} */}
+                {this.state[index] ? <UserStoryForm store={this.props} actor={actor} indexOfActor={index} /> : null}
+            </div>
+        })
+    }
 
     render() {
-        
+
         return (
             <div className='formContainer'>
                 {this.showActors()}
@@ -50,6 +53,8 @@ class UserStoryForm extends Component {
             selectedSubject: '',
             titleInput: '',
             userStoryInput: `As a ${this.props.actor.name}: `,
+
+
         }
     }
 
@@ -58,10 +63,10 @@ class UserStoryForm extends Component {
             type: 'SAVE_USER_STORY', payload: {
                 currentActorId: this.props.actor._id,
                 indexOfActor: this.props.indexOfActor,
-                userStory: {userStory: this.state.userStoryInput, title: this.state.titleInput, subject: this.state.selectedSubject}
+                userStory: { userStory: this.state.userStoryInput, title: this.state.titleInput, subject: this.state.selectedSubject }
             }
         })
-        this.setState({titleInput: '', userStoryInput: `As a ${this.props.actor.name}: `});
+        this.setState({ titleInput: '', userStoryInput: `As a ${this.props.actor.name}: ` });
     }
 
     editUserStory = () => {
@@ -71,15 +76,15 @@ class UserStoryForm extends Component {
                 editUserStoryIndex: this.state.editUserStoryIndex,
                 indexOfActor: this.props.indexOfActor,
                 editUserStoryIndex: this.state.editUserStoryIndex,
-                userStory: {userStory: this.state.userStoryInput, title: this.state.titleInput, subject: this.state.selectedSubject}
+                userStory: { userStory: this.state.userStoryInput, title: this.state.titleInput, subject: this.state.selectedSubject }
             }
         });
-        this.setState({titleInput: '', userStoryInput: `As a ${this.props.actor.name}: `, editMode: false,});
+        this.setState({ titleInput: '', userStoryInput: `As a ${this.props.actor.name}: `, editMode: false, });
     }
-   
+
     startEditUserStory = (editUserStoryIndex, userStory) => {
-        
-        this.setState({selectedSubject: userStory.subject, titleInput: userStory.title, userStoryInput: userStory.userStory, editUserStoryId: userStory._id, editUserStoryIndex: editUserStoryIndex, editMode: true })
+
+        this.setState({ selectedSubject: userStory.subject, titleInput: userStory.title, userStoryInput: userStory.userStory, editUserStoryId: userStory._id, editUserStoryIndex: editUserStoryIndex, editMode: true })
     }
 
     editBtn = () => {
@@ -92,7 +97,7 @@ class UserStoryForm extends Component {
     }
 
     dropDown = () => {
-        
+
         return <select value={this.state.currentActor} onChange={(e) => { this.setState({ currentActor: e.target.value, selectedSubject: e.target.value }) }}>
             <option value='' style={{ color: 'red' }} >Select subject</option>
             {this.props.store.subjects.map((subject, index) => {
@@ -103,18 +108,23 @@ class UserStoryForm extends Component {
 
     userStoryForm = () => {
         return <div>
-            <input type="text" placeholder='title' value={this.state.titleInput} onChange={e => this.setState({titleInput: e.target.value})}/>
-            <textarea className='actorDescription' value={this.state.userStoryInput} onChange={e => this.setState({userStoryInput: e.target.value})}/>
+            <input type="text" placeholder='title' value={this.state.titleInput} onChange={e => this.setState({ titleInput: e.target.value })} />
+            <textarea className='actorDescription' value={this.state.userStoryInput} onChange={e => this.setState({ userStoryInput: e.target.value })} />
             <br />
             {this.state.editMode ? this.editBtn() : this.saveBtn()}
         </div>
     }
 
+
     render() {
-        
+
         return (
             <div className='userStoryInput'>
-                <ShowAllUserStory actor={this.props.actor}  indexOfActor={this.props.indexOfActor} startEditUserStory={this.startEditUserStory} />
+                <ShowAllUserStory
+                    actor={this.props.actor}
+                    indexOfActor={this.props.indexOfActor}
+                    startEditUserStory={this.startEditUserStory}
+                />
                 {this.dropDown()}
                 {this.state.selectedSubject === '' ? null : this.userStoryForm()}
             </div>
@@ -123,10 +133,39 @@ class UserStoryForm extends Component {
 }
 
 class ShowAllUserStory extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            displayDeleteDialog: false,
+            payload: {}
+        }
+    }
+
+
+    deleteDialog = () => {
+        return <div>
+            <Modal isOpen={this.state.displayDeleteDialog} toggle={this.toggle} className={this.props.className}>
+                <ModalHeader >Are you sure you want to delete the User Story?</ModalHeader>
+                <ModalBody>Deleting the User Story can not restore.</ModalBody>
+                <ModalFooter>
+                    <Button color="danger" onClick={() => { this.deleteUserStory() }}>Delete</Button>{' '}
+                    <Button color="primary" onClick={() => this.setState({ displayDeleteDialog: false })}>Cancel</Button>
+                </ModalFooter>
+            </Modal>
+        </div>
+    }
+
+    deleteUserStory = () => {
+        store.dispatch({ type: 'DELETE_USER_STORY', payload: this.state.payload })
+        this.setState({ displayDeleteDialog: false })
+    }
+
+
     render() {
-        
+
         return (
             <div className='viewUserStory'>
+                {this.deleteDialog()}
                 {this.props.actor.userStoreis.map((userStory, index) => {
                     return <div className='singleUserStory' key={index}>
                         <p className='details'>{userStory.subject}</p>
@@ -134,7 +173,10 @@ class ShowAllUserStory extends Component {
                         <p className='details'>{userStory.userStory}</p>
                         <div className='iconDiv'>
                             <div className='icon btn_edit' onClick={() => { this.props.startEditUserStory(index, userStory) }}>✎</div>
-                            <div className='icon btn_delete' onClick={() => { store.dispatch({ type: 'DELETE_USER_STORY', payload: {actorId: this.props.actor._id   , indexOfActor: this.props.indexOfActor, storyLocation: index}})}}>🗑</div>
+                            <div className='icon btn_delete' onClick={() => {
+                                this.setState({ displayDeleteDialog: true })
+                                this.setState({ payload: { actorId: this.props.actor._id, indexOfActor: this.props.indexOfActor, storyLocation: index } })
+                            }}> 🗑</div>
                         </div>
                     </div>
                 })}
@@ -145,4 +187,3 @@ class ShowAllUserStory extends Component {
 
 
 export default connect(store => store)(UserStories);
-  
