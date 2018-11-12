@@ -1,6 +1,6 @@
 import { createStore } from 'redux'
 import { urlLinks } from '../linkes.js'
-import { getData, saveData, editData, deleteData, getUserStories, getAllData, getProjects, getVersions, rejectionExplenation, createNewPrject, createNewVersion } from '../axios/axios'
+import { createNewProject, getData, saveData, editData, deleteData } from './axios'
 import pricingData from '../rest_API_example_of_task_container.json';
 
 var state = {
@@ -30,7 +30,8 @@ var reduser = function (state, action) {
     switch (action.type) {
 
         case "GET_PROJECTS":
-            getProjects(urlLinks.getProjects);
+            url = `${urlLinks.getProjects}`;
+            getData(url,'UPDATE_STATE_PROJECTS');
             return newState;
             break;
 
@@ -45,7 +46,8 @@ var reduser = function (state, action) {
             break;
 
         case "GET_ALL_DATA":
-            getAllData(`${urlLinks.getAllData}/${newState.currentProject}`);
+            url = `${urlLinks.getAllData}/${newState.currentProject}`;
+            getData(url,'UPDATE_STATE');
             return newState;
             break;
 
@@ -68,33 +70,32 @@ var reduser = function (state, action) {
 
         case "CREATE_NEW_PROJECT":
             url = urlLinks.createNewProject;
-            createNewPrject(url, action.payload);
+            createNewProject(url, action.payload);
             return newState
             break;
 
         case "CREATE_NEW_VERSION":
             url = `${urlLinks.createNewVersion}/${newState.currentProject}`;
-            createNewVersion(url, action.payload);
+            saveData(url, {editorName: action.payload}, 'GET_ALL_DATA');
             return newState
             break;
 
         case "REJECTION_EXPLENATION":
             url = `${urlLinks.rejectionExplenation}/${newState.currentProject}`
-            rejectionExplenation(url, action.payload);
+            saveData(url, {rejectionExplenation: action.payload}, '');
             return newState
             break;
 
         case "PROJECT_DESCREPTION":
-
             url = `${urlLinks.projectDescription}/${newState.currentProject}`;
-
             saveData(url, { projectDescription: action.payload }, 'GET_ALL_DATA');
             return newState;
             break;
 
 
         case "GET_VERSIONS":
-            getVersions(`${urlLinks.getVersions}/${newState.currentProject}`);
+            url = `${urlLinks.getVersions}/${newState.currentProject}`;
+            getData(url,'UPDATE_STATE_VERSIONS');
             return newState;
             break;
 
@@ -129,7 +130,7 @@ var reduser = function (state, action) {
 
         case "SAVE_PRICING_DATA":
             url = `${urlLinks.savePricing}/${newState.currentProject}`;
-            saveData(url, action.payload, 'GET_ALL_DATA')
+            saveData(url, action.payload, 'GET_ALL_DATA');
             return newState;
             break;
 
@@ -139,9 +140,11 @@ var reduser = function (state, action) {
             break;
 
         case 'ADD_COMMENT_TO_PROCESS':
-            newState.pricing[action.payload.ProcessIndex].processComment = action.payload.processComment;
+            newState.pricing[action.payload.ProcessIndex].comment = action.payload.processComment;
             url = `${urlLinks.saveComment}/${newState.currentProject}/${action.payload.ProcessIndex}`;
-            saveData(url, action.payload.processComment, '')
+            console.log(newState);
+            
+            saveData(url, {comment: action.payload.processComment}, '')
             return newState;
             break;
 
