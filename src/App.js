@@ -59,7 +59,7 @@ class NavBar extends Component {
 * @param {Boolian} bool
 */
     arrowIcon = (bool) => {
-      return bool ? "⏷" : "⏵"
+      return bool ? <FontAwesomeIcon icon={faChevronUp}/> : <FontAwesomeIcon icon={faChevronDown}/>
     }
 
 
@@ -68,12 +68,8 @@ class NavBar extends Component {
     return (
       <div className='sideBar'>
         <div className='py-2 sidBarItem'>
-            <div onClick={() => { this.changeStatus('managment', this.state.sideBarDisplay) }}>Managment Tools {this.state.sideBarDisplay[0].char}
-            </div>
-          {this.state.sideBarDisplay[0].Display ? <div className='links' >
-        <div className='sidBarItem'>
 
-          <div onClick={() => { this.dropDownIsOpen(0) }}>{this.arrowIcon(this.state.dropDown[0].isOpen)} Managment Tools</div>
+          <div onClick={() => { this.dropDownIsOpen(0) }}>Managment Tools{this.arrowIcon(this.state.dropDown[0].isOpen)}</div>
           {this.state.dropDown[0].isOpen ? <div className='links' >
             <Link className='link' to={pageLinkes.selectProject} >Select project</Link>
             <Link className='link' to={pageLinkes.newVersion} >New version</Link>
@@ -83,10 +79,7 @@ class NavBar extends Component {
         </div>
 
         <div className='py-2 sidBarItem'>
-          <div onClick={() => { this.changeStatus('scoping', this.state.sideBarDisplay) }}>Scoping {this.state.sideBarDisplay[1].char}</div>
-          {this.state.sideBarDisplay[1].Display ? <div className='links' >
-        <div className='sidBarItem'>
-          <div onClick={() => { this.dropDownIsOpen(1) }}>{this.arrowIcon(this.state.dropDown[1].isOpen)} Scoping</div>
+          <div onClick={() => { this.dropDownIsOpen(1) }}>Scoping {this.arrowIcon(this.state.dropDown[1].isOpen)}</div>
           {this.state.dropDown[1].isOpen ? <div className='links' >
             <Link className='link' to={pageLinkes.projectDescreption} >Project Discraption</Link>
             <Link className='link' to={pageLinkes.actors}>Actors</Link>
@@ -94,22 +87,14 @@ class NavBar extends Component {
             <Link className='link' to={pageLinkes.userStory}>User Story</Link>
           </div> : null}
         </div>
-
         <div className='py-2 sidBarItem'>
-          <div onClick={() => { this.changeStatus('pricing', this.state.sideBarDisplay) }}>Pricing {this.state.sideBarDisplay[2].char}</div>
-          {this.state.sideBarDisplay[2].Display ? <div className='links' >
-        <div className='sidBarItem'>
-          <div onClick={() => { this.dropDownIsOpen(2) }}>{this.arrowIcon(this.state.dropDown[2].isOpen)} Pricing</div>
+          <div onClick={() => { this.dropDownIsOpen(2) }}>Pricing {this.arrowIcon(this.state.dropDown[2].isOpen)}</div>
           {this.state.dropDown[2].isOpen ? <div className='links' >
             <Link className='link' to={pageLinkes.pricing}>pricing</Link>
           </div> : null}
         </div>
-
         <div className='py-2 sidBarItem'>
-          <div onClick={() => { this.changeStatus('general', this.state.sideBarDisplay) }}>General Information {this.state.sideBarDisplay[3].char}</div>
-          {this.state.sideBarDisplay[3].Display ? <div className='links' >
-        <div className='sidBarItem'>
-          <div onClick={() => { this.dropDownIsOpen(3) }}>{this.arrowIcon(this.state.dropDown[3].isOpen)} General Information</div>
+          <div onClick={() => { this.dropDownIsOpen(3) }}>General Information {this.arrowIcon(this.state.dropDown[3].isOpen)}</div>
           {this.state.dropDown[3].isOpen ? <div className='links' >
             <Link className='link' to={pageLinkes.assumptions}>Assumptions</Link>
             <Link className='link' to={pageLinkes.diagram}>Attach diagram</Link>
