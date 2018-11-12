@@ -46,10 +46,10 @@ class CreateNewVersion extends Component {
 
                 {
                     this.state.editorNameStatus ? 
-                    <div>
-                        <input type="text" placeholder='Editor name' name='editorName' onChange={this.handleInput} />
-                        <button className={this.state.editorName === '' ? 'disableBtn' : 'saveBtn'} onClick={() => {
-                            this.setState({ editorNameStatus: false })
+                    <div className={'form-inline'}>
+                        <input type="text" placeholder='Editor name' name='editorName' onChange={this.handleInput} className={'form-control'} />
+                        <button className={this.state.editorName === '' ? 'btn btn-secondary disableBtn': 'btn btn-primary'} onClick={() => {
+                            this.setState({ editorNameStatus: false });
                             store.dispatch({ type: 'CREATE_NEW_VERSION', payload: this.state.editorName })
                         }}><Link to='/scoping' >Create New Version</Link></button>
                     </div>

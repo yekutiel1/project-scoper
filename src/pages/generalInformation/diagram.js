@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import store from '../../store/store';
 import RichEditor from '../../richEditor/richEditor.js'
 import '../../richEditor/richEditor.css';
-import { Button, Input,  Form} from 'reactstrap';
+import { Input,  Form} from 'reactstrap';
 
 class Diagram extends Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class Diagram extends Component {
             <div>
                 <Form inline>
                     <Input type="text" placeholder='Diagram link' onChange={(e) => this.setState({ link: e.target.value })} />
-                    <Button onClick={() => store.dispatch({ type: 'SAVE_DIAGRAM', payload: this.state.link })}>Save</Button>
+                    <button className={'btn btn-primary'} onClick={() => store.dispatch({ type: 'SAVE_DIAGRAM', payload: this.state.link })}>Save</button>
 
                 </Form>
                 <div className="card mt-3">
