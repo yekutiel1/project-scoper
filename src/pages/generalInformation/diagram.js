@@ -15,21 +15,23 @@ class Diagram extends Component {
     }
   }
   /* <button onClick={() => store.dispatch({ type: 'SAVE_DIAGRAM', payload: this.state.link })}>Save</button> */
-  
 
 
-  render() {
-    return (
-      <Form inline>
-        <Input type="text" placeholder='Diagram link' onChange={(e) => this.setState({ link: e.target.value })} />
-        <Button onClick={() => store.dispatch({ type: 'SAVE_DIAGRAM', payload: this.state.link })}>Save</Button>
-          <div className="card mt-3">
-              <RichEditor editMode={true} data={''} save={''}/>
-          </div>
-      
-      </Form>
+
+    render() {
+        return (
+            <div>
+                <Form inline>
+                    <Input type="text" placeholder='Diagram link' onChange={(e) => this.setState({ link: e.target.value })} />
+                    <Button onClick={() => store.dispatch({ type: 'SAVE_DIAGRAM', payload: this.state.link })}>Save</Button>
+
+                </Form>
+                <div className="card mt-3">
+                    <RichEditor editMode={true} data={''} save={''}/>
+                </div>
+            </div>
     );
-  }
+    }
 }
 
 
