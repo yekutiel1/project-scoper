@@ -122,7 +122,11 @@ class FormActorInput extends Component {
 
     saveBtn = (input, textarea, click) => {
         var inputEmpty = input === '' || textarea === '';
+<<<<<<< HEAD
         return <Button className={inputEmpty ? 'disableBtn' : 'saveBtn'} onClick={click}>Add</Button>
+=======
+        return <button className={inputEmpty ? 'disableBtn btn btn-secondary' : 'btn btn-primary'} onClick={click}>Add</button>
+>>>>>>> bc095a03def17c48faa5fcd42c2c6699b79de021
     }
 
     editBtn = () => {
@@ -135,11 +139,16 @@ class FormActorInput extends Component {
     render() {
         return (
             <div>
+<<<<<<< HEAD
                 <Input className='actorsInput' placeholder={`${this.props.name} name`} value={this.props.state.nameInput}
                     onChange={e => this.props.handleInput('nameInput', e.target.value)} />
                 < Input type="textarea" name="text" className='actorDescription' placeholder={`${this.props.name} descriprion`} value={this.props.state.descriprionInput}
+=======
+                <input className='form-control' placeholder={`${this.props.name} name`} value={this.props.state.nameInput}
+                    onChange={e => this.props.handleInput('nameInput', e.target.value)} />
+                <textarea className='form-control' placeholder={`${this.props.name} descriprion`} value={this.props.state.descriprionInput}
+>>>>>>> bc095a03def17c48faa5fcd42c2c6699b79de021
                     onChange={e => this.props.handleInput('descriprionInput', e.target.value)} />
-                <br />
                 {this.props.state.editMonde ? this.editBtn() : this.saveBtn(this.props.state.nameInput, this.props.state.descriprionInput, this.props.saveForm)}
             </div>
         )
