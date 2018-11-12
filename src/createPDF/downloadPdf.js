@@ -2,22 +2,47 @@ import React, { Component } from 'react';
 import jsPDF from 'jspdf';
 import data from '../overView.json';
 
-class DownloadPdf extends Component{
+class DownloadPdf extends Component {
 
-    createPdf = ()=>{
-       let pdf = new jsPDF('p', 'mm', 'a4');
+    createPdf = () => {
+   
 
-       data.overView.map((elm, index) => {
-        
-        pdf.text(10, 20 * (1+index), elm)
-    })
+        var doc = new jsPDF();
+        var elementHandler = {
+            '#ignorePDF': function (element, renderer) {
+                return true;
+            }
+        };
+        var source = document.getElementById('pdfPreview');
+        doc.fromHTML(
+            source,
+            15,
+            15,
+            {
+                'width': 180, 'elementHandlers': elementHandler
+            },
+            ()=>{
+                         doc.save("test.pdf");
+                     }
+        );
+        // source = document.getElementById('mainBlbBla');
+        // doc.fromHTML(
+        //     source,
+        //     10,
+        //     15,
+        //     {
+        //         'width': 180, 'elementHandlers': elementHandler
+        //     },
+        //     ()=>{
+        //         doc.save("test.pdf");
+        //     }
+        // );
 
-       pdf.save('add.pdf');
     }
 
-    render(){
-        return(
-            <div>
+    render() {
+        return (
+            <div >
                 <button onClick={this.createPdf}>DownloadPdf</button>
             </div>
         )
