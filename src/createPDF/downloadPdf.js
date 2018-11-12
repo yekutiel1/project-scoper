@@ -5,8 +5,6 @@ import data from '../overView.json';
 class DownloadPdf extends Component {
 
     createPdf = () => {
-   
-
         var doc = new jsPDF();
         var elementHandler = {
             '#ignorePDF': function (element, renderer) {
@@ -14,29 +12,21 @@ class DownloadPdf extends Component {
             }
         };
         var source = document.getElementById('pdfPreview');
+        console.log(source);
+        
         doc.fromHTML(
             source,
             15,
             15,
             {
-                'width': 180, 'elementHandlers': elementHandler
+                'width': 180, 
+                'elementHandlers': elementHandler
             },
-            ()=>{
-                         doc.save("test.pdf");
-                     }
+            () => {
+                doc.save("test.pdf");
+            }
         );
-        // source = document.getElementById('mainBlbBla');
-        // doc.fromHTML(
-        //     source,
-        //     10,
-        //     15,
-        //     {
-        //         'width': 180, 'elementHandlers': elementHandler
-        //     },
-        //     ()=>{
-        //         doc.save("test.pdf");
-        //     }
-        // );
+   
 
     }
 

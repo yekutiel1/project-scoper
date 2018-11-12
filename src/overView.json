@@ -59,7 +59,73 @@
             "key": "checkBox6",
             "label": "Check Box 6"
         }
+    ],
+    
+    "Terms and Conditions": [
+        {
+            "name": "General",
+            "arr": [
+                "The proposal, including the timetable mentioned above, may be amended by mutual written consent of the parties."
+            ]
+        },
+        {
+            "name": "Intellectual Property",
+            "arr": [
+                "Immediately Following the full payment by to Ravtech All source code, the app “SMart-M Mobile”, the deliverables and any other work developed, written, made, conceived or reduced to practice in the course of or arising out of the services performed under this Agreement and all associated intellectual property relating to said source code, deliverables or work, solely remains and will be the sole property of customer.",
+                "Any costs incurred by Ravtech for third party code license required to complete the quoted systems are the responsibility of the customer and will be solely borne by the client. Third Party codes will not be assimilated in the deliverables unless a non-exclusive, royalty- free, irrevocable, perpetual, worldwide, transferable and sub licensable license will be provided to the Customer for the use of such code. Any such third party code license will be attached to the existing code license for the quoted systems."
+            ]
+        },
+        {
+            "name": "Errors and Liabilities ",
+            "arr": [
+                "RavTech will pursue due care to ensure systems create by RavTech are free of errors",
+                "RavTech will correct any errors made by RavTech staff in the undertaking of the quoted systems before the systems has been signed off as completed, such completion will take place only after the Customer will approve the delivered systems.",
+                "RavTech does not accept responsibility for losses or damage arising from errors within any systems other than Ravtech’s responsibility to correct immediately any error found in the system.",
+                "RavTech does not accept responsibility for errors, damages, losses or additional costs that relate to third party products that RavTech may require completing the quoted systems."
+            ]
+        },
+        {
+            "name": "Completion of Work / Termination",
+            "arr": [
+                "Client will cooperate with Ravtech and will respond to Ravtech enquiries at a reasonable time following Ravteck’s   enquiries",
+                "RavTech will complete all work within the estimated time frames set forth above. In case there will be a delay in client’s response to Ravtech’s enquiries, Ravetech may delay its timeframes on a day per day basis.",
+                "The final product delivered will be referenced back to the customers specifications in any case where the client feels the final product does not meet their requested requirements, the customers specifications will act as the guide to confirm that the original requests have been met.",
+                "Once the final product has been delivered, the customer acceptance phase will automatically start and continue for a period of 3 weeks. During this phase customer shall be entitled to submit to Ravtech a list of issues or bugs to be fixed. Once all defects that were raised during the product acceptance phase have been fixed to the Customer’s full satisfaction, the project in its initial scope will be deemed finished by all parties.",
+                "At any time during the services and for any cause the Customer may terminate the services upon advance 14 days written notice to Ravtech. In the event of termination by the Customer, the Customer shall pay Ravtech only for the services delivered to it by Ractech upon such termination.",
+                "Both parties undertakes to keep confidential any and all information, documents, related to the Customer, Ravrech  it’s business and/or to the systems developed under this Agreement"
+            ]
+        },
+        {
+            "name": "Hosting Environment",
+            "arr": [
+                "Hosting on RavTech server will be exclusive to development and trial phase. When developing successive versions of the systems, external hosting will have to be used in order to provide customer access to the products. Any costs incurred by Ravtech for such hosted environment required to complete the quoted systems are the responsibility of the Customer and will be solely borne by the client.",
+                "Server side systems will be fully scalable – to ease migration to production specific cloud solution."
+            ]
+        },
+        {
+            "name": "RavTech recognizes the following severity levels for Support Cases:",
+            "arr": [
+                "Severity 1 - Critical: Critical production issue affecting all users, including system unavailability, data integrity issues, or bugs having a significant impact. No workaround available.  This severity level requires maximum effort of support until an emergency fix or bypass is developed for Customer.  Critical situations may require Customer and RavTech personnel to be at their respective work locations or available on an around-the-clock basis.",
+                "Severity 2 - Urgent: Major functionality is impacted or significant performance degradation is experienced. Issue is persistent and affects many users and/or major functionality. No reasonable workaround available. Start fixing is 4 days from customer notice.",
+                "Severity 3 - High: System performance issue or bug affecting some but not all users. Start fixing is 1 week from customer notice.",
+                "Severity 4 - Medium: Inquiry regarding a routine technical issue; bug affecting a small number of users or insignificant business impact. Also includes requests such as requests for feature activation or a data export. Start fixing is 2 weeks from customer notice.",
+                "Severity 5 - Low: Inquiry regarding a routine question; information requested on application capabilities, navigation, installation or configuration. (Default level for most requests.) - Start fixing is 1 month from customer notice."
+            ]
+        },
+        {
+            "name": "Order Confirmation",
+            "arr": [
+                "Company Name",
+                "Reg. Number",
+                "Address",
+                "First Name",
+                "Surname",
+                "Phone",
+                "Signature",
+                "Stamp",
+                "Date"
+            ]
+        }
     ]
 
-   
 }

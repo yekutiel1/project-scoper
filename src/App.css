@@ -61,7 +61,7 @@
     width: 90%;
 }
 
-.maincContainer{
+.mainContainer{
     margin: 0px;
     padding: 15px;
     /* background:url(https://wallpaper-house.com/data/out/7/wallpaper2you_167350.jpg); */
@@ -107,15 +107,13 @@ img{
     padding: 5px;
     font-weight: bold;
     color: rgb(199, 209, 219);
+    background-color: #1f91d3;
     /* font-size: 25px; */
     /* font-weight: bold; */
 }
-.articleLeft{
-    /* max-width: 100px; */
-}
 
 .sideBar{
-    /* background: #8deb7048; */
+     /*background: #8deb7048;*/
 }
 .sidBarItem{
     width: 100%;
@@ -147,12 +145,15 @@ img{
 .sidBarItem .link:hover{
    background: #cfd6da5e;
 }
+.sidBarItem>div>svg {
+    float: right;
+}
 
 
 .articleRight{
-    border-left: solid black 1px;
-    text-align: center;
-    height: 700px;
+    /*border-left: solid black 1px;*/
+    /*text-align: center;*/
+    /*height: 700px;*/
     overflow: auto;
 }
 .mainScreen{
@@ -162,8 +163,12 @@ img{
 }
 
 .footer{
-    border-top: 5px rgb(224, 221, 221) solid;
-    height: 80px;
+    box-shadow: 0 -3px 10px 0 rgba(0,0,0,.0785);
+    height: 60px;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    background-color: white;
 }
 
 
@@ -177,7 +182,6 @@ button{
     position: relative;
     border-radius:5px;
     color: white;
-    height: 35px;
     width: 30%;
     margin: 20px;
     max-width: 250px;
@@ -203,8 +207,8 @@ button:hover{
 }
 .disableBtn{
     pointer-events: none;
-    background:rgb(212, 217, 224);
-    margin: 20px;
+    /*background:rgb(212, 217, 224);*/
+    /*margin: 20px;*/
 }
 
 .editBtn{
@@ -217,27 +221,15 @@ button:hover{
     margin: 20px;
 }
 .cancelBtn{
-    background:rgb(250, 123, 123);
-    margin: 20px;
+    /*background:rgb(250, 123, 123);*/
+    /*margin: 20px;*/
 }
 
 /* ////////////////////////////////////// */
 /* form */
 
 .formContainer{
-    position: relative;
-    padding: 10px;
     min-height: 400px;
-    width: 60%;
-    margin: auto;
-    /* border-left: 2px solid white;
-    border-right: 2px solid gray;
-    border-top: 2px solid gray;
-    border-bottom: 2px solid white; */
-    background: rgba(143, 205, 241, 0.418);
-    /* opacity: 0.3; */
-    font-size: 15px;
-    font-family: 'Source Sans Pro', sans-serif;;
 }
 
 
@@ -538,5 +530,10 @@ button:hover{
 }
 
 
- 
+button>a {
+    color: white;
+}
+
+
+
 
