@@ -17,11 +17,16 @@ var state = {
     subjects: [],
 
     pricing: [],
+    payment: '',
     grandTotalPrice: null,
     discount: '',
     additionalPricing: '',
 
-    diagram: ''
+    diagramLink: '',
+    diagramDescription: '',
+
+    specificationLink: '',
+    specificationDescription: '',
 }
 
 var reduser = function (state, action) {
@@ -60,9 +65,19 @@ var reduser = function (state, action) {
             newState.subjects = action.payload.subjects;
 
             newState.pricing = action.payload.pricing;
+            newState.payment = action.payload.payment;
+
             newState.grandTotalPrice = action.payload.grandTotalPrice;
             newState.discount = action.payload.discount;
             newState.additionalPricing = action.payload.additionalPricing;
+
+            newState.diagramLink = action.payload.diagramLink;
+            newState.diagramDescription = action.payload.diagramDescription;
+
+            newState.specificationLink = action.payload.specificationLink;
+            newState.specificationDescription = action.payload.specificationDescription;
+          
+  
             console.log(action.payload);
             
             return newState;
@@ -156,7 +171,29 @@ var reduser = function (state, action) {
 
         case 'SAVE_ADDITIONAL_PRICING':
             url = `${urlLinks.saveAdditionalPricing}/${newState.currentProject}`;
-            saveData(url, {additionalPricing: action.payload}, '')
+            saveData(url, {additionalPricing: action.payload}, '');
+            newState.additionalPricing = action.payload;
+            return newState;
+            break;
+
+        case 'SAVE_PAYMENT':
+            url = `${urlLinks.savePayment}/${newState.currentProject}`;
+            saveData(url, {payment: action.payload}, '');
+            newState.payment = action.payload;
+            return newState;
+            break;
+
+        case 'SAVE_SPECIFICATION_LINK':
+            url = `${urlLinks.saveSpecificationLink}/${newState.currentProject}`;
+            saveData(url, {specification: action.payload}, '');
+            newState.specificationLink = action.payload;
+            return newState;
+            break;
+
+        case 'SAVE_SPECIFICATION_DESCRIPTION':
+            url = `${urlLinks.saveSpecificationDescription}/${newState.currentProject}`;
+            saveData(url, {specification: action.payload}, '');
+            newState.specificationDescription = action.payload;
             return newState;
             break;
 
@@ -194,9 +231,24 @@ var reduser = function (state, action) {
 
         case "SAVE_ASSUMPTION":
             url = `${urlLinks.saveAssumption}/${newState.currentProject}`;
-            saveData(url, { assumption: action.payload }, 'GET_ALL_DATA')
+            saveData(url, { assumption: action.payload }, 'GET_ALL_DATA');
             return newState;
             break;
+
+        case "SAVE_DIAGRAM_LINK":
+            url = `${urlLinks.saveDiagramLink}/${newState.currentProject}`;
+            console.log(url, {diagram: action.payload});
+            
+            saveData(url,  {diagram: action.payload}, 'GET_ALL_DATA');
+            return newState;
+            break;
+
+        case "SAVE_DIAGRAM_DESCRIPTION":
+            url = `${urlLinks.saveDiagramDescription}/${newState.currentProject}`;
+            saveData(url,  {diagram: action.payload}, 'GET_ALL_DATA');
+            return newState;
+            break;
+
 
         case "EDIT_ASSUMPTION":
             url = `${urlLinks.editAssumption}/${newState.currentProject}/${action.payload.index}`;
@@ -254,10 +306,7 @@ var reduser = function (state, action) {
             return newState;
             break;
 
-        case "SAVE_DIAGRAM":
-            newState.diagram = action.payload;
-            return newState;
-            break;
+       
 
 
 

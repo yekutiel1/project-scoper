@@ -4,15 +4,15 @@ import { connect } from 'react-redux'
 import RichEditor from '../../richEditor/richEditor.js'
 import '../../richEditor/richEditor.css';
 
-class ProjectDescription extends Component {
+class Payment extends Component {
 
   render() {
     return (
       <div className='formContainer description card' >
-          <RichEditor editMode={true} data={this.props.projectDescription} placeholder='Descibe the project...' save={'PROJECT_DESCREPTION'}/>
+          <RichEditor editMode={true} data={this.props.payment} save={'SAVE_PAYMENT'} placeholder="Add payment"/>
       </div>
     );
 
   }
 }
-export default connect(store => store)(ProjectDescription);
+export default connect(store => store)(Payment);

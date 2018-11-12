@@ -10,6 +10,8 @@ export const pageLinkes = {
     userStory: '/scoping/user-story',
 
     pricing: '/scoping/pricing',
+    payment: '/scoping/payment',
+    specification: '/scoping/specification',
     
     assumptions: '/scoping/assumptions',
     diagram: '/scoping/diagram',
@@ -34,6 +36,12 @@ export const urlLinks = {
     saveDiscount: mainURL + '/pricing/discount',
     saveAdditionalPricing: mainURL + '/pricing/additionalPricing',
     saveComment: mainURL + '/pricing/comment',
+    saveDiagramLink: mainURL + '/general/diagramLink',
+    saveDiagramDescription: mainURL + '/general/diagramDescription',
+    savePayment: mainURL + '/pricing/payment',
+
+    saveSpecificationLink: mainURL + '/general/specification/specificationLink',
+    saveSpecificationDescription: mainURL + '/general/specification/specificationDescription',
 
     
     editActor: mainURL + '/actor',
