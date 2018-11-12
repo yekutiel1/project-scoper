@@ -16,11 +16,18 @@ import ProjectDescription from './pages/scoping/projectDescription.js';
 import Form from "./pages/scoping/Form.js";
 import UserStories from './pages/scoping/AddUserStory.js';
 
+import Pricing from './pages/pricing/pricing.js';
+import Payment from './pages/pricing/payment.js';
+
 import Assumptions from './pages/generalInformation/assumptions.js'
 import Diagram from './pages/generalInformation/diagram.js'
+import Specification from './pages/generalInformation/specification.js'
 
-import Pricing from './pages/pricing/pricing.js';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 
+library.add(faChevronDown, faChevronUp);
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -42,34 +49,34 @@ class NavBar extends Component {
     };
   }
 
- 
+
 /**
- * Change the status of drop-down unit 
-* @param {Number} index 
+ * Change the status of drop-down unit
+* @param {Number} index
 */
   dropDownIsOpen = (index) => {
     var newState = this.state.dropDown.slice();
     newState[index].isOpen = !newState[index].isOpen;
     this.setState({ dropDown: newState })
   }
-  
-   
+
+
 /**
- * Changing the direction of the arrow if clicked 
-* @param {Boolian} bool 
+ * Changing the direction of the arrow if clicked
+* @param {Boolian} bool
 */
     arrowIcon = (bool) => {
-      return bool ? <FontAwesomeIcon icon={faChevronDown}/> : <FontAwesomeIcon icon={faChevronUp}/>
+      return bool ? <FontAwesomeIcon icon={faChevronUp}/> : <FontAwesomeIcon icon={faChevronDown}/>
     }
-  
-  
-  
+
+
+
   render() {
     return (
       <div className='sideBar'>
-        <div className='sidBarItem'>
+        <div className='py-2 sidBarItem'>
 
-          <div onClick={() => { this.dropDownIsOpen(0) }}>{this.arrowIcon(this.state.dropDown[0].isOpen)} Managment Tools</div>
+          <div onClick={() => { this.dropDownIsOpen(0) }}>Managment Tools{this.arrowIcon(this.state.dropDown[0].isOpen)}</div>
           {this.state.dropDown[0].isOpen ? <div className='links' >
             <Link className='link' to={pageLinkes.selectProject} >Select project</Link>
             <Link className='link' to={pageLinkes.newVersion} >New version</Link>
@@ -78,8 +85,8 @@ class NavBar extends Component {
           </div> : null}
         </div>
 
-        <div className='sidBarItem'>
-          <div onClick={() => { this.dropDownIsOpen(1) }}>{this.arrowIcon(this.state.dropDown[1].isOpen)} Scoping</div>
+        <div className='py-2 sidBarItem'>
+          <div onClick={() => { this.dropDownIsOpen(1) }}>Scoping {this.arrowIcon(this.state.dropDown[1].isOpen)}</div>
           {this.state.dropDown[1].isOpen ? <div className='links' >
             <Link className='link' to={pageLinkes.projectDescreption} >Project Discraption</Link>
             <Link className='link' to={pageLinkes.actors}>Actors</Link>
@@ -87,19 +94,19 @@ class NavBar extends Component {
             <Link className='link' to={pageLinkes.userStory}>User Story</Link>
           </div> : null}
         </div>
-
-        <div className='sidBarItem'>
-          <div onClick={() => { this.dropDownIsOpen(2) }}>{this.arrowIcon(this.state.dropDown[2].isOpen)} Pricing</div>
+        <div className='py-2 sidBarItem'>
+          <div onClick={() => { this.dropDownIsOpen(2) }}>Pricing {this.arrowIcon(this.state.dropDown[2].isOpen)}</div>
           {this.state.dropDown[2].isOpen ? <div className='links' >
-            <Link className='link' to={pageLinkes.pricing}>pricing</Link>
+            <Link className='link' to={pageLinkes.pricing}>Pricing</Link>
+            <Link className='link' to={pageLinkes.payment}>Payment</Link>
           </div> : null}
         </div>
-
-        <div className='sidBarItem'>
-          <div onClick={() => { this.dropDownIsOpen(3) }}>{this.arrowIcon(this.state.dropDown[3].isOpen)} General Information</div>
+        <div className='py-2 sidBarItem'>
+          <div onClick={() => { this.dropDownIsOpen(3) }}>General Information {this.arrowIcon(this.state.dropDown[3].isOpen)}</div>
           {this.state.dropDown[3].isOpen ? <div className='links' >
             <Link className='link' to={pageLinkes.assumptions}>Assumptions</Link>
             <Link className='link' to={pageLinkes.diagram}>Attach diagram</Link>
+            <Link className='link' to={pageLinkes.specification}>Specification (UX)</Link>
           </div> : null}
         </div>
 
@@ -123,9 +130,13 @@ class MainScreen extends Component {
         <Route path={pageLinkes.actors} component={() => <Form name={'Actor'} dispatchType={'ACTOR'} enableDelete={true} />} />
         <Route path={pageLinkes.subjects} component={() => <Form name={'Subject'} dispatchType={'SUBJECT'} enableDelete={false} />} />
         <Route path={pageLinkes.userStory} component={UserStories} />
+
+        <Route path={pageLinkes.pricing} component={Pricing} />
+        <Route path={pageLinkes.payment} component={Payment} />
+
         <Route path={pageLinkes.assumptions} component={Assumptions} />
         <Route path={pageLinkes.diagram} component={Diagram} />
-        <Route path={pageLinkes.pricing} component={Pricing} />
+        <Route path={pageLinkes.specification} component={Specification} />
 
       </div>
     );

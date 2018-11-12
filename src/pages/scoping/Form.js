@@ -122,7 +122,7 @@ class FormActorInput extends Component {
 
     saveBtn = (input, textarea, click) => {
         var inputEmpty = input === '' || textarea === '';
-        return <button className={inputEmpty ? 'disableBtn' : 'saveBtn'} onClick={click}>Add</button>
+        return <button className={inputEmpty ? 'disableBtn btn btn-secondary' : 'btn btn-primary'} onClick={click}>Add</button>
     }
 
     editBtn = () => {
@@ -135,11 +135,10 @@ class FormActorInput extends Component {
     render() {
         return (
             <div>
-                <input className='actorsInput' placeholder={`${this.props.name} name`} value={this.props.state.nameInput}
+                <input className='form-control' placeholder={`${this.props.name} name`} value={this.props.state.nameInput}
                     onChange={e => this.props.handleInput('nameInput', e.target.value)} />
-                <textarea className='actorDescription' placeholder={`${this.props.name} descriprion`} value={this.props.state.descriprionInput}
+                <textarea className='form-control' placeholder={`${this.props.name} descriprion`} value={this.props.state.descriprionInput}
                     onChange={e => this.props.handleInput('descriprionInput', e.target.value)} />
-                <br />
                 {this.props.state.editMonde ? this.editBtn() : this.saveBtn(this.props.state.nameInput, this.props.state.descriprionInput, this.props.saveForm)}
             </div>
         )
