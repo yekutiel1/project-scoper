@@ -71,7 +71,7 @@ class NavBar extends Component {
   render() {
     return (
       <div className='sideBar'>
-        <div className='sidBarItem'>
+        <div className='py-2 sidBarItem'>
             <div onClick={() => { this.changeStatus('managment', this.state.sideBarDisplay) }}>Managment Tools {this.state.sideBarDisplay[0].char}
             </div>
           {this.state.sideBarDisplay[0].Display ? <div className='links' >
@@ -82,7 +82,7 @@ class NavBar extends Component {
           </div> : null}
         </div>
 
-        <div className='sidBarItem'>
+        <div className='py-2 sidBarItem'>
           <div onClick={() => { this.changeStatus('scoping', this.state.sideBarDisplay) }}>Scoping {this.state.sideBarDisplay[1].char}</div>
           {this.state.sideBarDisplay[1].Display ? <div className='links' >
             <Link className='link' to={pageLinkes.projectDescreption} >Project Discraption</Link>
@@ -92,14 +92,14 @@ class NavBar extends Component {
           </div> : null}
         </div>
 
-        <div className='sidBarItem'>
+        <div className='py-2 sidBarItem'>
           <div onClick={() => { this.changeStatus('pricing', this.state.sideBarDisplay) }}>Pricing {this.state.sideBarDisplay[2].char}</div>
           {this.state.sideBarDisplay[2].Display ? <div className='links' >
             <Link className='link' to={pageLinkes.pricing}>pricing</Link>
           </div> : null}
         </div>
 
-        <div className='sidBarItem'>
+        <div className='py-2 sidBarItem'>
           <div onClick={() => { this.changeStatus('general', this.state.sideBarDisplay) }}>General Information {this.state.sideBarDisplay[3].char}</div>
           {this.state.sideBarDisplay[3].Display ? <div className='links' >
             <Link className='link' to={pageLinkes.assumptions}>Assumptions</Link>
