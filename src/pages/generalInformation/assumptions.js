@@ -5,7 +5,7 @@ import store from '../../store/store.js';
 import axios from 'axios';
 import { CustomInput, Form, FormGroup, Label } from 'reactstrap';
 import data from '.././../overView.json'
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input} from 'reactstrap';
 
 
 
@@ -137,10 +137,10 @@ class AddAssumptions extends Component {
   handleBtn = () => {
 
     if (this.state.editMonde === false) {
-      return <button className='saveBtn' onClick={() => {
+      return <Button color="info" className='saveBtn' onClick={() => {
         this.props.sendToDB('add', this.state.inputValue);
         this.setState({ inputValue: "" })
-      }}>Add</button>
+      }}>Add</Button>
     } else {
       return <button className='editBtn'
         onClick={() => {
@@ -189,16 +189,18 @@ class AddAssumptions extends Component {
             )
           })}
           <div className='formAssumptionsContainer'>
-            <textarea
+
+          <Input type="textarea" name="text" value={this.state.inputValue} onChange={this.handleTextChange} placeholder='Add Assumption' />
+            {/* <textarea
               style={{ width: "100%" }}
               //className='actorDescription'
               value={this.state.inputValue}
               onChange={this.handleTextChange}
               placeholder='Add Assumption'>
-            </textarea>
+            </textarea> */}
             <br />
             {this.handleBtn()}
-            <button className='saveBtn' onClick={() => { this.props.sendToDB('general', this.props.state.generalAssumptionsArr) }}>Save</button>
+            <Button color="warning" className='saveBtn' onClick={() => { this.props.sendToDB('general', this.props.state.generalAssumptionsArr) }}>Save</Button>
           </div>
         </div>
       </div>

@@ -19,7 +19,7 @@ class RichEditor extends Component {
     }
 
     const rawJsText = this.props.data;
-    
+
     if (rawJsText === '') {
       this.state = { editorState: EditorState.createEmpty() };
     } else {
@@ -118,7 +118,6 @@ class RichEditor extends Component {
             ref="editor"
             spellCheck={true}
             placeholder="Describe the project..."
-
           />
         </div>
         {/* {this.props.editMode ? 
