@@ -295,7 +295,7 @@ button:hover{
         box-shadow:         0px 7px 11px 0px rgba(50, 50, 50, 0.45);
     }
     
-    .showActors{
+     .showActors{
         background: rgba(187, 223, 243, 0.93);
         border-left: 2px solid white;
         border-right: 2px solid gray ;
@@ -308,8 +308,8 @@ button:hover{
         border-radius:10px;
         overflow: auto;
         
-    }
-    
+    } 
+     
     #actorView{
         margin: auto;
         width: 90%;

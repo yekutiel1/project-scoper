@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import '../../App.css';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input } from 'reactstrap';
 
 /**
  * The Form class creats the 'Actors' and the 'requirment specifications' forms:
@@ -122,22 +122,22 @@ class FormActorInput extends Component {
 
     saveBtn = (input, textarea, click) => {
         var inputEmpty = input === '' || textarea === '';
-        return <button className={inputEmpty ? 'disableBtn' : 'saveBtn'} onClick={click}>Add</button>
+        return <Button className={inputEmpty ? 'disableBtn' : 'saveBtn'} onClick={click}>Add</Button>
     }
 
     editBtn = () => {
         return <div>
-            <button className='cancelBtn' onClick={this.props.cancelEditActor}>Cancel</button>
-            <button className='editBtn' onClick={this.props.editActor}>Update</button>
+            <Button className='cancelBtn' onClick={this.props.cancelEditActor}>Cancel</Button>
+            <Button className='editBtn' onClick={this.props.editActor}>Update</Button>
         </div>
     }
 
     render() {
         return (
             <div>
-                <input className='actorsInput' placeholder={`${this.props.name} name`} value={this.props.state.nameInput}
+                <Input className='actorsInput' placeholder={`${this.props.name} name`} value={this.props.state.nameInput}
                     onChange={e => this.props.handleInput('nameInput', e.target.value)} />
-                <textarea className='actorDescription' placeholder={`${this.props.name} descriprion`} value={this.props.state.descriprionInput}
+                < Input type="textarea" name="text" className='actorDescription' placeholder={`${this.props.name} descriprion`} value={this.props.state.descriprionInput}
                     onChange={e => this.props.handleInput('descriprionInput', e.target.value)} />
                 <br />
                 {this.props.state.editMonde ? this.editBtn() : this.saveBtn(this.props.state.nameInput, this.props.state.descriprionInput, this.props.saveForm)}
