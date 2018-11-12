@@ -29,13 +29,17 @@ class CreateNewVersion extends Component {
                 {
                     this.state.rejectionStatus ?
                      <div>
-                        <textarea placeholder='Rejection explenation' name='rejectionExplenation' onChange={this.handleInput}></textarea>
-                        <br />
-                        <Link to='/scoping' ><button className='cancelBtn'>Cancel</button></Link>
-                        <button className={this.state.rejectionExplenation === '' ? 'disableBtn' : 'saveBtn'} onClick={() => {
-                            this.setState({ rejectionStatus: false, editorNameStatus: true })
-                            store.dispatch({ type: 'REJECTION_EXPLENATION', payload: this.state.rejectionExplenation })
-                        }}>Save rejection explenation</button>
+                        <textarea placeholder='Rejection explenation' name='rejectionExplenation' className={"form-control"} rows="3" onChange={this.handleInput}></textarea>
+                         <div className={"mt-3 mx-0"}>
+
+                             <Link to='/scoping' className='btn btn-danger cancelBtn col-4 mr-1'>
+                                 Cancel
+                             </Link>
+                             <button className={this.state.rejectionExplenation === '' ? 'disableBtn btn btn-secondary col-4 ml-1' : 'btn btn-primary col-4 ml-1'} onClick={() => {
+                                 this.setState({ rejectionStatus: false, editorNameStatus: true })
+                                 store.dispatch({ type: 'REJECTION_EXPLENATION', payload: this.state.rejectionExplenation })
+                             }}>Save rejection explenation</button>
+                         </div>
                     </div>
                         : null
                 }

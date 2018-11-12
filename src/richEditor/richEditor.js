@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 import store from '../store/store';
 import { Editor, EditorState, ContentState, RichUtils, convertFromRaw, convertToRaw } from 'draft-js';
 import './richEditor.css';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import { Button } from 'reactstrap';
+
 
 
 
@@ -17,7 +19,7 @@ class RichEditor extends Component {
     }
 
     const rawJsText = this.props.data;
-    
+
     if (rawJsText === '') {
       this.state = { editorState: EditorState.createEmpty() };
     } else {
@@ -119,7 +121,7 @@ class RichEditor extends Component {
 
           />
         </div>
-        {/* {this.props.editMode ? 
+        {/* {this.props.editMode ?
         <button className="saveBtn" onClick={() => store.dispatch({ type: this.props.save, payload: JSON.stringify(raw) })}>Save</button>
         : null } */}
       </div>
@@ -154,7 +156,7 @@ class StyleButton extends React.Component {
   }
 
   render() {
-    let className = 'RichEditor-styleButton';
+    let className = 'RichEditor-styleButton btn btn-outline-dark btn-sm mx-1';
     if (this.props.active) {
       className += ' RichEditor-activeButton';
     }

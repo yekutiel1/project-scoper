@@ -22,6 +22,12 @@ import Diagram from './pages/generalInformation/diagram.js'
 import Pricing from './pages/pricing/pricing.js';
 
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faChevronDown, faChevronUp);
+
 class NavBar extends Component {
   constructor(props) {
     super(props);
@@ -36,34 +42,34 @@ class NavBar extends Component {
     };
   }
 
- 
+
 /**
- * Change the status of drop-down unit 
-* @param {Number} index 
+ * Change the status of drop-down unit
+* @param {Number} index
 */
   dropDownIsOpen = (index) => {
     var newState = this.state.dropDown.slice();
     newState[index].isOpen = !newState[index].isOpen;
     this.setState({ dropDown: newState })
   }
-  
-   
+
+
 /**
- * Changing the direction of the arrow if clicked 
-* @param {Boolian} bool 
+ * Changing the direction of the arrow if clicked
+* @param {Boolian} bool
 */
     arrowIcon = (bool) => {
-      return bool ? "⏷" : "⏵"
+      return bool ? <FontAwesomeIcon icon={faChevronUp}/> : <FontAwesomeIcon icon={faChevronDown}/>
     }
-  
-  
-  
+
+
+
   render() {
     return (
       <div className='sideBar'>
-        <div className='sidBarItem'>
+        <div className='py-2 sidBarItem'>
 
-          <div onClick={() => { this.dropDownIsOpen(0) }}>{this.arrowIcon(this.state.dropDown[0].isOpen)} Managment Tools</div>
+          <div onClick={() => { this.dropDownIsOpen(0) }}>Managment Tools{this.arrowIcon(this.state.dropDown[0].isOpen)}</div>
           {this.state.dropDown[0].isOpen ? <div className='links' >
             <Link className='link' to={pageLinkes.selectProject} >Select project</Link>
             <Link className='link' to={pageLinkes.newVersion} >New version</Link>
@@ -72,8 +78,8 @@ class NavBar extends Component {
           </div> : null}
         </div>
 
-        <div className='sidBarItem'>
-          <div onClick={() => { this.dropDownIsOpen(1) }}>{this.arrowIcon(this.state.dropDown[1].isOpen)} Scoping</div>
+        <div className='py-2 sidBarItem'>
+          <div onClick={() => { this.dropDownIsOpen(1) }}>Scoping {this.arrowIcon(this.state.dropDown[1].isOpen)}</div>
           {this.state.dropDown[1].isOpen ? <div className='links' >
             <Link className='link' to={pageLinkes.projectDescreption} >Project Discraption</Link>
             <Link className='link' to={pageLinkes.actors}>Actors</Link>
@@ -81,16 +87,14 @@ class NavBar extends Component {
             <Link className='link' to={pageLinkes.userStory}>User Story</Link>
           </div> : null}
         </div>
-
-        <div className='sidBarItem'>
-          <div onClick={() => { this.dropDownIsOpen(2) }}>{this.arrowIcon(this.state.dropDown[2].isOpen)} Pricing</div>
+        <div className='py-2 sidBarItem'>
+          <div onClick={() => { this.dropDownIsOpen(2) }}>Pricing {this.arrowIcon(this.state.dropDown[2].isOpen)}</div>
           {this.state.dropDown[2].isOpen ? <div className='links' >
             <Link className='link' to={pageLinkes.pricing}>pricing</Link>
           </div> : null}
         </div>
-
-        <div className='sidBarItem'>
-          <div onClick={() => { this.dropDownIsOpen(3) }}>{this.arrowIcon(this.state.dropDown[3].isOpen)} General Information</div>
+        <div className='py-2 sidBarItem'>
+          <div onClick={() => { this.dropDownIsOpen(3) }}>General Information {this.arrowIcon(this.state.dropDown[3].isOpen)}</div>
           {this.state.dropDown[3].isOpen ? <div className='links' >
             <Link className='link' to={pageLinkes.assumptions}>Assumptions</Link>
             <Link className='link' to={pageLinkes.diagram}>Attach diagram</Link>
@@ -136,13 +140,21 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter >
-        <div className='maincContainer'>
-          <Row className='header'>SCOPER</Row>
-          <Row >
-            <Col sm="3" md='2' className='articleLeft'><NavBar /></Col>
-            <Col sm="9" md='10' className='articleRight'><MainScreen /></Col>
-          </Row>
-          <Row className='footer'><footer>✎ created by COD Team ©</footer></Row>
+        <div className=''>
+            <div className='header'>
+                <header className={'container py-2'}>SCOPER</header>
+            </div>
+                <div className={'container'}>
+                    <Row >
+
+                    <Col className={"col-3"}><NavBar /></Col>
+                    <Col className=' col-9 articleRight border-dark border-left text-xl-center'><MainScreen /></Col>
+                    </Row>
+
+                </div>
+            <div className='footer'>
+                <footer className={'container py-3'}>✎ created by COD Team ©</footer>
+            </div>
         </div>
       </BrowserRouter>
     );

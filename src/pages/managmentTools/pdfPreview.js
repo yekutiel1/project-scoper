@@ -8,7 +8,7 @@ import DevelopmentTasks from './developmentTasksTable.js'
 
 
 import axios from 'axios';
-import fileDownload from 'react-file-download';
+// import fileDownload from 'react-file-download';
 
 
 
@@ -26,7 +26,7 @@ class PDFpreview extends Component {
     axios.get(url)
     .then(function(res) {
         console.log(res);
-        fileDownload(res.data, "profilepic.pdf"); 
+        // fileDownload(res.data, "profilepic.pdf");
         {/* store.dispatch({type: type, payload: res.data}); */}
     });
     }}>Download</button>

@@ -8,8 +8,8 @@ class ProjectDescription extends Component {
 
   render() {
     return (
-      <div className='formContainer description' >
-          <RichEditor readOnly={false} data={this.props.projectDescription} save={'PROJECT_DESCREPTION'}/>
+      <div className='formContainer description card' >
+          <RichEditor editMode={true} data={this.props.projectDescription} save={'PROJECT_DESCREPTION'}/>
       </div>
     );
 
