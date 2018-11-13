@@ -30,6 +30,7 @@ class CreateNewVersion extends Component {
                     this.state.rejectionStatus ?
                      <div>
                         <textarea placeholder='Rejection explenation' name='rejectionExplenation' className={"form-control"} rows="3" onChange={this.handleInput}></textarea>
+
                          <div className={"mt-3 mx-0"}>
 
                              <Link to='/scoping' className='btn btn-danger cancelBtn col-4 mr-1'>
