@@ -41,17 +41,18 @@
       -moz-box-shadow:    0px 7px 11px 0px rgba(50, 50, 50, 0.45);
       box-shadow:         0px 7px 11px 0px rgba(50, 50, 50, 0.45);
 }
+
 .assumptionContainer{
     background: white;
-    border-top: 2px solid gray;
+    /* border-top: 2px solid gray; */
     border-radius: 10px;
     width: 80%;
     margin: auto;
     padding: 10%;
     font-size: 15px;
     text-align: left;
-    
 }
+
 .assumption{
     background: #000;
     color: white;
