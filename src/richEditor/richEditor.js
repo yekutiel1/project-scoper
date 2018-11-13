@@ -4,6 +4,7 @@ import { Editor, EditorState, ContentState, RichUtils, convertFromRaw, convertTo
 import './richEditor.css';
 import { connect } from 'react-redux';
 import { Button } from 'reactstrap';
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faListUl, faListOl, faItalic, faBold, faUnderline} from '@fortawesome/free-solid-svg-icons'
@@ -116,6 +117,7 @@ class RichEditor extends Component {
             onTab={this.onTab}
             ref="editor"
             spellCheck={true}
+
            placeholder={this.props.placeholder}
 
           />

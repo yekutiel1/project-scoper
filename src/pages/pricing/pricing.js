@@ -5,6 +5,7 @@ import store from '../../store/store';
 import RichEditor from '../../richEditor/richEditor.js'
 import '../../richEditor/richEditor.css';
 
+import { Button, Input} from 'reactstrap';
 import data from '../../rest_API_example_of_task_container.json';
 
 class Pricing extends Component {
@@ -35,10 +36,12 @@ class Pricing extends Component {
 
     let subTotal = this.subTotal();
 
-    return (
+    return (<div>
+
+        <Button color="success"  onClick={() => store.dispatch({ type: 'SAVE_PRICING_DATA', payload: data })}>Get Data from evaluetor</Button>
       <div className='pricing'>
         {/* <button onClick={()=>store.dispatch({type: 'GET_DATA_FROM_PRICING'})}>Save Data</button> */}
-        <button onClick={() => store.dispatch({ type: 'SAVE_PRICING_DATA', payload: data })}>Get Data from evaluetor</button>
+        
         <div className='mileStone' >
           <p className='process'>Process</p>
           <p className='timeline'>Timeline</p>
@@ -46,6 +49,7 @@ class Pricing extends Component {
           <p className='price'>Total price (NIS)</p>
           <p className='processComment' >Comment</p>
         </div>
+    </div>
 
         {
           this.props.pricing.map((process, i) => {
@@ -54,11 +58,12 @@ class Pricing extends Component {
         <h6 className='grandTotal'>{`Sub Total: ${this.subTotal()}`}</h6>
         <div className='grandTotal'>
           Discount %
-            <input
+          
+            <Input  type="number"
             value={this.state.discountInput}
             onBlur={() => { store.dispatch({ type: 'SAVE_DISCOUNT', payload:{subTotalPrice: subTotal, discount: this.state.discountInput, grandTotalPrice: this.grandTotal(subTotal) }}) }}
             onChange={e => this.setState({ discountInput: e.target.value })}
-            type="number" />
+            />
 
         </div>
         <h6 className='grandTotal'>{`Grand Total: ${this.grandTotal(subTotal)}`}</h6>
@@ -115,8 +120,6 @@ class Process extends Component {
         value={this.state.processComment}
          onChange={e => this.setState({processComment: e.target.value })}
          onBlur={e => {
-           console.log('ddd');
-           
             store.dispatch({ type: 'ADD_COMMENT_TO_PROCESS', payload: { processComment: this.state.processComment, ProcessIndex: this.props.ProcessIndex }});
           }}
          />
