@@ -129,8 +129,8 @@ class FormActorInput extends Component {
 
     editBtn = () => {
         return <div>
-            <Button className='cancelBtn' onClick={this.props.cancelEditActor}>Cancel</Button>
-            <Button className='editBtn' onClick={this.props.editActor}>Update</Button>
+            <button className='btn btn-secondary mr-1' onClick={this.props.cancelEditActor}>Cancel</button>
+            <button className='btn btn-primary ml-1' onClick={this.props.editActor}>Update</button>
         </div>
     }
 
@@ -169,8 +169,8 @@ class ShowActors extends Component {
                         </div>
 
                         {this.props.enableDelete ? <div className='iconDiv'>
-                            <div className='icon btn_edit' onClick={() => this.props.startEditActor(elm.name, elm.description, index, elm._id)}><FontAwesomeIcon icon={faEdit}/></div>
-                            <div className='icon btn_delete' onClick={() => this.props.startDeleteActor(index, elm._id)}><FontAwesomeIcon icon={faTrashAlt}/></div>
+                            <div className='icon' onClick={() => this.props.startEditActor(elm.name, elm.description, index, elm._id)}><FontAwesomeIcon icon={faEdit}/></div>
+                            <div className='icon' onClick={() => this.props.startDeleteActor(index, elm._id)}><FontAwesomeIcon icon={faTrashAlt}/></div>
                         </div> : null}
                     </div>
                 })}

@@ -68,8 +68,8 @@ class Pricing extends Component {
         </div>
         <h6 className='grandTotal'>{`Grand Total: ${this.grandTotal(subTotal)}`}</h6>
 
-        <RichEditor readOnly={false} data={this.props.additionalPricing} save={'SAVE_ADDITIONAL_PRICING'} placeholder='Add pricing...'/>
         <Button onClick={() => store.dispatch({ type: 'SAVE_PRICING_DATA', payload: { pricing: this.props.pricing } })}>Save</Button>
+        <RichEditor readOnly={false} data={this.props.additionalPricing} save={'SAVE_ADDITIONAL_PRICING'} placeholder='Add pricing...'/>
       </div>
     );
   }
@@ -121,8 +121,6 @@ class Process extends Component {
         value={this.state.processComment}
          onChange={e => this.setState({processComment: e.target.value })}
          onBlur={e => {
-           console.log('ddd');
-           
             store.dispatch({ type: 'ADD_COMMENT_TO_PROCESS', payload: { processComment: this.state.processComment, ProcessIndex: this.props.ProcessIndex }});
           }}
          />
