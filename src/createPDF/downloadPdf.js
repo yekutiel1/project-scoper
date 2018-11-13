@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import jsPDF from 'jspdf';
 import data from '../overView.json';
-import {Button} from 'reactstrap'
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faDownload} from "@fortawesome/free-solid-svg-icons";
 
 class DownloadPdf extends Component {
 
@@ -34,7 +35,7 @@ class DownloadPdf extends Component {
     render() {
         return (
             <div >
-                <Button onClick={this.createPdf}>Download Pdf</Button>
+                <button className={'btn btn-primary'} onClick={this.createPdf}>Download Pdf <FontAwesomeIcon className={'mx-2'} icon={faDownload} /></button>
             </div>
         )
     }

@@ -16,12 +16,6 @@
     /* cursor: pointer */
 
 }
-.btn_edit:hover{
-    background: rgba(185, 223, 149, 0.753);
-}
-.btn_delete:hover{
-    background: rgba(236, 151, 151, 0.753);
-}
 .iconDiv{
     flex: 1;
     display: flex;
@@ -71,13 +65,10 @@
 }
 
 .pdfPreview{
-    background: white;
-    border-top: 2px solid gray;
-    width: 800px;
-    margin: auto;
-    padding: 100px;
     font-size: 15px;
     text-align: left;
+    height: 750px;
+    overflow-y: scroll;
 }
 
 .pdfPreviewTitel{
@@ -211,21 +202,11 @@ button:hover{
     /*margin: 20px;*/
 }
 
-.editBtn{
-    background:rgb(122, 226, 122);
-    margin: 20px;
-}
-
 .deleteBtn{
     background:rgb(255, 107, 107);
     margin: 20px;
 }
-.cancelBtn{
-    /*background:rgb(250, 123, 123);*/
-    /*margin: 20px;*/
-}
 
-/* ////////////////////////////////////// */
 /* form */
 
 .formContainer{

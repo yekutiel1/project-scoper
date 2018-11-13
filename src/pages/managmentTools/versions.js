@@ -101,7 +101,7 @@ class Versions extends Component {
             })}
         </select>
 
-    }
+    };
 
 
     render() {
