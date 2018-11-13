@@ -5,14 +5,13 @@ import pricingData from '../rest_API_example_of_task_container.json';
 
 var state = {
     projectsArray: [],
-    versionsArray: [],
     currentProject: '',
+    versionsArray: [],
     oldVersionNumber: '',
     oldVersionData: null,
-    currentActor: '',
+
+    // currentActor: '',
     projectDescription: '',
-    generalAssumptions: [],
-    currentAssumptions: [],
     actorsArray: [],
     subjects: [],
 
@@ -21,6 +20,10 @@ var state = {
     grandTotalPrice: null,
     discount: '',
     additionalPricing: '',
+
+    generalAssumptions: [],
+    currentAssumptions: [],
+
 
     diagramLink: '',
     diagramDescription: '',
@@ -33,43 +36,43 @@ var reduser = function (state, action) {
     let url = '';
     var newState = { ...state };
     switch (action.type) {
-
+//Geting an array of the names and id's of all projects exist;
         case "GET_PROJECTS":
             url = `${urlLinks.getProjects}`;
             getData(url,'UPDATE_STATE_PROJECTS');
             return newState;
             break;
-
+//Updating the projects to an arr;
         case "UPDATE_STATE_PROJECTS":
             newState.projectsArray = action.payload;
             return newState;
             break;
-
+//After selecting a project updating the id of the project to state;
         case "UPDATE_CURRENT_PROJECT_ID":
             newState.currentProject = action.payload;
             return newState;
             break;
-
+//Geting all the data of the current project;
         case "GET_ALL_DATA":
             url = `${urlLinks.getAllData}/${newState.currentProject}`;
             getData(url,'UPDATE_STATE');
             return newState;
             break;
-
-        case "UPDATE_STATE":
+//Updating all the data of the currect projcet to state;
+            case "UPDATE_STATE":
+            // newState.currentVersion = action.payload._id;
             newState.projectDescription = action.payload.projectDescription;
             newState.actorsArray = action.payload.allActors;
-            newState.generalAssumptions = action.payload.generalAssumptions;
-            newState.currentAssumptions = action.payload.currentAssumptions;
-            newState.currentVersion = action.payload._id;
             newState.subjects = action.payload.subjects;
 
             newState.pricing = action.payload.pricing;
             newState.payment = action.payload.payment;
-
             newState.grandTotalPrice = action.payload.grandTotalPrice;
             newState.discount = action.payload.discount;
             newState.additionalPricing = action.payload.additionalPricing;
+
+            newState.generalAssumptions = action.payload.generalAssumptions;
+            newState.currentAssumptions = action.payload.currentAssumptions;
 
             newState.diagramLink = action.payload.diagramLink;
             newState.diagramDescription = action.payload.diagramDescription;
@@ -77,65 +80,60 @@ var reduser = function (state, action) {
             newState.specificationLink = action.payload.specificationLink;
             newState.specificationDescription = action.payload.specificationDescription;
           
-  
-            console.log(action.payload);
-            
             return newState;
             break;
-
-        case "CREATE_NEW_PROJECT":
-            url = urlLinks.createNewProject;
-            createNewProject(url, action.payload);
-            return newState
-            break;
-
-        case "CREATE_NEW_VERSION":
-            url = `${urlLinks.createNewVersion}/${newState.currentProject}`;
-            saveData(url, {editorName: action.payload}, 'GET_ALL_DATA');
-            return newState
-            break;
-
-        case "REJECTION_EXPLENATION":
-            url = `${urlLinks.rejectionExplenation}/${newState.currentProject}`
-            saveData(url, {rejectionExplenation: action.payload}, '');
-            return newState
-            break;
-
-        case "PROJECT_DESCREPTION":
-            url = `${urlLinks.projectDescription}/${newState.currentProject}`;
-            saveData(url, { projectDescription: action.payload }, 'GET_ALL_DATA');
-            return newState;
-            break;
-
-
-        case "GET_VERSIONS":
+//Geting an array of all versions axist in the current project;
+            case "GET_VERSIONS":
             url = `${urlLinks.getVersions}/${newState.currentProject}`;
             getData(url,'UPDATE_STATE_VERSIONS');
             return newState;
             break;
-
+//Updating the versions to an arr in state;
         case "UPDATE_STATE_VERSIONS":
             newState.versionsArray = action.payload;
             return newState;
             break;
-
+//After selectin version updates the version number to state;
         case "UPDATE_OLD_VERSION_NUMBER":
             newState.oldVersionNumber = action.payload;
             return newState;
             break;
-
+//Geting all the data of the old version selected;
         case "GET_OLD_VERSION_DATA":
             url = `${urlLinks.getAldVersionData}/${newState.currentProject}/${newState.oldVersionNumber}`;
             getData(url, 'UPDATE_STATE_OLD_VERSION_DATA');
             return newState;
             break;
-
+//Updating the ald data to state;
         case "UPDATE_STATE_OLD_VERSION_DATA":
             newState.oldVersionData = action.payload;
             return newState;
             break;
-
-
+//Createin new project in DB;
+        case "CREATE_NEW_PROJECT":
+            url = urlLinks.createNewProject;
+            createNewProject(url, action.payload);
+            return newState
+            break;
+//Createin an new version of a specific project in DB;
+        case "CREATE_NEW_VERSION":
+            url = `${urlLinks.createNewVersion}/${newState.currentProject}`;
+            saveData(url, { editorName: action.payload }, 'GET_ALL_DATA');
+            return newState
+            break;
+//Adding explenation of rejection project;
+        case "REJECTION_EXPLENATION":
+            url = `${urlLinks.rejectionExplenation}/${newState.currentProject}`
+            saveData(url, { rejectionExplenation: action.payload }, '');
+            return newState
+            break;
+//Adding project descreption to DB;
+        case "PROJECT_DESCREPTION":
+            url = `${urlLinks.projectDescription}/${newState.currentProject}`;
+            saveData(url, { projectDescription: action.payload }, 'GET_ALL_DATA');
+            return newState;
+            break;
+//Geting data from evaluetor (stil not working!)
         case "GET_DATA_FROM_PRICING":
 
             url = 'http://fromPricing';
