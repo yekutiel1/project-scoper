@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import '../../App.css';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input } from 'reactstrap';
 
 /**
  * The Form class creats the 'Actors' and the 'requirment specifications' forms:
@@ -127,8 +127,8 @@ class FormActorInput extends Component {
 
     editBtn = () => {
         return <div>
-            <button className='cancelBtn' onClick={this.props.cancelEditActor}>Cancel</button>
-            <button className='editBtn' onClick={this.props.editActor}>Update</button>
+            <Button className='cancelBtn' onClick={this.props.cancelEditActor}>Cancel</Button>
+            <Button className='editBtn' onClick={this.props.editActor}>Update</Button>
         </div>
     }
 
