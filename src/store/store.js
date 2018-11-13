@@ -185,6 +185,16 @@ var reduser = function (state, action) {
             saveData(url, { comment: action.payload.processComment }, '')
             return newState;
             break;
+
+        case 'ADD_CONTAINER_TO_PROCESS':
+        
+        // newState.pricing[action.processIndex].containers.push(action.payload);
+        newState.pricing[action.processIndex].containers.push({containerName: action.payload.containerName, price: parseInt(action.payload.price)});
+        // url = `${urlLinks.saveComment}/${newState.currentProject}/${action.payload.ProcessIndex}`;
+        // saveData(url, { comment: action.payload.processComment }, '')
+        console.log(newState.pricing);
+            return newState;
+            break;
         //Saving discout to DB;
         case 'SAVE_DISCOUNT':
             url = `${urlLinks.saveDiscount}/${newState.currentProject}`;
