@@ -69,7 +69,7 @@ class Pricing extends Component {
         <h6 className='grandTotal'>{`Grand Total: ${this.grandTotal(subTotal)}`}</h6>
 
         <RichEditor readOnly={false} data={this.props.additionalPricing} save={'SAVE_ADDITIONAL_PRICING'} placeholder='Add pricing...'/>
-        <button onClick={() => store.dispatch({ type: 'SAVE_PRICING_DATA', payload: { pricing: this.props.pricing } })}>Save</button>
+        <Button onClick={() => store.dispatch({ type: 'SAVE_PRICING_DATA', payload: { pricing: this.props.pricing } })}>Save</Button>
       </div>
     );
   }

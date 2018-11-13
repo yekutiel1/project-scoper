@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import jsPDF from 'jspdf';
 import data from '../overView.json';
+import {Button} from 'reactstrap'
 
 class DownloadPdf extends Component {
 
@@ -33,7 +34,7 @@ class DownloadPdf extends Component {
     render() {
         return (
             <div >
-                <button onClick={this.createPdf}>DownloadPdf</button>
+                <Button onClick={this.createPdf}>Download Pdf</Button>
             </div>
         )
     }
