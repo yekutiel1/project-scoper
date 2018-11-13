@@ -10,17 +10,34 @@ import data from '../../overView.json';
 class Preview extends Component {
     render() {
         let oldDate = this.props.store.oldVersionData.date;
-        let date = oldDate.slice(0, 10)
+        let date = oldDate.slice(0, 24)
+        // let time = oldDate.slice(11, 16)
 
         return (
 
             <div className="viewVersion">
                 <div className='hadePreview'>Date created: {date} </div>
+                {/* <div className='hadePreview'>Date created: {date} {time} </div> */}
                 <div className='hadePreview'>Editor: {this.props.store.oldVersionData.editorName} </div>
                 <div className='hadePreview'>rejection
                     reason: {this.props.store.oldVersionData.rejectionExplenation} </div>
                 <br/>
-                {/* <div>project description: <RichEditor editMode={false} /> </div> */}
+                <div>project description:<RichEditor
+                    data={this.props.store.projectDescription}
+                    readOnly={true}
+                     /> </div>
+
+                <div>Specification (UX):<RichEditor
+                    data={this.props.store.specificationDescription }
+                    readOnly={true}
+                     /> </div>
+                     <img src={this.props.store.specificationLink} alt="" />
+
+                <div>High Level Architecture:<RichEditor
+                    data={this.props.store.diagramDescription }
+                    readOnly={true}
+                     /> </div>
+                     <img src={this.props.store.diagramLink} alt="" />
 
                 <div><b>The Actors/Users:</b>
                     <ol>
@@ -72,6 +89,18 @@ class Preview extends Component {
                     </ul>
                 </div>
 
+
+                <div>
+                    <p className="pdfOverview"><b> Price</b></p> <br/>
+                    <ul>
+                        <div>{this.props.store.oldVersionData.pricing.map((elm, i) => {
+
+                        })}</div>
+
+                       
+                    </ul>
+                </div>
+
             </div>
         )
     }
@@ -117,3 +146,6 @@ class Versions extends Component {
 
 export default connect(store => store)(Versions);
 
+// 0: {comment: "", processTotalPrice: 0, containers: Array(9), _id: "5beac2ef99688c0468b011d4", milestoneName: "Milestone 1"}
+// 1: {comment: "", processTotalPrice: 0, containers: Array(4), _id: "5beac2ef99688c0468b011c7", milestoneName: "Milestone 2"}
+// 2: {comment: "", processTotalPrice: 0, containers: Array(5), _id: "5beac2ef99688c0468b011b7", milestoneName: "Milestone 3"}

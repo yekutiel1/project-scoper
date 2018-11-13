@@ -95,11 +95,11 @@
     margin: auto;
     /* padding: 20px; */
 }
-img{
+/* img{
     width: 150px;
      height:auto;
     margin: 20px;
-}
+} */
 
 
 .header{
@@ -296,7 +296,7 @@ button:hover{
         box-shadow:         0px 7px 11px 0px rgba(50, 50, 50, 0.45);
     }
     
-    .showActors{
+     .showActors{
         background: rgba(187, 223, 243, 0.93);
         border-left: 2px solid white;
         border-right: 2px solid gray ;
@@ -309,8 +309,8 @@ button:hover{
         border-radius:10px;
         overflow: auto;
         
-    }
-    
+    } 
+     
     #actorView{
         margin: auto;
         width: 90%;
@@ -465,6 +465,7 @@ button:hover{
     display: flex;
     border: 2px black solid;
     text-align: center;
+    border-radius: 2mm
 
 }
 
@@ -482,12 +483,12 @@ button:hover{
 }
 
 .grandTotal{
-    text-align: right;
+    text-align: left;
 }
 
 .grandTotal input{
-    width: 50px;
-    /* text-align: right; */
+    width: 60px;
+    text-align: left;
 }
 
 .processName{
