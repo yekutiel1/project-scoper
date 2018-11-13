@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import '../../App.css';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input } from 'reactstrap';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faEdit, faTrashAlt} from "@fortawesome/free-solid-svg-icons";
 
 /**
  * The Form class creats the 'Actors' and the 'requirment specifications' forms:
@@ -135,9 +137,9 @@ class FormActorInput extends Component {
     render() {
         return (
             <div>
-                <input className='form-control' placeholder={`${this.props.name} name`} value={this.props.state.nameInput}
+                <input className='form-control mb-1' placeholder={`${this.props.name} name`} value={this.props.state.nameInput}
                     onChange={e => this.props.handleInput('nameInput', e.target.value)} />
-                <textarea className='form-control' placeholder={`${this.props.name} descriprion`} value={this.props.state.descriprionInput}
+                <textarea className='form-control mb-1' placeholder={`${this.props.name} descriprion`} value={this.props.state.descriprionInput}
                     onChange={e => this.props.handleInput('descriprionInput', e.target.value)} />
                 {this.props.state.editMonde ? this.editBtn() : this.saveBtn(this.props.state.nameInput, this.props.state.descriprionInput, this.props.saveForm)}
             </div>
@@ -157,7 +159,7 @@ class ShowActors extends Component {
     render() {
         this.updtaeArr()
         return (
-            <div className='showActors'>
+            <div className='showActors mt-1'>
 
                 {this.arr.map((elm, index) => {
                     return <div id='actorView' key={index}>
@@ -167,8 +169,8 @@ class ShowActors extends Component {
                         </div>
 
                         {this.props.enableDelete ? <div className='iconDiv'>
-                            <div className='icon btn_edit' onClick={() => this.props.startEditActor(elm.name, elm.description, index, elm._id)}>✎</div>
-                            <div className='icon btn_delete' onClick={() => this.props.startDeleteActor(index, elm._id)}>🗑</div>
+                            <div className='icon btn_edit' onClick={() => this.props.startEditActor(elm.name, elm.description, index, elm._id)}><FontAwesomeIcon icon={faEdit}/></div>
+                            <div className='icon btn_delete' onClick={() => this.props.startDeleteActor(index, elm._id)}><FontAwesomeIcon icon={faTrashAlt}/></div>
                         </div> : null}
                     </div>
                 })}
