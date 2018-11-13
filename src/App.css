@@ -84,7 +84,6 @@
 .imgDiv{
     width: 100%;
     margin: auto;
-    /* padding: 20px; */
 }
 img{
     width: 150px;
@@ -93,18 +92,23 @@ img{
 }
 
 
-.header{
+.header {
     height: 50px;
     padding: 5px;
     font-weight: bold;
     color: rgb(199, 209, 219);
     background-color: #1f91d3;
-    /* font-size: 25px; */
-    /* font-weight: bold; */
+    position: sticky;
+    width: 100%;
+    z-index: 1;
+    top: 0;
 }
 
-.sideBar{
-     /*background: #8deb7048;*/
+.sidebar{
+    position: sticky;
+    top: 4rem;
+    z-index: 1000;
+    height: calc(93vh - 4rem);
 }
 .sidBarItem{
     width: 100%;
@@ -153,19 +157,14 @@ img{
     width: 100%;
 }
 
-.footer{
+.footer {
     box-shadow: 0 -3px 10px 0 rgba(0,0,0,.0785);
     height: 60px;
     bottom: 0;
-    position: fixed;
+    position: sticky;
     width: 100%;
     background-color: white;
 }
-
-
-
-
-
 
 /* ////////////////////////////////////// */
 /* buttons */
