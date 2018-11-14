@@ -8,7 +8,7 @@ class ProjectDescription extends Component {
 
   render() {
     return (
-      <div className='formContainer description card' >
+      <div className='description card' >
           <RichEditor editMode={true} data={this.props.projectDescription} placeholder='Descibe the project...' save={'PROJECT_DESCREPTION'}/>
       </div>
     );
