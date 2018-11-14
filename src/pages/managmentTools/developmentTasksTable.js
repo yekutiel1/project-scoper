@@ -55,9 +55,11 @@ class DevelopmentTasks extends Component {
                                         <td>{task.milestoneName}</td>
                                         <td>{row.assumptions}</td>
                                     </tr>
+
                                 )
                             })}
                                  
+
                                 </tbody>
                             )
                         })

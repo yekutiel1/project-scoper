@@ -19,7 +19,7 @@ class Diagram extends Component {
         return (
             <div>
                 <Form inline>
-                    <Input type="text" placeholder='Diagram link'
+                    <Input className={'mr-1'} type="text" placeholder='Diagram link'
                      onChange={(e) => this.setState({ link: e.target.value })}
                      value={this.state.link} />
                     <Button onClick={() => store.dispatch({ type: 'SAVE_DIAGRAM_LINK', payload: this.state.link })}>Save</Button>
