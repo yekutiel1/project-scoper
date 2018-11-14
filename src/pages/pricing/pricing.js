@@ -86,6 +86,11 @@ class Process extends Component {
   }
 
   totalDays = null;
+  
+
+  cancelAddContainer = ()=>{
+    this.setState({addContainer: false});
+  }
 
   cancelAddContainer = ()=>{
     this.setState({addContainer: false});
@@ -120,7 +125,6 @@ class Process extends Component {
                 <tbody>
           {this.props.process.containers.map((container, i) => {
             console.log(container.days);
-
             if (container.days !== undefined) {
             this.totalDays += parseInt(container.days);
             }
