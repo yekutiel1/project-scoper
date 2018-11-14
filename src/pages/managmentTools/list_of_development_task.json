@@ -324,6 +324,7 @@
                     "taskContainer": "VC6 - VC task",
                     "category": "Web",
                     "days": "8",
+                    "milestoneName": "Milestone 1",
                     "tasks": [
                         {
                             "taskName": "Shared Quiz where each student can add x questions + image.",
@@ -331,8 +332,7 @@
                             "documentComponentId": "String",
                             "complexity": "String",
                             "details": "String",
-                            "assumptions": "String",
-                            "milestoneName": "Milestone 1"
+                            "assumptions": "String"
                         },
                         {
                             "taskName": "Shared Quiz where each student can add x questions + image.",
@@ -340,8 +340,7 @@
                             "documentComponentId": "String",
                             "complexity": "String",
                             "details": "String",
-                            "assumptions": "String",
-                            "milestoneName": "Milestone 1"
+                            "assumptions": "String"
                         }
                     ]
                 },
@@ -349,6 +348,7 @@
                     "taskContainer": "UC11 - View questionnaire statistics",
                     "category": "Web",
                     "days": "12",
+                    "milestoneName": "Milestone 1",
                     "tasks": [
                         {
                             "taskName": "Shared Quiz where each student can add x questions + image.",
@@ -356,8 +356,7 @@
                             "documentComponentId": "String",
                             "complexity": "String",
                             "details": "String",
-                            "assumptions": "String",
-                            "milestoneName": "Milestone 1"
+                            "assumptions": "String"
                         },
                         {
                             "taskName": "Shared Quiz where each student can add x questions + image.",
@@ -365,8 +364,7 @@
                             "documentComponentId": "String",
                             "complexity": "String",
                             "details": "String",
-                            "assumptions": "String",
-                            "milestoneName": "Milestone 1"
+                            "assumptions": "String"
                         }
                     ]
                 },
@@ -374,6 +372,7 @@
                     "taskContainer": "UC13 - Course album",
                     "category": "Web",
                     "days": "3",
+                    "milestoneName": "Milestone 1",
                     "tasks": [
                         {
                             "taskName": "Shared Quiz where each student can add x questions + image.",
@@ -381,8 +380,7 @@
                             "documentComponentId": "String",
                             "complexity": "String",
                             "details": "String",
-                            "assumptions": "String",
-                            "milestoneName": "Milestone 1"
+                            "assumptions": "String"
                         },
                         {
                             "taskName": "Shared Quiz where each student can add x questions + image.",
@@ -390,8 +388,7 @@
                             "documentComponentId": "String",
                             "complexity": "String",
                             "details": "String",
-                            "assumptions": "String",
-                            "milestoneName": "Milestone 1"
+                            "assumptions": "String"
                         }
                     ]
                 },
@@ -399,6 +396,7 @@
                     "taskContainer": "UC15 - Teacher personal page editor",
                     "category": "Web",
                     "days": "10",
+                    "milestoneName": "Milestone 1",
                     "tasks": [
                         {
                             "taskName": "Shared Quiz where each student can add x questions + image.",
@@ -406,8 +404,7 @@
                             "documentComponentId": "String",
                             "complexity": "String",
                             "details": "String",
-                            "assumptions": "String",
-                            "milestoneName": "Milestone 1"
+                            "assumptions": "String"
                         },
                         {
                             "taskName": "Shared Quiz where each student can add x questions + image.",
@@ -415,8 +412,7 @@
                             "documentComponentId": "String",
                             "complexity": "String",
                             "details": "String",
-                            "assumptions": "String",
-                            "milestoneName": "Milestone 1"
+                            "assumptions": "String"
                         }
                     ]
                 },
@@ -424,6 +420,7 @@
                     "taskContainer": "General - Prohibited words scan in chat",
                     "category": "Web",
                     "days": "6",
+                    "milestoneName": "Milestone 1",
                     "tasks": [
                         {
                             "taskName": "The quiz can be executed and the score is presented at the end",
@@ -431,8 +428,7 @@
                             "documentComponentId": "String",
                             "complexity": "String",
                             "details": "String",
-                            "assumptions": "String",
-                            "milestoneName": "Milestone 1"
+                            "assumptions": "String"
                         },
                         {
                             "taskName": "The quiz can be executed and the score is presented at the end",
@@ -440,8 +436,7 @@
                             "documentComponentId": "String",
                             "complexity": "String",
                             "details": "String",
-                            "assumptions": "String",
-                            "milestoneName": "Milestone 1"
+                            "assumptions": "String"
                         }
                     ]
                 }
