@@ -57,10 +57,11 @@ class DevelopmentTasks extends Component {
                                     </tr>
                                 )
                             })}
-                        </tbody>
-                    )
-                })
-                    
+                                 
+                                </tbody>
+                            )
+                        })
+
                 
                 }
 

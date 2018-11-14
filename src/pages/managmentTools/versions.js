@@ -10,7 +10,8 @@ import data from '../../overView.json';
 class Preview extends Component {
     render() {
         let oldDate = this.props.store.oldVersionData.date;
-        let date = oldDate.slice(0, 10)
+        // let date = oldDate.slice(0, 10)
+        let date = oldDate;
 
         return (
 
@@ -100,7 +101,7 @@ class Versions extends Component {
             })}
         </select>
 
-    }
+    };
 
 
     render() {

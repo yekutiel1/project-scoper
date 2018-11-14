@@ -5,14 +5,13 @@ import pricingData from '../rest_API_example_of_task_container.json';
 
 var state = {
     projectsArray: [],
-    versionsArray: [],
     currentProject: '',
+    versionsArray: [],
     oldVersionNumber: '',
     oldVersionData: null,
-    currentActor: '',
+
+    // currentActor: '',
     projectDescription: '',
-    generalAssumptions: [],
-    currentAssumptions: [],
     actorsArray: [],
     subjects: [],
 
@@ -21,6 +20,10 @@ var state = {
     grandTotalPrice: null,
     discount: '',
     additionalPricing: '',
+
+    generalAssumptions: [],
+    currentAssumptions: [],
+
 
     diagramLink: '',
     diagramDescription: '',
@@ -33,170 +36,104 @@ var reduser = function (state, action) {
     let url = '';
     var newState = { ...state };
     switch (action.type) {
-
+        //Geting an array of the names and id's of all projects exist;
         case "GET_PROJECTS":
             url = `${urlLinks.getProjects}`;
-            getData(url,'UPDATE_STATE_PROJECTS');
+            getData(url, 'UPDATE_STATE_PROJECTS');
             return newState;
             break;
-
+        //Updating the projects to an arr;
         case "UPDATE_STATE_PROJECTS":
             newState.projectsArray = action.payload;
             return newState;
             break;
-
+        //After selecting a project updating the id of the project to state;
         case "UPDATE_CURRENT_PROJECT_ID":
             newState.currentProject = action.payload;
             return newState;
             break;
-
+        //Geting all the data of the current project;
         case "GET_ALL_DATA":
             url = `${urlLinks.getAllData}/${newState.currentProject}`;
-            getData(url,'UPDATE_STATE');
+            getData(url, 'UPDATE_STATE');
             return newState;
             break;
-
+        //Updating all the data of the currect projcet to state;
         case "UPDATE_STATE":
+            // newState.currentVersion = action.payload._id;
             newState.projectDescription = action.payload.projectDescription;
             newState.actorsArray = action.payload.allActors;
-            newState.generalAssumptions = action.payload.generalAssumptions;
-            newState.currentAssumptions = action.payload.currentAssumptions;
-            newState.currentVersion = action.payload._id;
             newState.subjects = action.payload.subjects;
 
             newState.pricing = action.payload.pricing;
             newState.payment = action.payload.payment;
-
             newState.grandTotalPrice = action.payload.grandTotalPrice;
             newState.discount = action.payload.discount;
             newState.additionalPricing = action.payload.additionalPricing;
+
+            newState.generalAssumptions = action.payload.generalAssumptions;
+            newState.currentAssumptions = action.payload.currentAssumptions;
 
             newState.diagramLink = action.payload.diagramLink;
             newState.diagramDescription = action.payload.diagramDescription;
 
             newState.specificationLink = action.payload.specificationLink;
             newState.specificationDescription = action.payload.specificationDescription;
-          
-  
-            console.log(action.payload);
-            
+
             return newState;
             break;
-
-        case "CREATE_NEW_PROJECT":
-            url = urlLinks.createNewProject;
-            createNewProject(url, action.payload);
-            return newState
-            break;
-
-        case "CREATE_NEW_VERSION":
-            url = `${urlLinks.createNewVersion}/${newState.currentProject}`;
-            saveData(url, {editorName: action.payload}, 'GET_ALL_DATA');
-            return newState
-            break;
-
-        case "REJECTION_EXPLENATION":
-            url = `${urlLinks.rejectionExplenation}/${newState.currentProject}`
-            saveData(url, {rejectionExplenation: action.payload}, '');
-            return newState
-            break;
-
-        case "PROJECT_DESCREPTION":
-            url = `${urlLinks.projectDescription}/${newState.currentProject}`;
-            saveData(url, { projectDescription: action.payload }, 'GET_ALL_DATA');
-            return newState;
-            break;
-
-
+        //Geting an array of all versions axist in the current project;
         case "GET_VERSIONS":
             url = `${urlLinks.getVersions}/${newState.currentProject}`;
-            getData(url,'UPDATE_STATE_VERSIONS');
+            getData(url, 'UPDATE_STATE_VERSIONS');
             return newState;
             break;
-
+        //Updating the versions to an arr in state;
         case "UPDATE_STATE_VERSIONS":
             newState.versionsArray = action.payload;
             return newState;
             break;
-
+        //After selectin version updates the version number to state;
         case "UPDATE_OLD_VERSION_NUMBER":
             newState.oldVersionNumber = action.payload;
             return newState;
             break;
-
+        //Geting all the data of the old version selected;
         case "GET_OLD_VERSION_DATA":
             url = `${urlLinks.getAldVersionData}/${newState.currentProject}/${newState.oldVersionNumber}`;
             getData(url, 'UPDATE_STATE_OLD_VERSION_DATA');
             return newState;
             break;
-
+        //Updating the ald data to state;
         case "UPDATE_STATE_OLD_VERSION_DATA":
             newState.oldVersionData = action.payload;
             return newState;
             break;
-
-
-        case "GET_DATA_FROM_PRICING":
-
-            url = 'http://fromPricing';
-            getData(url, 'SAVE_PRICING_DATA')
+        //Createin new project in DB;
+        case "CREATE_NEW_PROJECT":
+            url = urlLinks.createNewProject;
+            createNewProject(url, action.payload);
+            return newState
+            break;
+        //Createin an new version of a specific project in DB;
+        case "CREATE_NEW_VERSION":
+            url = `${urlLinks.createNewVersion}/${newState.currentProject}`;
+            saveData(url, { editorName: action.payload }, 'GET_ALL_DATA');
+            return newState
+            break;
+        //Adding explenation of rejection project;
+        case "REJECTION_EXPLENATION":
+            url = `${urlLinks.rejectionExplenation}/${newState.currentProject}`
+            saveData(url, { rejectionExplenation: action.payload }, '');
+            return newState
+            break;
+        //Adding project descreption to DB;
+        case "PROJECT_DESCREPTION":
+            url = `${urlLinks.projectDescription}/${newState.currentProject}`;
+            saveData(url, { projectDescription: action.payload }, 'GET_ALL_DATA');
             return newState;
             break;
-
-        case "SAVE_PRICING_DATA":
-            url = `${urlLinks.savePricing}/${newState.currentProject}`;
-            saveData(url, action.payload, 'GET_ALL_DATA');
-            return newState;
-            break;
-
-        case 'ADD_PRICE_TO_CONTAINER':
-            newState.pricing[action.payload.ProcessIndex].containers[action.payload.containerIndex].price = action.payload.price;
-            return newState;
-            break;
-
-        case 'ADD_COMMENT_TO_PROCESS':
-            newState.pricing[action.payload.ProcessIndex].comment = action.payload.processComment;
-            url = `${urlLinks.saveComment}/${newState.currentProject}/${action.payload.ProcessIndex}`;
-            console.log(newState);
-            
-            saveData(url, {comment: action.payload.processComment}, '')
-            return newState;
-            break;
-
-        case 'SAVE_DISCOUNT':
-            url = `${urlLinks.saveDiscount}/${newState.currentProject}`;
-            saveData(url, action.payload, '')
-            return newState;
-            break;
-
-        case 'SAVE_ADDITIONAL_PRICING':
-            url = `${urlLinks.saveAdditionalPricing}/${newState.currentProject}`;
-            saveData(url, {additionalPricing: action.payload}, '');
-            newState.additionalPricing = action.payload;
-            return newState;
-            break;
-
-        case 'SAVE_PAYMENT':
-            url = `${urlLinks.savePayment}/${newState.currentProject}`;
-            saveData(url, {payment: action.payload}, '');
-            newState.payment = action.payload;
-            return newState;
-            break;
-
-        case 'SAVE_SPECIFICATION_LINK':
-            url = `${urlLinks.saveSpecificationLink}/${newState.currentProject}`;
-            saveData(url, {specification: action.payload}, '');
-            newState.specificationLink = action.payload;
-            return newState;
-            break;
-
-        case 'SAVE_SPECIFICATION_DESCRIPTION':
-            url = `${urlLinks.saveSpecificationDescription}/${newState.currentProject}`;
-            saveData(url, {specification: action.payload}, '');
-            newState.specificationDescription = action.payload;
-            return newState;
-            break;
-
+        //Save actor to DB;
         case "SAVE_ACTOR":
             var actorTemplate = {
                 name: action.payload.name,
@@ -206,7 +143,7 @@ var reduser = function (state, action) {
             saveData(url, actorTemplate, 'GET_ALL_DATA')
             return newState;
             break;
-
+        //Save subject to DB;
         case "SAVE_SUBJECT":
             var subjectTemplate = {
                 name: action.payload.name,
@@ -216,12 +153,83 @@ var reduser = function (state, action) {
             saveData(url, subjectTemplate, 'GET_ALL_DATA');
             return newState;
             break;
-
+//Saving user story DB;
         case "SAVE_USER_STORY":
             url = `${urlLinks.saveUserStory}/${newState.currentProject}/${action.payload.indexOfActor}`;
             saveData(url, action.payload.userStory, 'GET_ALL_DATA');
             return newState
             break;
+
+        //Geting data from evaluetor (stil not working!);
+        case "GET_DATA_FROM_PRICING":
+
+            url = 'http://fromPricing';
+            getData(url, 'SAVE_PRICING_DATA')
+            return newState;
+            break;
+        //Saving the evakuetor data to DB;
+        case "SAVE_PRICING_DATA":
+            url = `${urlLinks.savePricing}/${newState.currentProject}`;
+            saveData(url, action.payload, 'GET_ALL_DATA');
+            return newState;
+            break;
+        //Adding price to container in state;
+        case 'ADD_PRICE_TO_CONTAINER':
+            newState.pricing[action.payload.ProcessIndex].containers[action.payload.containerIndex].price = action.payload.price;
+            return newState;
+            break;
+        //Adding comment process to DB;
+        case 'ADD_COMMENT_TO_PROCESS':
+            newState.pricing[action.payload.ProcessIndex].comment = action.payload.processComment;
+            url = `${urlLinks.saveComment}/${newState.currentProject}/${action.payload.ProcessIndex}`;
+            saveData(url, { comment: action.payload.processComment }, '')
+            return newState;
+            break;
+
+        case 'ADD_CONTAINER_TO_PROCESS':
+        
+        // newState.pricing[action.processIndex].containers.push(action.payload);
+        newState.pricing[action.processIndex].containers.push({containerName: action.payload.containerName, price: parseInt(action.payload.price)});
+        // url = `${urlLinks.saveComment}/${newState.currentProject}/${action.payload.ProcessIndex}`;
+        // saveData(url, { comment: action.payload.processComment }, '')
+        console.log(newState.pricing);
+            return newState;
+            break;
+        //Saving discout to DB;
+        case 'SAVE_DISCOUNT':
+            url = `${urlLinks.saveDiscount}/${newState.currentProject}`;
+            saveData(url, action.payload, '')
+            return newState;
+            break;
+        //Save rich editor pricing data to DB;
+        case 'SAVE_ADDITIONAL_PRICING':
+            url = `${urlLinks.saveAdditionalPricing}/${newState.currentProject}`;
+            saveData(url, { additionalPricing: action.payload }, '');
+            newState.additionalPricing = action.payload;
+            return newState;
+            break;
+
+        case 'SAVE_PAYMENT':
+            url = `${urlLinks.savePayment}/${newState.currentProject}`;
+            saveData(url, { payment: action.payload }, '');
+            newState.payment = action.payload;
+            return newState;
+            break;
+
+        case 'SAVE_SPECIFICATION_LINK':
+            url = `${urlLinks.saveSpecificationLink}/${newState.currentProject}`;
+            saveData(url, { specification: action.payload }, '');
+            newState.specificationLink = action.payload;
+            return newState;
+            break;
+
+        case 'SAVE_SPECIFICATION_DESCRIPTION':
+            url = `${urlLinks.saveSpecificationDescription}/${newState.currentProject}`;
+            saveData(url, { specification: action.payload }, '');
+            newState.specificationDescription = action.payload;
+            return newState;
+            break;
+
 
         case "SAVE_GENERAL_ASSUMPTIONS":
             url = `${urlLinks.saveGeneralAssumptions}/${newState.currentProject}`;
@@ -237,15 +245,15 @@ var reduser = function (state, action) {
 
         case "SAVE_DIAGRAM_LINK":
             url = `${urlLinks.saveDiagramLink}/${newState.currentProject}`;
-            console.log(url, {diagram: action.payload});
-            
-            saveData(url,  {diagram: action.payload}, 'GET_ALL_DATA');
+            console.log(url, { diagram: action.payload });
+
+            saveData(url, { diagram: action.payload }, 'GET_ALL_DATA');
             return newState;
             break;
 
         case "SAVE_DIAGRAM_DESCRIPTION":
             url = `${urlLinks.saveDiagramDescription}/${newState.currentProject}`;
-            saveData(url,  {diagram: action.payload}, 'GET_ALL_DATA');
+            saveData(url, { diagram: action.payload }, 'GET_ALL_DATA');
             return newState;
             break;
 
@@ -305,10 +313,6 @@ var reduser = function (state, action) {
             deleteData(url, 'GET_ALL_DATA');
             return newState;
             break;
-
-       
-
-
 
         default:
             return newState;

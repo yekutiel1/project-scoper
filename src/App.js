@@ -67,7 +67,7 @@ class NavBar extends Component {
 
   render() {
     return (
-      <div className='sideBar'>
+      <div className='sidebar'>
         <div className='py-2 sidBarItem'>
 
           <div onClick={() => { this.dropDownIsOpen(0) }}>Managment Tools{this.arrowIcon(this.state.dropDown[0].isOpen)}</div>
