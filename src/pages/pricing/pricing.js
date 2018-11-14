@@ -68,8 +68,8 @@ class Pricing extends Component {
         </div>
         <h6 className='grandTotal'>{`Grand Total: ${this.grandTotal(subTotal)}`}</h6>
 
-        <RichEditor readOnly={false} data={this.props.additionalPricing} save={'SAVE_ADDITIONAL_PRICING'} placeholder='Add pricing...'/>
         <Button onClick={() => store.dispatch({ type: 'SAVE_PRICING_DATA', payload: { pricing: this.props.pricing } })}>Save</Button>
+        <RichEditor readOnly={false} data={this.props.additionalPricing} save={'SAVE_ADDITIONAL_PRICING'} placeholder='Add pricing...'/>
       </div>
     );
   }
@@ -143,7 +143,7 @@ class Container extends Component {
       <ul className='singleProcessContainer'>
         <li className='timeline'>{this.props.container.containerName}</li>
         <div className='days'>{this.props.container.days}</div>
-        <input type="number"
+        <Input type="number"
           value={this.state.priceInput}
           onBlur={e => {
             store.dispatch({ type: 'ADD_PRICE_TO_CONTAINER', payload: { price: parseInt(e.target.value), ProcessIndex: this.props.ProcessIndex, containerIndex: this.props.containerIndex }});
@@ -156,6 +156,4 @@ class Container extends Component {
   }
 }
 
-
 export default connect(store => store)(Pricing);
-
