@@ -27,9 +27,11 @@ class PDFpreview extends Component {
 
             if (project._id === id) {
                 this.setState({ projectName: project.projectName })
+                return;
             }
         })
-        return 'Empty'
+        // this.setState({ projectName: 'Empty' })
+        // return 'Empty'
     }
 
     componentWillMount() {
@@ -139,7 +141,7 @@ class PDFpreview extends Component {
                             })}</div>
                         </ul>
                     </div>
-                    {/* <DevelopmentTasks /> */}
+                    <DevelopmentTasks />
                 </div>
             </div>
 
