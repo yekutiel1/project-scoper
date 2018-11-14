@@ -66,6 +66,8 @@ class NavBar extends Component {
 
 
   render() {
+    
+    
     return (
       <div className='sidebar'>
         <div className='py-2 sidBarItem'>
@@ -145,6 +147,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <BrowserRouter >
         <div className=''>
