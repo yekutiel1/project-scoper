@@ -496,9 +496,6 @@ button:hover{
     flex: 3;
 
 }
-.singleProcessContainer{
-    display: flex;
-}
 
 .singleProcessContainer .timeline{
     flex: 4;

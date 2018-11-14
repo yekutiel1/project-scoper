@@ -22,9 +22,9 @@ class Pricing extends Component {
       process.containers.map(container=>{
         total += parseInt(container.price);
       })
-    })
+    });
     return total;
-  }
+  };
 
   grandTotal = (subTotal) => {
     let discount = this.state.discountInput;
@@ -52,7 +52,7 @@ class Pricing extends Component {
     </div>
 
         {
-          this.props.pricing.map((process, i) => {
+          data.pricing.map((process, i) => {
             return <Process key={i} process={process} ProcessIndex={i} subTotal={this.subTotal}/>
           })}
         <h6 className='grandTotal'>{`Sub Total: ${this.subTotal()}`}</h6>
@@ -96,22 +96,35 @@ class Process extends Component {
     let processPrice = 0;
     this.props.process.containers.map((container, i) => {
       processPrice += parseInt(container.price);
-    })
-    this.setState({ processPrice: processPrice })
+    });
+    this.setState({ processPrice: processPrice });
     this.props.subTotal(this.state.processPrice);
-  }
+  };
 
   render() {
-    this.totalDays = 0
-    return (
-      <div className='mileStone'>
-        <h3 className='processName'>{this.props.process.milestoneName}</h3>
+    this.totalDays = 0;
+        // <div className='mileStone'>
+
+      return (
+      <div className='card my-2'>
+        <h3 className='processName'><span className={"font-weight-bold"}>Process: </span>{this.props.process.milestoneName}</h3>
 
         <div className='processContainers'>
+            <table className="table table-hover text-left">
+                <thead>
+                <tr>
+                    <th scope="col">Timeline</th>
+                    <th scope="col">Days</th>
+                    <th scope="col">Total price (NIS)</th>
+                </tr>
+                </thead>
+                <tbody>
           {this.props.process.containers.map((container, i) => {
             this.totalDays += parseInt(container.days);
             return <Container key={i} container={container} containerIndex={i} ProcessIndex={this.props.ProcessIndex} processPrice={this.processPrice} />
           })}
+                </tbody>
+            </table>
           <div className='TotalDays'>
             <h6 >{`Total days ${this.totalDays}`}</h6>
             <h6 >{`Total price ${this.state.processPrice}`}</h6>
@@ -138,10 +151,11 @@ class Container extends Component {
   }
   render() {
     return (
-      <ul className='singleProcessContainer'>
-        <li className='timeline'>{this.props.container.containerName}</li>
-        <div className='days'>{this.props.container.days}</div>
-        <input type="number"
+      <tr>
+        <td className='timeline'>{this.props.container.containerName}</td>
+        <td className='days'>{this.props.container.days}</td>
+        <td>
+        <input className={"form-control"} type="number"
           value={this.state.priceInput}
           onBlur={e => {
             store.dispatch({ type: 'ADD_PRICE_TO_CONTAINER', payload: { price: parseInt(e.target.value), ProcessIndex: this.props.ProcessIndex, containerIndex: this.props.containerIndex }});
@@ -149,7 +163,8 @@ class Container extends Component {
           }}
           onChange={e => this.setState({ priceInput: e.target.value })}
         />
-      </ul>
+        </td>
+      </tr>
     )
   }
 }
