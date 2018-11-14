@@ -9,7 +9,6 @@ import DevelopmentTasks from './developmentTasksTable.js'
 
 import axios from 'axios';
 // import fileDownload from 'react-file-download';
-// import fileDownload from 'react-file-download';
 import DownloadPdf from '../../createPDF/downloadPdf.js'
 
 
@@ -36,7 +35,7 @@ class PDFpreview extends Component {
 <div>
 
     <DownloadPdf/>
-           <div id='pdfPreview' className="pdfPreview">
+           <div id='pdfPreview' className="border border-dark ml-4 mt-3 p-4 pdfPreview">
                 <div className="mainBlbBla" id='mainBlbBla'>
                     <h3 className="pdfPreviewTitel" id='pdfPreviewTitel'><b> Offer for Development of Disk In Pro <br /> NEAR phase 2 web app </b></h3><br />
                     <b className="pdfOverview"> Overview</b> <br /><br />

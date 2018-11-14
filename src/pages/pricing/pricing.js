@@ -121,8 +121,6 @@ class Process extends Component {
         value={this.state.processComment}
          onChange={e => this.setState({processComment: e.target.value })}
          onBlur={e => {
-           console.log('ddd');
-           
             store.dispatch({ type: 'ADD_COMMENT_TO_PROCESS', payload: { processComment: this.state.processComment, ProcessIndex: this.props.ProcessIndex }});
           }}
          />
