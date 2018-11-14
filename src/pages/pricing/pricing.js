@@ -69,7 +69,9 @@ class Pricing extends Component {
         <h6 className='grandTotal'>{`Grand Total: ${this.grandTotal(subTotal)}`}</h6>
 
         <Button onClick={() => store.dispatch({ type: 'SAVE_PRICING_DATA', payload: { pricing: this.props.pricing } })}>Save</Button>
+        <div className='description card' >
         <RichEditor readOnly={false} data={this.props.additionalPricing} save={'SAVE_ADDITIONAL_PRICING'} placeholder='Add pricing...'/>
+        </div>
       </div>
     );
   }
@@ -82,7 +84,8 @@ class Process extends Component {
     super(props);
     this.state = {
       processPrice: 0,
-      processComment: this.props.process.comment
+      processComment: this.props.process.comment,
+      addContainer: false
     }
   }
 
@@ -91,6 +94,11 @@ class Process extends Component {
   }
 
   totalDays = null;
+  
+
+  cancelAddContainer = ()=>{
+    this.setState({addContainer: false});
+  }
 
   processPrice = () => {
     let processPrice = 0;
@@ -102,6 +110,7 @@ class Process extends Component {
   }
 
   render() {
+    
     this.totalDays = 0
     return (
       <div className='mileStone'>
@@ -109,12 +118,18 @@ class Process extends Component {
 
         <div className='processContainers'>
           {this.props.process.containers.map((container, i) => {
+            console.log(container.days);
+            
+            if (container.days !== undefined) {
             this.totalDays += parseInt(container.days);
+            }
             return <Container key={i} container={container} containerIndex={i} ProcessIndex={this.props.ProcessIndex} processPrice={this.processPrice} />
           })}
+          {this.state.addContainer ? <AddContainer ProcessIndex={this.props.ProcessIndex} cancelAddContainer={this.cancelAddContainer}/> : null }
           <div className='TotalDays'>
             <h6 >{`Total days ${this.totalDays}`}</h6>
             <h6 >{`Total price ${this.state.processPrice}`}</h6>
+         <button onClick={()=>this.setState({addContainer: true})}>Add Container</button>
           </div>
         </div>
         <textarea className='processComment'
@@ -154,6 +169,41 @@ class Container extends Component {
   }
 }
 
+class AddContainer extends Component{
+  constructor(props){
+    super();
+    this.state = {
+      containerName: '',
+      price: ''
+    }
+    
+  }
+  handleInput = (e) =>{
+    this.setState({[e.target.name] : e.target.value});
+  }
+  saveDataToState = () => {
+    store.dispatch({type: 'ADD_CONTAINER_TO_PROCESS', payload: this.state, processIndex: this.props.ProcessIndex});
+    this.props.cancelAddContainer();
+  }
+  saveBtn = () => {
+    var inputEmpty = this.state.containerName === '' || this.state.price === '';
+    return <div>
+      <button className={inputEmpty ? 'disableBtn btn btn-secondary' : 'btn btn-primary'} onClick={this.saveDataToState}>Save</button>
+      <button onClick={()=>this.props.cancelAddContainer()}>Cancel</button>
+    </div>
+}
+  render(){
+    console.log(this.props.ProcessIndex);
+
+    return(
+      <li>
+        <input type="text" name='containerName' placeholder='Container name' onChange={this.handleInput}/>
+        <input type="number" name='price' placeholder='Price' onChange={this.handleInput}/>
+        {this.saveBtn()}
+      </li>
+    )
+  }
+}
 
 export default connect(store => store)(Pricing);
 
