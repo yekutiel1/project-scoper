@@ -147,7 +147,7 @@ class Massege extends Component {
     return (
       <div className="massege">
 
-              <h2 className='lightBlue'>'Locked for editing'</h2>
+              <h2 className='lightBlue'>{this.props.massege}</h2>
               <FontAwesomeIcon className="fa-10x fa-spin" color='lightBlue' icon={this.props.icon} />
     
       </div>
