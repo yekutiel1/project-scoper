@@ -50,7 +50,7 @@ class DevelopmentTasks extends Component {
                                         return (
                                             <tr key={i}>
                                                 <td>{row.taskName}</td>
-                                                <td>{task.category}</td>
+                                                <td>{row.documentComponentId}</td>
                                                 <td>{row.details}</td>
                                                 <td>{row.milestoneName}</td>
                                                 <td>{row.assumptions}</td>
