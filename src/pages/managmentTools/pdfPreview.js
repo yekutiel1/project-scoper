@@ -146,6 +146,7 @@ class PDFpreview extends Component {
                     <DevelopmentTasks />
                 </div>
             </div>
+            </div>
 
         );
 

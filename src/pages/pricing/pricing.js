@@ -39,7 +39,7 @@ class Pricing extends Component {
   //         containers: [],
   //         processTotalPrice: 0
   //       });
-  //     } 
+  //     }
   //   })
   //    this.addContainersToProcess(data.taskContainers, processArr);
   // }
@@ -132,10 +132,6 @@ class Process extends Component {
     this.setState({addContainer: false});
   }
 
-  cancelAddContainer = ()=>{
-    this.setState({addContainer: false});
-  }
-
   processPrice = () => {
     let processPrice = 0;
     this.props.process.containers.map((container, i) => {
@@ -151,10 +147,10 @@ class Process extends Component {
 
       return (
       <div className='card my-2'>
-        <h3 className='processName'><span className={"font-weight-bold"}>Process: </span>{this.props.process.milestoneName}</h3>
+        <h3><span className={"font-weight-bold"}>Process: </span>{this.props.process.milestoneName}</h3>
 
         <div>
-            <table className="table table-hover text-left">
+            <table className="table table-hover text-left border-bottom">
                 <thead>
                 <tr>
                     <th scope="col">Timeline</th>
@@ -164,19 +160,25 @@ class Process extends Component {
                 </thead>
                 <tbody>
           {this.props.process.containers.map((container, i) => {
+            console.log(container.days);
+
             if (container.days !== undefined) {
             this.totalDays += parseInt(container.days);
             }
             return <Container key={i} container={container} containerIndex={i} ProcessIndex={this.props.ProcessIndex} processPrice={this.processPrice} />
           })}
+            {/*<div className='TotalDays'>*/}
+          <tr>
+              <td> </td>
+              <th >{`Total days ${this.totalDays}`}</th>
+              <th >{`Total price ${this.state.processPrice}`}</th>
+          </tr>
                 </tbody>
             </table>
-          {this.state.addContainer ? <AddContainer ProcessIndex={this.props.ProcessIndex} cancelAddContainer={this.cancelAddContainer}/> : null }
-          <div className='TotalDays'>
-            <h6 >{`Total days ${this.totalDays}`}</h6>
-            <h6 >{`Total price ${this.state.processPrice}`}</h6>
-         <button onClick={()=>this.setState({addContainer: true})}>Add Container</button>
-          </div>
+            {this.state.addContainer ? <AddContainer ProcessIndex={this.props.ProcessIndex} cancelAddContainer={this.cancelAddContainer}/> : null }
+
+         <button className={'btn btn-primary'} onClick={()=>this.setState({addContainer: true})}>Add Container</button>
+          {/*</div>*/}
         </div>
         <textarea className='form-control m-2 processComment w-auto'
         value={this.state.processComment}
@@ -236,19 +238,19 @@ class AddContainer extends Component{
   saveBtn = () => {
     var inputEmpty = this.state.containerName === '' || this.state.price === '';
     return <div>
-      <button className={inputEmpty ? 'disableBtn btn btn-secondary' : 'btn btn-primary'} onClick={this.saveDataToState}>Save</button>
-      <button onClick={()=>this.props.cancelAddContainer()}>Cancel</button>
+      <button className={"btn btn-secondary"} onClick={()=>this.props.cancelAddContainer()}>Cancel</button>
+    <button className={inputEmpty ? 'disabled btn btn-primary' : 'btn btn-primary'} onClick={this.saveDataToState}>Save</button>
     </div>
 }
   render(){
     console.log(this.props.ProcessIndex);
 
     return(
-      <li>
-        <input type="text" name='containerName' placeholder='Container name' onChange={this.handleInput}/>
-        <input type="number" name='price' placeholder='Price' onChange={this.handleInput}/>
+      <div className={""}>
+        <input className={"form-control"} type="text" name='containerName' placeholder='Container name' onChange={this.handleInput}/>
+        <input className={"form-control"} type="number" name='price' placeholder='Price' onChange={this.handleInput}/>
         {this.saveBtn()}
-      </li>
+      </div>
     )
   }
 }
