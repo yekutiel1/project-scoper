@@ -174,7 +174,7 @@ button{
     color: white;
     width: 30%;
     margin: 20px;
-    max-width: 250px;
+    /*max-width: 250px;*/
     opacity: .9;
 }
 .button{
@@ -471,9 +471,6 @@ button:hover{
     text-align: left;
 }
 
-.processName{
-    flex: 3;
-}
 .TotalDays{
     border-top: 2px black solid;
     text-align: right;
