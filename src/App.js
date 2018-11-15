@@ -25,7 +25,7 @@ import Specification from './pages/generalInformation/specification.js'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
+import { faChevronDown, faChevronUp, faLock, faSpinner } from '@fortawesome/free-solid-svg-icons'
 
 library.add(faChevronDown, faChevronUp);
 /**
@@ -126,29 +126,30 @@ class MainScreen extends Component {
         <Route path={pageLinkes.allVersions} component={Versions} />
         <Route path={pageLinkes.pdfPreview} component={PDFpreview} />
 
-      <Route path={pageLinkes.projectDescreption} component={ProjectDescription} />
-       <Route path={pageLinkes.actors} component={this.props.store.scopingStatus ? () => <Form name={'Actor'} dispatchType={'ACTOR'} enableDelete={true} /> : Massege} /> 
-       <Route path={pageLinkes.subjects} component={ this.props.store.scopingStatus ? () => <Form name={'Subject'} dispatchType={'SUBJECT'} enableDelete={false} /> : Massege} /> 
-       <Route path={pageLinkes.userStory} component={ this.props.store.scopingStatus ? UserStories : Massege} /> 
+        <Route path={pageLinkes.projectDescreption} component={ProjectDescription} />
+        <Route path={pageLinkes.actors} component={this.props.store.scopingStatus ? () => <Form name={'Actor'} dispatchType={'ACTOR'} enableDelete={true} /> : () => <Massege massege='Locked for editing' icon={faLock}/>} />
+        <Route path={pageLinkes.subjects} component={this.props.store.scopingStatus ? () => <Form name={'Subject'} dispatchType={'SUBJECT'} enableDelete={false} /> : () => <Massege massege='Locked for editing' icon={faLock}/>} />
+        <Route path={pageLinkes.userStory} component={this.props.store.scopingStatus ? UserStories : () => <Massege massege='Locked for editing' icon={faLock}/>} />
 
-        <Route path={pageLinkes.pricing} component={this.props.store.pricingStatus ? Pricing : Massege} /> 
+        <Route path={pageLinkes.pricing} component={this.props.store.pricingStatus ? Pricing : () => <Massege massege='Waiting for evaluetor' icon={faSpinner} />} />
         <Route path={pageLinkes.payment} component={Payment} />
 
         <Route path={pageLinkes.assumptions} component={Assumptions} />
         <Route path={pageLinkes.diagram} component={Diagram} />
         <Route path={pageLinkes.specification} component={Specification} />
-
       </div>
     );
   }
 }
 
-class Massege extends Component{
-  render(){
+class Massege extends Component {
+  render() {
     return (
-      <div>
-      <p>Waiting for evaluetor</p>
-      <img src="" alt=""/>
+      <div className="massege">
+
+              <h2 className='lightBlue'>'Locked for editing'</h2>
+              <FontAwesomeIcon className="fa-10x fa-spin" color='lightBlue' icon={this.props.icon} />
+    
       </div>
     )
   }
@@ -175,8 +176,8 @@ class App extends Component {
           <div className={'container'}>
             <Row >
 
-              <Col className={"col-3"}><SideBar/></Col>
-              <Col className=' col-9 articleRight border-dark border-left text-xl-center'><MainScreen store={this.props}/></Col>
+              <Col className={"col-3"}><SideBar /></Col>
+              <Col className=' col-9 articleRight border-dark border-left text-xl-center'><MainScreen store={this.props} /></Col>
             </Row>
 
           </div>

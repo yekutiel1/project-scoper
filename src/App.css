@@ -175,7 +175,7 @@ button{
     color: white;
     width: 30%;
     margin: 20px;
-    max-width: 250px;
+    /*max-width: 250px;*/
     opacity: .9;
 }
 .button{
@@ -472,9 +472,6 @@ button:hover{
     text-align: left;
 }
 
-.processName{
-    flex: 3;
-}
 .TotalDays{
     border-top: 2px black solid;
     text-align: right;
@@ -517,6 +514,16 @@ button>a:hover{
     text-decoration: none;
 }
 
+.massege{
+    padding: 50px;
+    margin-top: 30%;
+    color: lightblue;
+    /* border: 1px black solid; */
+    border-radius: 100%;
+    background: rgba(173, 216, 230, 0.205);
+}
 
+.massege .icon{
+}
 
 
