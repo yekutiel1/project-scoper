@@ -126,14 +126,12 @@ class MainScreen extends Component {
         <Route path={pageLinkes.allVersions} component={Versions} />
         <Route path={pageLinkes.pdfPreview} component={PDFpreview} />
 
-        <Route path={pageLinkes.projectDescreption} component={ProjectDescription} />
-       {this.props.store.scopingStatus ?  <Route path={pageLinkes.actors} component={() => <Form name={'Actor'} dispatchType={'ACTOR'} enableDelete={true} />} /> : null}
-       {this.props.store.scopingStatus ?  <Route path={pageLinkes.subjects} component={() => <Form name={'Subject'} dispatchType={'SUBJECT'} enableDelete={false} />} /> : null}
-       {this.props.store.scopingStatus ?  <Route path={pageLinkes.userStory} component={UserStories} /> : null}
-        
-       
+      <Route path={pageLinkes.projectDescreption} component={ProjectDescription} />
+       <Route path={pageLinkes.actors} component={this.props.store.scopingStatus ? () => <Form name={'Actor'} dispatchType={'ACTOR'} enableDelete={true} /> : Massege} /> 
+       <Route path={pageLinkes.subjects} component={ this.props.store.scopingStatus ? () => <Form name={'Subject'} dispatchType={'SUBJECT'} enableDelete={false} /> : Massege} /> 
+       <Route path={pageLinkes.userStory} component={ this.props.store.scopingStatus ? UserStories : Massege} /> 
 
-        {this.props.store.pricingStatus ? <Route path={pageLinkes.pricing} component={Pricing} /> : null }
+        <Route path={pageLinkes.pricing} component={this.props.store.pricingStatus ? Pricing : Massege} /> 
         <Route path={pageLinkes.payment} component={Payment} />
 
         <Route path={pageLinkes.assumptions} component={Assumptions} />
@@ -142,6 +140,17 @@ class MainScreen extends Component {
 
       </div>
     );
+  }
+}
+
+class Massege extends Component{
+  render(){
+    return (
+      <div>
+      <p>Waiting for evaluetor</p>
+      <img src="" alt=""/>
+      </div>
+    )
   }
 }
 
