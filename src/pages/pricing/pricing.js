@@ -44,7 +44,7 @@ class Pricing extends Component {
     </div>
 
         {
-          data.pricing.map((process, i) => {
+          this.props.pricing.map((process, i) => {
             return <Process key={i} process={process} ProcessIndex={i} subTotal={this.subTotal}/>
           })}
         <h6 className='grandTotal'>{`Sub Total: ${this.subTotal()}`}</h6>

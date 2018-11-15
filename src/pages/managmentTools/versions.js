@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import '../../App.css';
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import store from '../../store/store';
 import RichEditor from '../../richEditor/richEditor.js'
 import '../../richEditor/richEditor.css';
@@ -16,28 +16,28 @@ class Preview extends Component {
         return (
 
             <div className="viewVersion">
-                <div className='hadePreview'>Date created: {date} </div>
+                <div className='hadePreview'>Date created: {oldDate} </div>
                 {/* <div className='hadePreview'>Date created: {date} {time} </div> */}
                 <div className='hadePreview'>Editor: {this.props.store.oldVersionData.editorName} </div>
                 <div className='hadePreview'>rejection
                     reason: {this.props.store.oldVersionData.rejectionExplenation} </div>
-                <br/>
+                <br />
                 <div>project description:<RichEditor
                     data={this.props.store.projectDescription}
                     readOnly={true}
-                     /> </div>
+                /> </div>
 
                 <div>Specification (UX):<RichEditor
-                    data={this.props.store.specificationDescription }
+                    data={this.props.store.specificationDescription}
                     readOnly={true}
-                     /> </div>
-                     <img src={this.props.store.specificationLink} alt="" />
+                /> </div>
+                <img src={this.props.store.specificationLink} alt="" />
 
                 <div>High Level Architecture:<RichEditor
-                    data={this.props.store.diagramDescription }
+                    data={this.props.store.diagramDescription}
                     readOnly={true}
-                     /> </div>
-                     <img src={this.props.store.diagramLink} alt="" />
+                /> </div>
+                <img src={this.props.store.diagramLink} alt="" />
 
                 <div><b>The Actors/Users:</b>
                     <ol>
@@ -77,7 +77,7 @@ class Preview extends Component {
 
 
                 <div>
-                    <p className="pdfOverview"><b> Assumptions</b></p> <br/>
+                    <p className="pdfOverview"><b> Assumptions</b></p> <br />
                     <ul>
                         <div>{this.props.store.oldVersionData.generalAssumptions.map((elm, i) => {
                             return elm === 'true' ? <li key={i}>{data.assumptions[i].name}</li> : null
@@ -91,20 +91,50 @@ class Preview extends Component {
 
 
                 <div>
-                    <p className="pdfOverview"><b> Price</b></p> <br/>
-                    <ul>
-                        <div>{this.props.store.oldVersionData.pricing.map((elm, i) => {
+                    <p className="pdfOverview"><b> Price</b></p> <br />
 
-                        })}</div>
+                    {this.props.store.oldVersionData.pricing.map((process, i) => {
+                        return <ul key={i}>
+                            {process.milestoneName}
+                            {process.containers.map((container, i) => {
+                                return <ul key={i}>
+                                    <li> container name: {container.containerName}</li>
+                                    <li>  days:  {container.days}</li>
+                                    {container.tasks.map((task, i) => {
+                                        return <ul key={i}>
+                                            <li> task: {task.taskName} </li>
+                                            <li>  days: {task.days} </li>
+                                        </ul>
+                                    })}
+                                    <li> <b> container price:  {container.price} </b></li>
+                                </ul>
+                            })}
+                            <li> comment: {process.comment} </li>
+                            <li> processTotalPrice: {process.processTotalPrice} </li>
+                        </ul>
+                    })}
+                    <p>Sub total price: {this.props.store.oldVersionData.subTotalPrice}</p>
+                    <p>discount: {this.props.store.oldVersionData.discount} %</p>
+                    <p>Grand total price: {this.props.store.oldVersionData.grandTotalPrice}</p>
 
-                       
-                    </ul>
+                   <p> additional pricing: 
+                    <RichEditor
+                    data={this.props.store.additionalPricing}
+                    readOnly={true}
+                    /> </p> 
+                    
                 </div>
 
+                <p><b> payment section of the terms and conditions</b></p> <br />
+                <RichEditor
+                    data={this.props.store.payment}
+                    readOnly={true}
+                /> 
             </div>
         )
     }
 }
+
 
 class Versions extends Component {
     constructor(props) {
@@ -115,15 +145,15 @@ class Versions extends Component {
     }
 
     componentWillMount() {
-        store.dispatch({type: 'GET_VERSIONS'});
+        store.dispatch({ type: 'GET_VERSIONS' });
     }
 
     dropDown = () => {
         return <select className={'form-control'} defaultValue={this.props.oldVersionNumber} onChange={(e) => {
-            store.dispatch({type: 'UPDATE_OLD_VERSION_NUMBER', payload: e.target.value});
-            store.dispatch({type: 'GET_OLD_VERSION_DATA'});
+            store.dispatch({ type: 'UPDATE_OLD_VERSION_NUMBER', payload: e.target.value });
+            store.dispatch({ type: 'GET_OLD_VERSION_DATA' });
         }}>
-            <option value='' style={{color: 'red'}}>Select version</option>
+            <option value='' style={{ color: 'red' }}>Select version</option>
             {this.props.versionsArray.map((version, i) => {
                 return <option key={i} value={version.versionNumber}>{`Version ${version.versionNumber}`}</option>
             })}
@@ -138,7 +168,7 @@ class Versions extends Component {
             <div>
                 {this.dropDown()}
 
-                {this.props.oldVersionData !== null ? <Preview store={this.props}/> : null}
+                {this.props.oldVersionData !== null ? <Preview store={this.props} /> : null}
             </div>
         );
     }
@@ -146,6 +176,3 @@ class Versions extends Component {
 
 export default connect(store => store)(Versions);
 
-// 0: {comment: "", processTotalPrice: 0, containers: Array(9), _id: "5beac2ef99688c0468b011d4", milestoneName: "Milestone 1"}
-// 1: {comment: "", processTotalPrice: 0, containers: Array(4), _id: "5beac2ef99688c0468b011c7", milestoneName: "Milestone 2"}
-// 2: {comment: "", processTotalPrice: 0, containers: Array(5), _id: "5beac2ef99688c0468b011b7", milestoneName: "Milestone 3"}
