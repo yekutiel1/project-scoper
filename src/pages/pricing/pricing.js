@@ -44,13 +44,13 @@ class Pricing extends Component {
     </div>
 
         {
-          data.pricing.map((process, i) => {
+          this.props.pricing.map((process, i) => {
             return <Process key={i} process={process} ProcessIndex={i} subTotal={this.subTotal}/>
           })}
         <h6 className='grandTotal'>{`Sub Total: ${this.subTotal()}`}</h6>
         <div className='grandTotal'>
           Discount %
-
+          
             <Input  type="number"
             value={this.state.discountInput}
             onBlur={() => { store.dispatch({ type: 'SAVE_DISCOUNT', payload:{subTotalPrice: subTotal, discount: this.state.discountInput, grandTotalPrice: this.grandTotal(subTotal) }}) }}

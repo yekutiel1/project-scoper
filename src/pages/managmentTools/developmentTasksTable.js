@@ -34,35 +34,36 @@ class DevelopmentTasks extends Component {
                         <th>Assumptions</th>
                     </tr>
                 </thead>
-                {data.pricing.map((elm, index) => {
+
+                {data.taskContainers.map((task, i) => {
                     return (
-                        elm.taskContainers.map((task, i) => {
-                            return (
-                                <tbody key={i}>
-                                    <tr>
-                                        <th>{task.taskContainer}</th>
-                                        <th>{task.category}</th>
-                                        <th>{}</th>
-                                        <th>{}</th>
-                                        <th>{}</th>
+
+                        <tbody key={i}>
+                            <tr>
+                                <th>{task.taskContainer}</th>
+                                <th>{task.category}</th>
+                                <th>{task.documentComponentId}</th>
+                                <th>{}</th>
+                                <th>{}</th>
+                            </tr>
+                            {task.tasks.map((row, i) => {
+                                return (
+                                    <tr key={i}>
+                                        <td>{row.taskName}</td>
+                                        <td>{row.documentComponentId}</td>
+                                        <td>{row.details}</td>
+                                        <td>{task.milestoneName}</td>
+                                        <td>{row.assumptions}</td>
                                     </tr>
-                                    {task.tasks.map((row, i) => {
-                                        return (
-                                            <tr key={i}>
-                                                <td>{row.taskName}</td>
-                                                <td>{row.documentComponentId}</td>
-                                                <td>{row.details}</td>
-                                                <td>{row.milestoneName}</td>
-                                                <td>{row.assumptions}</td>
-                                            </tr>
-                                        )
-                                    })}
+                                )
+                            })}
+
                                 </tbody>
                             )
                         })
-                    )
+
+
                 }
-                )}
 
             </Table>
         )
