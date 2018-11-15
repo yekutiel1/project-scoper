@@ -153,7 +153,7 @@ var reduser = function (state, action) {
             saveData(url, subjectTemplate, 'GET_ALL_DATA');
             return newState;
             break;
-//Saving user story DB;
+        //Saving user story DB;
         case "SAVE_USER_STORY":
             url = `${urlLinks.saveUserStory}/${newState.currentProject}/${action.payload.indexOfActor}`;
             saveData(url, action.payload.userStory, 'GET_ALL_DATA');
@@ -167,12 +167,56 @@ var reduser = function (state, action) {
             getData(url, 'SAVE_PRICING_DATA')
             return newState;
             break;
-        //Saving the evakuetor data to DB;
-        case "SAVE_PRICING_DATA":
+
+        //Saving the data from evaluetor Api to DB;
+        case "SAVE_PRICING_DATA_FROM_EVALUETOR":
+
+            var checkIfNameExist = (arr, name) => {
+                return arr.every(milestone => name !== milestone.milestoneName);
+            }
+
+            var addProcessToArr = (checkIfExist) => {
+                var processArr = [];
+                action.payload.taskContainers.map(container => {
+                    var checkIfNameExist = checkIfExist(processArr, container.milestoneName);
+                    if (checkIfNameExist) {
+                        processArr.push({
+                            milestoneName: container.milestoneName,
+                            containers: [],
+                            // processTotalPrice: 0
+                        });
+                    }
+                })
+                return processArr;
+            }
+
+            var addContainersToProcess = (data, processArr) => {
+                data.map(container => {
+                    processArr.map(process => {
+                        if (container.milestoneName === process.milestoneName) {
+                            process.containers.push(container);
+                        }
+
+                    })
+                })
+            }
+
+            var pricing = addProcessToArr(checkIfNameExist);
+            addContainersToProcess(action.payload.taskContainers, pricing);
+
             url = `${urlLinks.savePricing}/${newState.currentProject}`;
-            saveData(url, action.payload, 'GET_ALL_DATA');
+            saveData(url, { pricing: pricing }, 'GET_ALL_DATA');
             return newState;
             break;
+
+        //Saving the pricing data after changed to DB;
+
+        case 'SAVE_PRICING_DATA':
+            url = `${urlLinks.savePricing}/${newState.currentProject}`;
+            saveData(url, action.payload, 'GET_ALL_DATA')
+            return newState;
+            break;
+
         //Adding price to container in state;
         case 'ADD_PRICE_TO_CONTAINER':
             newState.pricing[action.payload.ProcessIndex].containers[action.payload.containerIndex].price = action.payload.price;
@@ -187,12 +231,12 @@ var reduser = function (state, action) {
             break;
 
         case 'ADD_CONTAINER_TO_PROCESS':
-        
-        // newState.pricing[action.processIndex].containers.push(action.payload);
-        newState.pricing[action.processIndex].containers.push({containerName: action.payload.containerName, price: parseInt(action.payload.price)});
-        // url = `${urlLinks.saveComment}/${newState.currentProject}/${action.payload.ProcessIndex}`;
-        // saveData(url, { comment: action.payload.processComment }, '')
-        console.log(newState.pricing);
+
+            // newState.pricing[action.processIndex].containers.push(action.payload);
+            newState.pricing[action.processIndex].containers.push({ containerName: action.payload.containerName, price: parseInt(action.payload.price) });
+            // url = `${urlLinks.saveComment}/${newState.currentProject}/${action.payload.ProcessIndex}`;
+            // saveData(url, { comment: action.payload.processComment }, '')
+            console.log(newState.pricing);
             return newState;
             break;
         //Saving discout to DB;

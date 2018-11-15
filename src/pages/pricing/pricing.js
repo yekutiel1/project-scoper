@@ -6,15 +6,55 @@ import RichEditor from '../../richEditor/richEditor.js'
 import '../../richEditor/richEditor.css';
 
 import { Button, Input} from 'reactstrap';
-import data from '../../rest_API_example_of_task_container.json';
+//import data from '../../rest_API_example_of_task_container.json';
+import data from '../../list_of_development_task.json'
+
 
 class Pricing extends Component {
   constructor(props) {
     super(props);
     this.state = {
       discountInput: this.props.discount,
+      pricing: []
     }
   }
+
+  // componentWillMount(){
+  //   // this.addProcessToArr();
+  // }
+
+  // pricing = [];
+
+  // checkIfNameExist = (arr, name) =>{
+  //   return arr.every(milestone => name !== milestone.milestoneName);
+  // }
+
+  // addProcessToArr = ()=>{
+  //   var processArr = [];
+  //   data.taskContainers.map(container => {
+  //     var checkIfNameExist = this.checkIfNameExist(processArr, container.milestoneName);
+  //     if (checkIfNameExist) {
+  //       processArr.push({
+  //         milestoneName: container.milestoneName,
+  //         containers: [],
+  //         processTotalPrice: 0
+  //       });
+  //     }
+  //   })
+  //    this.addContainersToProcess(data.taskContainers, processArr);
+  // }
+
+  // addContainersToProcess = (data, processArr) => {
+  //   data.map(container => {
+  //     processArr.map(process => {
+  //       if (container.milestoneName === process.milestoneName) {
+  //         process.containers.push(container);
+  //       }
+
+  //     })
+  //   })
+  //   this.pricing = processArr;
+  // }
 
   subTotal = () => {
     let total = 0;
@@ -38,19 +78,19 @@ class Pricing extends Component {
 
     return (<div>
 
-        <Button color="success"  onClick={() => store.dispatch({ type: 'SAVE_PRICING_DATA', payload: data })}>Get Data from evaluetor</Button>
+        <Button color="success"  onClick={() => store.dispatch({ type: 'SAVE_PRICING_DATA_FROM_EVALUETOR', payload: data })}>Get Data from evaluetor</Button>
       <div className='pricing'>
         {/* <button onClick={()=>store.dispatch({type: 'GET_DATA_FROM_PRICING'})}>Save Data</button> */}
     </div>
 
         {
-          data.pricing.map((process, i) => {
+          this.props.pricing.map((process, i) => {
             return <Process key={i} process={process} ProcessIndex={i} subTotal={this.subTotal}/>
           })}
         <h6 className='grandTotal'>{`Sub Total: ${this.subTotal()}`}</h6>
         <div className='grandTotal'>
           Discount %
-          
+
             <Input  type="number"
             value={this.state.discountInput}
             onBlur={() => { store.dispatch({ type: 'SAVE_DISCOUNT', payload:{subTotalPrice: subTotal, discount: this.state.discountInput, grandTotalPrice: this.grandTotal(subTotal) }}) }}
@@ -86,6 +126,7 @@ class Process extends Component {
   }
 
   totalDays = null;
+  
 
   cancelAddContainer = ()=>{
     this.setState({addContainer: false});
