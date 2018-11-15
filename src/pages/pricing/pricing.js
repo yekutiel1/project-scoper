@@ -207,5 +207,7 @@ class AddContainer extends Component{
 
 
 
+
+
 export default connect(store => store)(Pricing);
 
