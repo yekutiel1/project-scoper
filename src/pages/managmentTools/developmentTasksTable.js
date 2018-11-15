@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import data from './list_of_development_task.json'
+import data from '../../list_of_development_task.json'
 import { connect } from 'react-redux'
 import { Table } from 'reactstrap';
 
