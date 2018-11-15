@@ -28,6 +28,7 @@ class Diagram extends Component {
                 <div className="card mt-3">
                     <RichEditor editMode={true} data={this.props.diagramDescription} save={'SAVE_DIAGRAM_DESCRIPTION'} placeholder='Descibe the diagram...' />
                 </div>
+                <img src={this.props.diagramLink} alt="" />
             </div>
     );
     }

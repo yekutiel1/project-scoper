@@ -28,26 +28,28 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 
 library.add(faChevronDown, faChevronUp);
-
-class NavBar extends Component {
+/**
+ * Crating the side bar;
+ */
+class SideBar extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       dropDown: [
-        { title: 'managment', isOpen: false},
-        { title: 'scoping', isOpen: false},
-        { title: 'pricing', isOpen: false},
-        { title: 'general', isOpen: false}
+        { title: 'managment', isOpen: false },
+        { title: 'scoping', isOpen: false },
+        { title: 'pricing', isOpen: false },
+        { title: 'general', isOpen: false }
       ]
     };
   }
 
 
-/**
- * Change the status of drop-down unit
-* @param {Number} index
-*/
+  /**
+   * Change the status of drop-down unit
+  * @param {Number} index
+  */
   dropDownIsOpen = (index) => {
     var newState = this.state.dropDown.slice();
     newState[index].isOpen = !newState[index].isOpen;
@@ -55,19 +57,19 @@ class NavBar extends Component {
   }
 
 
-/**
- * Changing the direction of the arrow if clicked
-* @param {Boolian} bool
-*/
-    arrowIcon = (bool) => {
-      return bool ? <FontAwesomeIcon icon={faChevronUp}/> : <FontAwesomeIcon icon={faChevronDown}/>
-    }
+  /**
+   * Changing the direction of the arrow if clicked
+  * @param {Boolian} bool
+  */
+  arrowIcon = (bool) => {
+    return bool ? <FontAwesomeIcon icon={faChevronUp} /> : <FontAwesomeIcon icon={faChevronDown} />
+  }
 
 
 
   render() {
-    
-    
+
+
     return (
       <div className='sidebar'>
         <div className='py-2 sidBarItem'>
@@ -111,23 +113,27 @@ class NavBar extends Component {
   }
 }
 
-
+/**
+ * Crating the main screen;
+ */
 class MainScreen extends Component {
   render() {
     return (
       <div className='mainScreen'>
 
-        <Route exact path={pageLinkes.selectProject} component={SelectProject} />
-        <Route exact path={pageLinkes.newVersion} component={CreateNewVersion} />
+        <Route path={pageLinkes.selectProject} component={SelectProject} />
+        <Route path={pageLinkes.newVersion} component={CreateNewVersion} />
         <Route path={pageLinkes.allVersions} component={Versions} />
         <Route path={pageLinkes.pdfPreview} component={PDFpreview} />
 
         <Route path={pageLinkes.projectDescreption} component={ProjectDescription} />
-        <Route path={pageLinkes.actors} component={() => <Form name={'Actor'} dispatchType={'ACTOR'} enableDelete={true} />} />
-        <Route path={pageLinkes.subjects} component={() => <Form name={'Subject'} dispatchType={'SUBJECT'} enableDelete={false} />} />
-        <Route path={pageLinkes.userStory} component={UserStories} />
+       {this.props.store.scopingStatus ?  <Route path={pageLinkes.actors} component={() => <Form name={'Actor'} dispatchType={'ACTOR'} enableDelete={true} />} /> : null}
+       {this.props.store.scopingStatus ?  <Route path={pageLinkes.subjects} component={() => <Form name={'Subject'} dispatchType={'SUBJECT'} enableDelete={false} />} /> : null}
+       {this.props.store.scopingStatus ?  <Route path={pageLinkes.userStory} component={UserStories} /> : null}
+        
+       
 
-        <Route path={pageLinkes.pricing} component={Pricing} />
+        {this.props.store.pricingStatus ? <Route path={pageLinkes.pricing} component={Pricing} /> : null }
         <Route path={pageLinkes.payment} component={Payment} />
 
         <Route path={pageLinkes.assumptions} component={Assumptions} />
@@ -143,28 +149,31 @@ class MainScreen extends Component {
 class App extends Component {
 
   componentWillMount() {
+    if (this.props.projectId !== undefined) {
+      store.dispatch({ type: 'UPDATE_CURRENT_PROJECT_ID', payload: this.props.projectId });
+      store.dispatch({ type: 'GET_ALL_DATA' });
+    }
     store.dispatch({ type: 'GET_PROJECTS' });
   }
 
   render() {
-    console.log(this.props);
     return (
       <BrowserRouter >
         <div className=''>
-            <div className='header'>
-                <header className={'container py-2'}>SCOPER</header>
-            </div>
-                <div className={'container'}>
-                    <Row >
+          <div className='header'>
+            <header className={'container py-2'}>SCOPER</header>
+          </div>
+          <div className={'container'}>
+            <Row >
 
-                    <Col className={"col-3"}><NavBar /></Col>
-                    <Col className=' col-9 articleRight border-dark border-left text-xl-center'><MainScreen /></Col>
-                    </Row>
+              <Col className={"col-3"}><SideBar/></Col>
+              <Col className=' col-9 articleRight border-dark border-left text-xl-center'><MainScreen store={this.props}/></Col>
+            </Row>
 
-                </div>
-            <div className='footer'>
-                <footer className={'container py-3'}>✎ created by COD Team ©</footer>
-            </div>
+          </div>
+          <div className='footer'>
+            <footer className={'container py-3'}>✎ created by COD Team ©</footer>
+          </div>
         </div>
       </BrowserRouter>
     );
@@ -173,4 +182,3 @@ class App extends Component {
 
 
 export default connect(store => store)(App);
-
