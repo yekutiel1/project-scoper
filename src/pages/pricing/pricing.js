@@ -6,8 +6,8 @@ import RichEditor from '../../richEditor/richEditor.js'
 import '../../richEditor/richEditor.css';
 
 import { Button, Input } from 'reactstrap';
-import data from '../../rest_API_example_of_task_container.json';
-// import data from '../../list_of_development_task.json'
+//import data from '../../rest_API_example_of_task_container.json';
+import data from '../../list_of_development_task.json'
 
 
 class Pricing extends Component {
@@ -49,7 +49,7 @@ class Pricing extends Component {
       </div>
 
       {
-        data.pricing.map((process, i) => {
+        this.props.pricing.map((process, i) => {
           return <Process key={i} process={process} ProcessIndex={i} subTotal={this.subTotal} />
         })}
       <h6 className='grandTotal'>{`Sub Total: ${this.subTotal()}`}</h6>
@@ -65,7 +65,7 @@ class Pricing extends Component {
       </div>
       <h6 className='grandTotal'>{`Grand Total: ${this.grandTotal(subTotal)}`}</h6>
 
-      <Button onClick={() => store.dispatch({ type: 'SAVE_PRICING_DATA', payload: { pricing: this.props.pricing } })}>Save</Button>
+      <button className='btn btn-primary col-4 mb-2' onClick={() => store.dispatch({ type: 'SAVE_PRICING_DATA', payload: { pricing: this.props.pricing } })}>Save</button>
       <div className='description card' >
         <RichEditor readOnly={false} data={this.props.additionalPricing} save={'SAVE_ADDITIONAL_PRICING'} placeholder='Add pricing...' />
       </div>

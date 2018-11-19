@@ -127,14 +127,11 @@ class MainScreen extends Component {
         <Route path={pageLinkes.pdfPreview} component={PDFpreview} />
 
         <Route path={pageLinkes.projectDescreption} component={ProjectDescription} />
-        {/*<Route path={pageLinkes.actors} component={this.props.store.scopingStatus ? () => <Form name={'Actor'} dispatchType={'ACTOR'} enableDelete={true} /> : () => <Massege massege='Locked for editing' icon={faLock}/>} />*/}
-        {/*<Route path={pageLinkes.subjects} component={this.props.store.scopingStatus ? () => <Form name={'Subject'} dispatchType={'SUBJECT'} enableDelete={false} /> : () => <Massege massege='Locked for editing' icon={faLock}/>} />*/}
-        {/*<Route path={pageLinkes.userStory} component={this.props.store.scopingStatus ? UserStories : () => <Massege massege='Locked for editing' icon={faLock}/>} />*/}
-        {/*<Route path={pageLinkes.pricing} component={this.props.store.pricingStatus ? Pricing : () => <Massege massege='Waiting for evaluetor' icon={faSpinner} />} />*/}
-          <Route path={pageLinkes.actors} component={this.props.store.scopingStatus ? () => <Form name={'Actor'} dispatchType={'ACTOR'} enableDelete={true} /> : () => <Form name={'Actor'} dispatchType={'ACTOR'} enableDelete={true} />} />
-        <Route path={pageLinkes.subjects} component={this.props.store.scopingStatus ? () => <Form name={'Subject'} dispatchType={'SUBJECT'} enableDelete={false} /> : () => <Form name={'Subject'} dispatchType={'SUBJECT'} enableDelete={false} />} />
+        <Route path={pageLinkes.actors} component={this.props.store.scopingStatus ? () => <Form name={'Actor'} dispatchType={'ACTOR'} enableDelete={true} /> : () => <Massege massege='Locked for editing' icon={faLock}/>} />
+        <Route path={pageLinkes.subjects} component={this.props.store.scopingStatus ? () => <Form name={'Subject'} dispatchType={'SUBJECT'} enableDelete={false} /> : () => <Massege massege='Locked for editing' icon={faLock}/>} />
         <Route path={pageLinkes.userStory} component={this.props.store.scopingStatus ? UserStories : () => <Massege massege='Locked for editing' icon={faLock}/>} />
-        <Route path={pageLinkes.pricing} component={Pricing} />
+
+        <Route path={pageLinkes.pricing} component={this.props.store.pricingStatus ? Pricing : () => <Massege massege='Waiting for evaluetor' icon={faSpinner} />} />
         <Route path={pageLinkes.payment} component={Payment} />
 
         <Route path={pageLinkes.assumptions} component={Assumptions} />
@@ -180,7 +177,7 @@ class App extends Component {
             <Row >
 
               <Col className={"col-3"}><SideBar /></Col>
-              <Col className=' col-9 articleRight border-dark border-left text-xl-center'><MainScreen store={this.props} /></Col>
+              <Col className=' col-9 border-dark border-left text-xl-center'><MainScreen store={this.props} /></Col>
             </Row>
 
           </div>

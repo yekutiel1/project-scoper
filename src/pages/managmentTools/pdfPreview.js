@@ -65,10 +65,10 @@ class PDFpreview extends Component {
 
 
                 <DownloadPdf />
-                <div id='pdfPreview' className="border border-dark ml-4 mt-3 p-4 pdfPreview">
+                <div className="border border-dark ml-4 mt-3 p-4 pdfPreview">
                     <div className="mainBlbBla" id='mainBlbBla'>
-                        <h3 className="pdfPreviewTitel" id='pdfPreviewTitel'><b> Offer for Development of Disk In Pro <br /> NEAR phase 2 web app </b></h3><br />
-                        <b className="pdfOverview"> Overview</b> <br /><br />
+                        <h3 className="pdfPreviewTitel"><b> Offer for Development of Disk In Pro <br /> NEAR phase 2 web app </b></h3><br />
+                        <p className="pdfOverview font-weight-bold"> Overview</p>
 
                         {
                             data.overView.map((elm, index) => {
