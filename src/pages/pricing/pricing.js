@@ -6,8 +6,8 @@ import RichEditor from '../../richEditor/richEditor.js'
 import '../../richEditor/richEditor.css';
 
 import { Button, Input } from 'reactstrap';
-//import data from '../../rest_API_example_of_task_container.json';
-import data from '../../list_of_development_task.json'
+import data from '../../rest_API_example_of_task_container.json';
+// import data from '../../list_of_development_task.json'
 
 
 class Pricing extends Component {
@@ -49,7 +49,7 @@ class Pricing extends Component {
       </div>
 
       {
-        this.props.pricing.map((process, i) => {
+        data.pricing.map((process, i) => {
           return <Process key={i} process={process} ProcessIndex={i} subTotal={this.subTotal} />
         })}
       <h6 className='grandTotal'>{`Sub Total: ${this.subTotal()}`}</h6>
@@ -143,7 +143,7 @@ class Process extends Component {
           {
             this.state.addContainer ? <AddContainer ProcessIndex={this.props.ProcessIndex} cancelAddContainer={this.cancelAddContainer} />
               :
-              <button className={'btn btn-primary'} onClick={() => this.setState({ addContainer: true })}>Add Container</button>
+              <button className={'btn btn-primary col-4'} onClick={() => this.setState({ addContainer: true })}>Add Container</button>
           }
 
           {/* <button className={'btn btn-primary'} onClick={()=>this.setState({addContainer: true})}>Add Container</button> */}
@@ -207,17 +207,17 @@ class AddContainer extends Component {
   saveBtn = () => {
     var inputEmpty = this.state.containerName === '' || this.state.price === '';
     return <div>
-      <button className={"btn btn-secondary"} onClick={() => this.props.cancelAddContainer()}>Cancel</button>
-      <button className={inputEmpty ? 'disabled btn btn-primary' : 'btn btn-primary'} onClick={this.saveDataToState}>Save</button>
+      <button className={"btn btn-secondary col-4 mr-1"} onClick={() => this.props.cancelAddContainer()}>Cancel</button>
+      <button className={inputEmpty ? 'disabled btn btn-primary col-4 ml-1' : 'btn btn-primary col-4 ml-1'} onClick={this.saveDataToState}>Save</button>
     </div>
   }
   render() {
     console.log(this.props.ProcessIndex);
 
     return (
-      <div className={""}>
-        <input className={"form-control"} type="text" name='containerName' placeholder='Container name' onChange={this.handleInput} />
-        <input className={"form-control"} type="number" name='price' placeholder='Price' onChange={this.handleInput} />
+      <div className={"col-12"}>
+        <input className={"form-control mb-1"} type="text" name='containerName' placeholder='Container name' onChange={this.handleInput} />
+        <input className={"form-control mb-1"} type="number" name='price' placeholder='Price' onChange={this.handleInput} />
         {this.saveBtn()}
       </div>
     )

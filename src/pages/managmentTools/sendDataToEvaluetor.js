@@ -37,10 +37,12 @@ class SendDataToEvaluetor extends Component {
 
     render() {
         return (
-            <div>
+            <div className={"row"}>
                 {this.dialog()}
-              <button onClick={() => this.setState({openDialog: true})}>Send to evaluetor</button>
-              <Button color="success" onClick={() => store.dispatch({ type: 'SAVE_PRICING_DATA_FROM_EVALUETOR', payload: data })}>Get Data from evaluetor</Button>
+                <div  className="border-secondary border-top btn-group col-12 my-5 py-5"  role="group">
+                    <button className="btn btn-secondary col-6" onClick={() => this.setState({openDialog: true})}>Send to evaluetor</button>
+                    <button className="btn btn-secondary col-6" onClick={() => store.dispatch({ type: 'SAVE_PRICING_DATA_FROM_EVALUETOR', payload: data })}>Get Data from evaluetor</button>
+                </div>
             </div>
         );
     }

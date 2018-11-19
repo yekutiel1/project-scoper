@@ -173,10 +173,10 @@ button{
     position: relative;
     border-radius:5px;
     color: white;
-    width: 30%;
+    /*width: 30%;*/
     margin: 20px;
     /*max-width: 250px;*/
-    opacity: .9;
+    /*opacity: .9;*/
 }
 .button{
     position: relative;
@@ -404,10 +404,10 @@ button:hover{
     display: flex
 
 }
-.asuumption_row:hover{
-    background: rgba(137, 187, 243, 0.205);
+/*.asuumption_row:hover{*/
+    /*background: rgba(137, 187, 243, 0.205);*/
 
-}
+/*}*/
 .formAssumptionsContainer{
     /* border: 2px solid gray; */
     width: 100%;

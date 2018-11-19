@@ -45,23 +45,23 @@ class PDFpreview extends Component {
         return (
             <div>
 
-                <button onClick={() => {
-                    axios({
-                        url: 'http://10.2.1.103:3000/api/pdf',
-                        method: 'GET',
-                        responseType: 'blob', // important
-                    }).then((response) => {
-                        const url = window.URL.createObjectURL(new Blob([response.data]));
-                        const link = document.createElement('a');
-                        link.href = url;
-                        link.setAttribute('download', `${this.state.projectName}.pdf`); //or any other extension
-                        document.body.appendChild(link);
-                        link.click();
-                    });
+                {/*<button onClick={() => {*/}
+                    {/*axios({*/}
+                        {/*url: 'http://10.2.1.103:3000/api/pdf',*/}
+                        {/*method: 'GET',*/}
+                        {/*responseType: 'blob', // important*/}
+                    {/*}).then((response) => {*/}
+                        {/*const url = window.URL.createObjectURL(new Blob([response.data]));*/}
+                        {/*const link = document.createElement('a');*/}
+                        {/*link.href = url;*/}
+                        {/*link.setAttribute('download', `${this.state.projectName}.pdf`); //or any other extension*/}
+                        {/*document.body.appendChild(link);*/}
+                        {/*link.click();*/}
+                    {/*});*/}
 
 
 
-                }}>Download</button>
+                {/*}}>Download</button>*/}
 
 
                 <DownloadPdf />

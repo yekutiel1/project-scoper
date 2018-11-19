@@ -50,7 +50,7 @@ class CreateNewProject extends Component {
 
     saveBtn = () =>{
         var inputEmpty = this.state.projectName === '' || this.state.editorName === '';
-       return <button className={inputEmpty ? 'btn btn-secondary disableBtn': 'btn btn-primary'} onClick={() => {
+       return <button className={inputEmpty ? 'btn btn-primary disabled col-4': 'btn btn-primary col-4'} onClick={() => {
            store.dispatch({type: 'CREATE_NEW_PROJECT', payload: this.state})
             this.setState({ projectName: '', editorName: ''})
             }}><Link to='/scoping' >Create New Project</Link></button>
