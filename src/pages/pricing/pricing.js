@@ -65,7 +65,7 @@ class Pricing extends Component {
       </div>
       <h6 className='grandTotal'>{`Grand Total: ${this.grandTotal(subTotal)}`}</h6>
 
-      <Button onClick={() => store.dispatch({ type: 'SAVE_PRICING_DATA', payload: { pricing: this.props.pricing } })}>Save</Button>
+      <button className='btn btn-primary col-4 mb-2' onClick={() => store.dispatch({ type: 'SAVE_PRICING_DATA', payload: { pricing: this.props.pricing } })}>Save</button>
       <div className='description card' >
         <RichEditor readOnly={false} data={this.props.additionalPricing} save={'SAVE_ADDITIONAL_PRICING'} placeholder='Add pricing...' />
       </div>
@@ -143,7 +143,7 @@ class Process extends Component {
           {
             this.state.addContainer ? <AddContainer ProcessIndex={this.props.ProcessIndex} cancelAddContainer={this.cancelAddContainer} />
               :
-              <button className={'btn btn-primary'} onClick={() => this.setState({ addContainer: true })}>Add Container</button>
+              <button className={'btn btn-primary col-4'} onClick={() => this.setState({ addContainer: true })}>Add Container</button>
           }
 
           {/* <button className={'btn btn-primary'} onClick={()=>this.setState({addContainer: true})}>Add Container</button> */}
@@ -207,17 +207,17 @@ class AddContainer extends Component {
   saveBtn = () => {
     var inputEmpty = this.state.containerName === '' || this.state.price === '';
     return <div>
-      <button className={"btn btn-secondary"} onClick={() => this.props.cancelAddContainer()}>Cancel</button>
-      <button className={inputEmpty ? 'disabled btn btn-primary' : 'btn btn-primary'} onClick={this.saveDataToState}>Save</button>
+      <button className={"btn btn-secondary col-4 mr-1"} onClick={() => this.props.cancelAddContainer()}>Cancel</button>
+      <button className={inputEmpty ? 'disabled btn btn-primary col-4 ml-1' : 'btn btn-primary col-4 ml-1'} onClick={this.saveDataToState}>Save</button>
     </div>
   }
   render() {
     console.log(this.props.ProcessIndex);
 
     return (
-      <div className={""}>
-        <input className={"form-control"} type="text" name='containerName' placeholder='Container name' onChange={this.handleInput} />
-        <input className={"form-control"} type="number" name='price' placeholder='Price' onChange={this.handleInput} />
+      <div className={"col-12"}>
+        <input className={"form-control mb-1"} type="text" name='containerName' placeholder='Container name' onChange={this.handleInput} />
+        <input className={"form-control mb-1"} type="number" name='price' placeholder='Price' onChange={this.handleInput} />
         {this.saveBtn()}
       </div>
     )

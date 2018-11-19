@@ -177,7 +177,7 @@ class App extends Component {
             <Row >
 
               <Col className={"col-3"}><SideBar /></Col>
-              <Col className=' col-9 articleRight border-dark border-left text-xl-center'><MainScreen store={this.props} /></Col>
+              <Col className=' col-9 border-dark border-left text-xl-center'><MainScreen store={this.props} /></Col>
             </Row>
 
           </div>
