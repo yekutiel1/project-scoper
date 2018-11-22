@@ -19,7 +19,7 @@ class Specification extends Component {
         return (
             <div>
                 <Form inline>
-                    <Input type="text" placeholder='Specification link'
+                    <Input className={'mr-1'} type="text" placeholder='Specification link'
                      onChange={(e) => this.setState({ link: e.target.value })}
                      value={this.state.link} />
                     <Button onClick={() => store.dispatch({ type: 'SAVE_SPECIFICATION_LINK', payload: this.state.link })}>Save</Button>

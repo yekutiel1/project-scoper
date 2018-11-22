@@ -6,15 +6,55 @@ import RichEditor from '../../richEditor/richEditor.js'
 import '../../richEditor/richEditor.css';
 
 import { Button, Input} from 'reactstrap';
-import data from '../../rest_API_example_of_task_container.json';
+//import data from '../../rest_API_example_of_task_container.json';
+import data from '../../list_of_development_task.json'
+
 
 class Pricing extends Component {
   constructor(props) {
     super(props);
     this.state = {
       discountInput: this.props.discount,
+      pricing: []
     }
   }
+
+  // componentWillMount(){
+  //   // this.addProcessToArr();
+  // }
+
+  // pricing = [];
+
+  // checkIfNameExist = (arr, name) =>{
+  //   return arr.every(milestone => name !== milestone.milestoneName);
+  // }
+
+  // addProcessToArr = ()=>{
+  //   var processArr = [];
+  //   data.taskContainers.map(container => {
+  //     var checkIfNameExist = this.checkIfNameExist(processArr, container.milestoneName);
+  //     if (checkIfNameExist) {
+  //       processArr.push({
+  //         milestoneName: container.milestoneName,
+  //         containers: [],
+  //         processTotalPrice: 0
+  //       });
+  //     } 
+  //   })
+  //    this.addContainersToProcess(data.taskContainers, processArr);
+  // }
+
+  // addContainersToProcess = (data, processArr) => {
+  //   data.map(container => {
+  //     processArr.map(process => {
+  //       if (container.milestoneName === process.milestoneName) {
+  //         process.containers.push(container);
+  //       }
+
+  //     })
+  //   })
+  //   this.pricing = processArr;
+  // }
 
   subTotal = () => {
     let total = 0;
@@ -22,9 +62,9 @@ class Pricing extends Component {
       process.containers.map(container=>{
         total += parseInt(container.price);
       })
-    })
+    });
     return total;
-  }
+  };
 
   grandTotal = (subTotal) => {
     let discount = this.state.discountInput;
@@ -38,17 +78,9 @@ class Pricing extends Component {
 
     return (<div>
 
-        <Button color="success"  onClick={() => store.dispatch({ type: 'SAVE_PRICING_DATA', payload: data })}>Get Data from evaluetor</Button>
+        <Button color="success"  onClick={() => store.dispatch({ type: 'SAVE_PRICING_DATA_FROM_EVALUETOR', payload: data })}>Get Data from evaluetor</Button>
       <div className='pricing'>
         {/* <button onClick={()=>store.dispatch({type: 'GET_DATA_FROM_PRICING'})}>Save Data</button> */}
-        
-        <div className='mileStone' >
-          <p className='process'>Process</p>
-          <p className='timeline'>Timeline</p>
-          <p className='days'>Days</p>
-          <p className='price'>Total price (NIS)</p>
-          <p className='processComment' >Comment</p>
-        </div>
     </div>
 
         {
@@ -58,7 +90,7 @@ class Pricing extends Component {
         <h6 className='grandTotal'>{`Sub Total: ${this.subTotal()}`}</h6>
         <div className='grandTotal'>
           Discount %
-          
+
             <Input  type="number"
             value={this.state.discountInput}
             onBlur={() => { store.dispatch({ type: 'SAVE_DISCOUNT', payload:{subTotalPrice: subTotal, discount: this.state.discountInput, grandTotalPrice: this.grandTotal(subTotal) }}) }}
@@ -100,31 +132,45 @@ class Process extends Component {
     this.setState({addContainer: false});
   }
 
+  cancelAddContainer = ()=>{
+    this.setState({addContainer: false});
+  }
+
   processPrice = () => {
     let processPrice = 0;
     this.props.process.containers.map((container, i) => {
       processPrice += parseInt(container.price);
-    })
-    this.setState({ processPrice: processPrice })
+    });
+    this.setState({ processPrice: processPrice });
     this.props.subTotal(this.state.processPrice);
-  }
+  };
 
   render() {
-    
-    this.totalDays = 0
-    return (
-      <div className='mileStone'>
-        <h3 className='processName'>{this.props.process.milestoneName}</h3>
+    this.totalDays = 0;
+        // <div className='mileStone'>
 
-        <div className='processContainers'>
+      return (
+      <div className='card my-2'>
+        <h3 className='processName'><span className={"font-weight-bold"}>Process: </span>{this.props.process.milestoneName}</h3>
+
+        <div>
+            <table className="table table-hover text-left">
+                <thead>
+                <tr>
+                    <th scope="col">Timeline</th>
+                    <th scope="col">Days</th>
+                    <th scope="col">Total price (NIS)</th>
+                </tr>
+                </thead>
+                <tbody>
           {this.props.process.containers.map((container, i) => {
-            console.log(container.days);
-            
             if (container.days !== undefined) {
             this.totalDays += parseInt(container.days);
             }
             return <Container key={i} container={container} containerIndex={i} ProcessIndex={this.props.ProcessIndex} processPrice={this.processPrice} />
           })}
+                </tbody>
+            </table>
           {this.state.addContainer ? <AddContainer ProcessIndex={this.props.ProcessIndex} cancelAddContainer={this.cancelAddContainer}/> : null }
           <div className='TotalDays'>
             <h6 >{`Total days ${this.totalDays}`}</h6>
@@ -132,7 +178,7 @@ class Process extends Component {
          <button onClick={()=>this.setState({addContainer: true})}>Add Container</button>
           </div>
         </div>
-        <textarea className='processComment'
+        <textarea className='form-control m-2 processComment w-auto'
         value={this.state.processComment}
          onChange={e => this.setState({processComment: e.target.value })}
          onBlur={e => {
@@ -153,10 +199,11 @@ class Container extends Component {
   }
   render() {
     return (
-      <ul className='singleProcessContainer'>
-        <li className='timeline'>{this.props.container.containerName}</li>
-        <div className='days'>{this.props.container.days}</div>
-        <Input type="number"
+      <tr>
+        <td className='timeline'>{this.props.container.containerName}</td>
+        <td className='days'>{this.props.container.days}</td>
+        <td>
+        <input className={"form-control"} type="number"
           value={this.state.priceInput}
           onBlur={e => {
             store.dispatch({ type: 'ADD_PRICE_TO_CONTAINER', payload: { price: parseInt(e.target.value), ProcessIndex: this.props.ProcessIndex, containerIndex: this.props.containerIndex }});
@@ -164,7 +211,8 @@ class Container extends Component {
           }}
           onChange={e => this.setState({ priceInput: e.target.value })}
         />
-      </ul>
+        </td>
+      </tr>
     )
   }
 }
@@ -176,7 +224,7 @@ class AddContainer extends Component{
       containerName: '',
       price: ''
     }
-    
+
   }
   handleInput = (e) =>{
     this.setState({[e.target.name] : e.target.value});

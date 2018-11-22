@@ -215,10 +215,10 @@ button:hover{
 
 
 
-
+/* 
 .divBorder{
     
-}
+} */
 
 .projectDescreptionInput{
     border-left: 2px solid white;
@@ -496,9 +496,6 @@ button:hover{
 .priceInput{
     flex: 3;
 
-}
-.singleProcessContainer{
-    display: flex;
 }
 
 .singleProcessContainer .timeline{
