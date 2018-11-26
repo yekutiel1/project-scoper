@@ -5,7 +5,9 @@ import { connect } from 'react-redux'
 import { pageLinkes } from './linkes'
 import { Row, Col } from 'reactstrap'
 import store from './store/store';
-import { Nav, NavItem, NavLink, Dropdown, DropdownItem, DropdownToggle, DropdownMenu, } from 'reactstrap';
+import { Nav, NavItem, NavLink, Dropdown, DropdownItem, DropdownToggle, DropdownMenu,  Navbar,
+  NavbarBrand } from 'reactstrap';
+
 
 import SelectProject from './pages/managmentTools/selectProject.js';
 import Versions from './pages/managmentTools/versions.js';
@@ -170,9 +172,11 @@ class App extends Component {
     return (
       <BrowserRouter >
         <div className=''>
-          <div className='header'>
-            <header className={'container py-2'}>SCOPER</header>
-          </div>
+      <Navbar className={'container py-2'} dark color="navbar navbar-dark bg-primary">
+          <NavbarBrand className={"navbarBrand"} href="/" >scoper</NavbarBrand>
+        </Navbar>
+            {/* <header href="/" className={'container py-2'}>SCOPER</header> */}
+        
           <div className={'container'}>
             <Row >
 
